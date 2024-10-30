@@ -43,7 +43,17 @@ Untuk menjalankan aplikasi ini secara lokal, ikuti langkah-langkah berikut:
    ```bash
    cd quizmahaphp
    ```
-3. Jalankan server PHP lokal (contoh: `php -S localhost:8000` di dalam direktori proyek).
+3. Install composer 
+4. buat file .env dan isi dengan benar. (isi sesuai dengan [env](#env-lengkap)).
+5. Jalankan server PHP lokal (contoh: `php -S localhost:8000` di dalam direktori proyek) atau yang penting apache dan mysql aktif pada komputer anda.
+
+## ENV LENGKAP
+
+```
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=
+```
 
 ## Penggunaan
 
@@ -59,4 +69,4 @@ Proyek ini dilisensikan di bawah [Lisensi MIT](https://choosealicense.com/licens
 
 ## Umpan Balik
 
-Jika Anda memiliki umpan balik atau saran, silakan hubungi melalui `fake@fake.com`.
+Jika Anda memiliki umpan balik atau saran, silakan hubungi melalui `nat0zxn99@gmail.com`.
