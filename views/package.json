@@ -6,13 +6,12 @@
     "lib": "lib"
   },
   "scripts": {
-    "dev": "npx tailwindcss -i ./style.css -o ./assets/css/styles.css --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx tailwindcss -i ./style.css -o ./assets/css/styles.css --watch"
   },
   "keywords": [],
-  "author": "",
+  "author": "Natzsixn",
   "license": "ISC",
-  "description": "",
+  "description": "itesa Tracer Study",
   "devDependencies": {
     "tailwindcss": "^3.4.14"
   }

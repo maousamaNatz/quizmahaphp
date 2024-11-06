@@ -1,7 +1,6 @@
 .env
 .htaccess
-cik.sql
+# cik.sql
 composer.lock
 !.gitignore
-libs
 vendor

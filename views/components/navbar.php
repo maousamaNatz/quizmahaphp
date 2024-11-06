@@ -1,24 +1,17 @@
-
-<!-- navbar components -->
-<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-  <div class="flex items-center w-full p-5">
-    <h1
-      id="logos"
-      class="text-2xl md:text-3xl font-bold text-center text-slate-900 dark:text-white flex flex-col items-center"
-    >
-      <span class="leading-none">
-        <span class="text-red-500">Tracer</span> Study
-      </span>
-      <span
-        id="logos-desc"
-        class="text-slate-900 dark:text-gray-300 leading-none text-xs md:text-sm"
-        >Itesa Muhammadiyah</span
-      >
-    </h1>
-    <div class="btn-mode ml-auto cursor-pointer">
-      <div class="checkbox-wrapper-2">
-        <input type="checkbox" class="sc-gJwTLC ikxBAC" />
+<header class="flex justify-between items-center p-6 bg-white shadow-md">
+      <div class="text-2xl font-bold text-gray-800">
+        Tracer
+        <span class="text-red-500"> Itesa </span>
       </div>
-    </div>
-  </div>
-</div>
+      <nav
+        class="desktop-menu space-x-8 absolute top-0 right-0 w-full h-full md:w-auto md:h-auto bg-red-500 md:bg-transparent md:relative md:block z-10"
+      >
+        <a class="text-red-500" href="#"> Home </a>
+        <a class="text-gray-800" href="#"> About Us </a>
+        <a class="text-gray-800" href="#"> Services </a>
+        <a class="text-gray-800" href="#"> Contact Us </a>
+      </nav>
+      <button class="mobile-menu md:hidden">
+        <i class="fas fa-bars"> </i>
+      </button>
+    </header>

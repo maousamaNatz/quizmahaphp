@@ -12,7 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if($response['status'] === 'success') {
             $_SESSION['user_id'] = $response['user_id'];
-            header('Location: ./publics/questions.php');
+            $user_id = str_replace(array("\r", "\n"), '', $response['user_id']);
+            header('Location: ./publics/questions.php?user_id=' . urlencode($user_id));
             exit();
         } else {
             $error = $response['message'];
@@ -27,103 +28,74 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tracer Study</title>
-
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Tracer itesa Muhammadiyah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./views/assets/css/styles.css" />
-
+    <link rel="icon" href="" />
     <style>
-      /* Posisi normal */
-      .input-label {
-        left: 10px;
-        top: 35px;
-        color: #a0aec0;
+      body {
+        font-family: "Roboto", sans-serif;
       }
-
-      /* Posisi jika input aktif atau ada teks */
-      .input-label.active {
-        left: 0;
-        top: 0;
-        font-size: 0.8rem;
-        color: #4a5568;
-      }
-      .checkbox-wrapper-2 .ikxBAC {
-        appearance: none;
-        background-color: #6e79d6;
-        border-radius: 72px;
-        border-style: none;
-        flex-shrink: 0;
-        height: 20px;
-        margin: 0;
-        position: relative;
-        width: 30px;
-      }
-
-      .checkbox-wrapper-2 .ikxBAC::before {
-        bottom: -6px;
-        content: "";
-        left: -6px;
-        position: absolute;
-        right: -6px;
-        top: -6px;
-      }
-
-      .checkbox-wrapper-2 .ikxBAC,
-      .checkbox-wrapper-2 .ikxBAC::after {
-        transition: all 100ms ease-out;
-      }
-
-      .checkbox-wrapper-2 .ikxBAC::after {
-        background-color: #fff;
-        border-radius: 50%;
-        content: "";
-        height: 14px;
-        left: 3px;
-        position: absolute;
-        top: 3px;
-        width: 14px;
-      }
-
-      .checkbox-wrapper-2 input[type="checkbox"] {
-        cursor: default;
-      }
-
-      .checkbox-wrapper-2 .ikxBAC:hover {
-        background-color: #c9cbcd;
-        transition-duration: 0s;
-      }
-
-      .checkbox-wrapper-2 .ikxBAC:checked {
-        background-color: #6e79d6;
-      }
-
-      .checkbox-wrapper-2 .ikxBAC:checked::after {
-        background-color: #fff;
-        left: 13px;
-      }
-
-      .checkbox-wrapper-2 :focus:not(.focus-visible) {
-        outline: 0;
-      }
-
-      .checkbox-wrapper-2 .ikxBAC:checked:hover {
-        background-color: #535db3;
+      @media (max-width: 768px) {
+        .mobile-menu {
+          display: block;
+        }
+        .desktop-menu {
+          display: none;
+        }
       }
     </style>
-</head>
-<body class="bg-neutral-50 transition-all duration-300 font-poppins">
-<?php include __DIR__ . '/../views/components/navbar.php'; ?>
-<?php include __DIR__ . '/../views/questions/form.php'; ?>
-<script src="./views/assets/js/do_this_animator_exe.js"></script>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+  <?php include $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer/views/components/navbar.php'; ?>  
+    <!-- page 1 -->
+    <section
+      class="flex w-full flex-col md:flex-row items-center py-20 bg-gray-50"
+    >
+      <div class="md:w-1/2 p-6">
+        <h2 class="text-3xl font-bold mb-4" animate>Tracer Itesa</h2>
+        <p class="text-gray-600 mb-8" animate2>
+          Tracer ITESA adalah platform interaktif yang membantu siswa SMK
+          menentukan langkah karir mereka setelah lulus. Melalui serangkaian
+          soal, siswa dapat mengarahkan pilihan mereka, seperti bekerja,
+          melanjutkan studi, atau pelatihan khusus. Jawaban yang diberikan akan
+          memfilter pertanyaan selanjutnya, menghasilkan rekomendasi karir yang
+          sesuai dengan minat dan tujuan mereka. Tracer ITESA memudahkan siswa
+          memahami peluang karir dan pendidikan yang tersedia, membantu mereka
+          merencanakan masa depan dengan lebih terarah.
+        </p>
+        <button
+          class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg"
+        >
+          Mulai
+        </button>
+      </div>
+      <div class="md:w-1/2 p-6 flex justify-center items-center">
+        <img
+          alt="Illustration of people discussing"
+          class="rounded-lg shadow-lg"
+          width="70%"
+          src="https://storage.googleapis.com/a1aa/image/pFZoKAUJwHqfd6NoNJgk7GMWynYsYe9peezUdIN58ZpIPVKOB.jpg"
+        />
+      </div>
+    </section>
+    <!-- page 2 -->
+
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer/views/questions/form.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer/views/components/footer.php'; ?>
+    <script src="./views/assets/js/sc.js"></script>
+  </body> 
 </html> 

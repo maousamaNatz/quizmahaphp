@@ -17,7 +17,19 @@ class AnswerController {
     }
 
     public function getAnswersByUserId($user_id) {
-        return $this->answer->getByUserId($user_id);
+        // Validasi apakah user_id ada di database
+        $query = "SELECT COUNT(*) FROM users WHERE id = :user_id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->execute();
+        
+        if ($stmt->fetchColumn() > 0) {
+            // Jika user_id ditemukan, ambil jawaban
+            return $this->answer->getByUserId($user_id);
+        } else {
+            // Jika user_id tidak ditemukan, kembalikan pesan error
+            return ['status' => 'error', 'message' => 'User ID tidak ditemukan'];
+        }
     }
 }
 ?>

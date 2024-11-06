@@ -12,8 +12,8 @@ $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userController = new UserController();
     $response = $userController->createUser($_POST);
-    
-    if($response['status'] === 'success') {
+
+    if ($response['status'] === 'success') {
         $_SESSION['user_id'] = $response['user_id'];
         header('Location: ../../publics/questions.php');
         exit();
@@ -22,174 +22,159 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+  
 
-<section class="w-full h-screen" style="font-family: 'Roboto', sans-serif">
-  <div
-    class="container mx-auto w-full flex items-center justify-center h-screen px-4 sm:px-6 lg:px-6"
-  >
-    <div
-      class="w-full h-fit bg-slate-100 dark:bg-slate-700 p-5 rounded-lg max-w-lg md:max-w-3xl lg:max-w-[70%]"
+  <section
+      class="hidden relative w-full flex-col justify-center h-screen items-center bg-gray-100"
     >
-      <h1
-        class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4"
-      >
-        Form Tracer Study
-      </h1>
-      <?php if (!empty($error)): ?>
-          <div class="text-red-500 mb-4"><?php echo htmlspecialchars($error); ?></div>
-      <?php endif; ?>
-      <form
-        id="form-question-one"
-        action=""
-        method="post"
-        class="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-4"
-      >
-        <div class="w-full h-full relative col-span-1 md:col-span-2">
-          <label
-            for="nama"
-            class="input-label absolute left-[10px] top-[35px] text-sm font-medium text-gray-400 dark:text-gray-300 mb-1 transition-all duration-200 ease-in-out"
-            >Nama Lengkap</label
-          >
-          <input
-            type="text"
-            name="nama"
-            id="nama"
-            class="input-field w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-slate-600 dark:text-white mt-6 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
-            placeholder=""
-          />
-        </div>
-        <div class="w-full h-full relative col-span-1 md:col-span-2">
-          <label
-            for="nim"
-            class="input-label absolute left-[10px] top-[35px] text-sm font-medium text-gray-400 dark:text-gray-300 mb-1 transition-all duration-200 ease-in-out"
-            >NIM</label
-          >
-          <input
-            type="number"
-            name="nim"
-            id="nim"
-            class="input-field w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-slate-600 dark:text-white mt-6 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
-            placeholder=""
-          />
-        </div>
-        <div class="w-full h-full relative col-span-1 md:col-span-2">
-          <label
-            for="email"
-            class="input-label absolute left-[10px] top-[35px] text-sm font-medium text-gray-400 dark:text-gray-300 mb-1 transition-all duration-200 ease-in-out"
-            >Email</label
-          >
-          <input
-            type="email"
-            name="email"
-            id="email"
-            class="input-field w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-slate-600 dark:text-white mt-6 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
-            placeholder=""
-          />
-        </div>
-        <div class="w-full h-full relative pt-2">
-          <label
-            for="tgl_lahir"
-            class="block text-sm font-medium text-gray-700 mb-2 transition-all duration-200 ease-in-out"
-            >Tanggal Lahir</label
-          >
-          <input
-            type="date"
-            name="tgl_lahir"
-            id="tgl_lahir"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
-            placeholder=""
-          />
-        </div>
-        <div class="w-full h-full relative pt-2">
-          <label
-            for="thn_lulus"
-            class="block text-sm font-medium text-gray-700 mb-2 transition-all duration-200 ease-in-out"
-            >Tahun Lulus</label
-          >
-          <input
-            type="date"
-            name="thn_lulus"
-            id="thn_lulus"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
-            placeholder=""
-          />
-        </div>
-        <div class="w-full h-full relative col-span-1 md:col-span-2">
-          <label
-            for="customSelect"
-            class="input-label absolute left-[10px] top-[35px] text-sm font-medium text-gray-400 dark:text-gray-300 mb-1 transition-all duration-200 ease-in-out"
-            >pilihan perguruan tinggi</label
-          >
-          <input
-            type="text"
-            name="perguruan"
-            id="customSelect"
-            class="input-field w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-slate-600 dark:text-white mt-6 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder=" "
-            readonly
-          />
-          <div
-            class="dropdown hidden absolute w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-600 rounded-md mt-1 z-10 shadow-lg"
-          >
-            <div
-              class="dropdown-item px-3 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-500 dark:text-white"
-            >
-              D3 statistika
+      <div class="w-full max-w-5xl md:absolute">
+        <form method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="mb-4">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="nama"
+              >
+                Nama
+              </label>
+              <input
+                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-3 transition duration-300 ease focus:outline-none focus:border-red-400 hover:border-red-300 focus:ring-1 focus:ring-red-200 shadow-md"
+                id="nama"
+                name="nama"
+                type="text"
+                placeholder="Masukkan nama Anda"
+              />
             </div>
-            <div
-              class="dropdown-item px-3 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-500 dark:text-white"
-            >
-              S1 sains akturia
+            <div class="mb-4">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="nama"
+              >
+                tahun Lulus
+              </label>
+              <input
+                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-3 transition duration-300 ease focus:outline-none focus:border-red-400 hover:border-red-300 focus:ring-1 focus:ring-red-200 shadow-md"
+                id="tahunLulus"
+                name="thn_lulus"
+                type="date"
+                placeholder="Masukkan tahun lulus Anda"
+              />
             </div>
-            <div
-              class="dropdown-item px-3 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-500 dark:text-white"
-            >
-              S1 management retaill
+            <div class="mb-4">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="nama"
+              >
+                NIM
+              </label>
+              <input
+                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-3 transition duration-300 ease focus:outline-none focus:border-red-400 hover:border-red-300 focus:ring-1 focus:ring-red-200 shadow-md"
+                id="nim"
+                name="nim"
+                type="number"
+                placeholder="Masukkan NIM Anda"
+              />
             </div>
-            <div
-              class="dropdown-item px-3 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-500 dark:text-white"
-            >
-              S1 Rekayasa Perangkat Lunak/  RPL
+            <div class="mb-4">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="noTelp"
+              >
+                Program Studi
+              </label>
+              <select
+                name="perguruan"
+                id="perguruan"
+                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-3 transition duration-300 ease focus:outline-none focus:border-red-400 hover:border-red-300 focus:ring-1 focus:ring-red-200 shadow-md"
+              >
+                <option value="">Pilih Program Studi</option>
+                <option value="Rekayasa Perangkat Lunak">
+                  Rekayasa Perangkat Lunak
+                </option>
+                <option value="Multimedia">Multimedia</option>
+                <option value="Teknik Komputer dan Jaringan">
+                  Teknik Komputer dan Jaringan
+                </option>
+                <option value="Sistem Informasi">Sistem Informasi</option>
+                <option value="Teknik Informatika">Teknik Informatika</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="email"
+              >
+                Email
+              </label>
+              <input
+                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-3 transition duration-300 ease focus:outline-none focus:border-red-400 hover:border-red-300 focus:ring-1 focus:ring-red-200 shadow-md"
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Masukkan email Anda"
+              />
+            </div>
+            <div class="mb-4">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="noMahasiswa"
+              >
+                NIK
+              </label>
+              <input
+                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-3 transition duration-300 ease focus:outline-none focus:border-red-400 hover:border-red-300 focus:ring-1 focus:ring-red-200 shadow-md"
+                id="nik"
+                name="nik"
+                type="number"
+                placeholder="Masukkan NIK Anda"
+              />
+            </div>
+            <div class="mb-4">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="noMahasiswa"
+              >
+                Tgl Lahir
+              </label>
+              <input
+                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-3 transition duration-300 ease focus:outline-none focus:border-red-400 hover:border-red-300 focus:ring-1 focus:ring-red-200 shadow-md"
+                id="tglLahir"
+                name="tgl_lahir"
+                type="date"
+                placeholder="Masukkan tanggal lahir Anda"
+              />
+            </div>
+            <div class="mb-4">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="noMahasiswa"
+              >
+                NPWP
+              </label>
+              <input
+                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-3 transition duration-300 ease focus:outline-none focus:border-red-400 hover:border-red-300 focus:ring-1 focus:ring-red-200 shadow-md"
+                id="npwp"
+                name="npwp"
+                type="number"
+                placeholder="Masukkan NPWP Anda"
+              />
             </div>
           </div>
-        </div>
-        <div class="w-full h-full relative">`
-          <label
-            for="nik"
-            class="input-label absolute left-[10px] top-[35px] text-sm font-medium text-gray-400 dark:text-gray-300 mb-1 transition-all duration-200 ease-in-out"
-            >NIK</label
-          >
-          <input
-            type="number"
-            name="nik"
-            id="nik"
-            class="input-field w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-slate-600 dark:text-white mt-6 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
-            placeholder=""
-          />
-        </div>
-        <div class="w-full h-full relative">
-          <label
-            for="npwp "
-            class="input-label absolute left-[10px] top-[35px] text-sm font-medium text-gray-400 dark:text-gray-300 mb-1 transition-all duration-200 ease-in-out"
-            >NPWP</label
-          >
-          <input
-            type="number"
-            name="npwp"
-            id="npwp"
-            class="input-field w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-slate-600 dark:text-white mt-6 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
-            placeholder=""
-          />
-        </div>
-        <div class="w-full h-full col-span-1 md:col-span-2 mt-6">
-          <button
-            type="submit"
-            class="w-full bg-red-500 text-white px-3 py-2 rounded-md"
-          >
-            Submit
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
+          <div class="flex gap-4 items-center justify-center mt-6">
+            <button
+              class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="submit"
+            >
+              Kirim
+            </button>
+            <button
+              class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="reset"
+            >
+              Reset
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  

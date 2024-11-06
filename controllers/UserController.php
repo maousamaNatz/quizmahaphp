@@ -21,6 +21,16 @@ class UserController {
             return ['status' => 'error', 'message' => 'Semua field harus diisi'];
         }
         
+        $email = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return ['status' => 'error', 'message' => 'Email tidak valid'];
+        }
+        
+        // Normalisasi data untuk menghapus CRLF
+        $data = array_map(function($value) {
+            return str_replace(["\r\n", "\r", "\n"], ' ', $value);
+        }, $data);
+        
         try {
             $this->user->nama = $data['nama'];
             $this->user->nim = $data['nim'];
