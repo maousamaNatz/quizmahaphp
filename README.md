@@ -51,8 +51,10 @@ Untuk menjalankan aplikasi ini secara lokal, ikuti langkah-langkah berikut:
 
 ```
 DB_HOST=localhost
+DB_NAME=apacona
 DB_USER=root
-DB_PASS=
+DB_PASSWORD=
+
 ```
 
 ## Penggunaan
