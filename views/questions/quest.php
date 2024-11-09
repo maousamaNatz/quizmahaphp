@@ -1,120 +1,82 @@
 <?php
-require_once __DIR__ . '/../../config/db.php';
-require_once __DIR__ . '/../../vendor/autoload.php'; // Pastikan autoload Composer di-include
-
+require_once __DIR__ . '/../../src/config/Database.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use App\Helpers\SessionHelper;
+use App\Controller\AnswerController;
 use Symfony\Component\Security\Csrf\CsrfTokenManager;
 use Symfony\Component\Security\Csrf\TokenGenerator\UriSafeTokenGenerator;
 use Symfony\Component\Security\Csrf\TokenStorage\NativeSessionTokenStorage;
+use Symfony\Component\Security\Csrf\CsrfToken;
+use App\Helpers\LogHelper;
 
-// Start session
-session_start();
+SessionHelper::startSession();
 
-// CSRF Token Manager
-$csrfTokenManager = new CsrfTokenManager(
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Pastikan direktori log ada dan bisa ditulis
+$logFile = __DIR__ . '/../../logs/error.log';
+if (!file_exists(dirname($logFile))) {
+    mkdir(dirname($logFile), 0777, true);
+}
+ini_set('error_log', $logFile);
+
+
+// Pastikan $db tersedia dari controller
+if (!isset($db)) {
+    throw new Exception('Database connection not available');
+}
+
+$tokenManager = new CsrfTokenManager(
     new UriSafeTokenGenerator(),
     new NativeSessionTokenStorage()
 );
 
-// Generate CSRF token
-$csrfToken = $csrfTokenManager->getToken('form_intention')->getValue();
+// Generate token baru
+$csrfToken = $tokenManager->getToken('question_form')->getValue();
 
-// Database connection
-$database = new Database();
-$db = $database->connect();
-
-// Function to check if sub_question_id exists
-function isValidSubQuestionId($db, $sub_question_id) {
-    $checkQuery = "SELECT COUNT(*) FROM sub_questions WHERE id = :sub_question_id";
-    $checkStmt = $db->prepare($checkQuery);
-    $checkStmt->bindParam(':sub_question_id', $sub_question_id, PDO::PARAM_INT);
-    $checkStmt->execute();
-    return $checkStmt->fetchColumn() > 0;
-}
-
-// Process form data if submitted
+// Validasi CSRF token
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Validate CSRF token
-    if (!$csrfTokenManager->isTokenValid(new \Symfony\Component\Security\Csrf\CsrfToken('form_intention', $_POST['_csrf_token']))) {
-        die('Invalid CSRF token');
+    try {
+        if (!isset($_POST['_csrf_token']) || 
+            !$tokenManager->isTokenValid(new CsrfToken('question_form', $_POST['_csrf_token']))
+        ) {
+            throw new Exception('Token CSRF tidak valid');
+        }
+    } catch (Exception $e) {
+        error_log("CSRF validation error: " . $e->getMessage());
+        die('Token keamanan tidak valid. Silakan coba lagi.');
     }
+}
 
-    if (!isset($_SESSION['user_id'])) {
-        error_log("User ID is not set in session.");
-    } else {
-        $user_id = $_SESSION['user_id'];
-        $answers = [];
-
-        // Sanitize input data
+// Di bagian form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        // Validasi input
         foreach ($_POST as $key => $value) {
-            if (strpos($key, 'question_') === 0) {
-                $answers[$key] = is_array($value) ? array_map('htmlspecialchars', array_map('trim', $value)) : htmlspecialchars(trim($value));
+            if (strpos($key, 'question_') === 0 && empty($value)) {
+                throw new \Exception('Semua pertanyaan wajib dijawab');
             }
         }
-
-        // Debugging: Print all POST data
-        error_log(print_r($answers, true));
-
-        // Prepare insert query
-        $query = "INSERT INTO user_answers (user_id, sub_question_id, answer_option_id, answer_text) VALUES (:user_id, :sub_question_id, :answer_option_id, :answer_text)";
-        $stmt = $db->prepare($query);
-
-        foreach ($answers as $sub_question_id => $answer) {
-            if (strpos($sub_question_id, 'question_') === 0) {
-                $sub_question_id = str_replace('question_', '', $sub_question_id);
-            }
-
-            if (!isValidSubQuestionId($db, $sub_question_id)) {
-                error_log("Invalid sub_question_id: " . $sub_question_id);
-                continue;
-            }
-
-            if (is_array($answer)) {
-                foreach ($answer as $option_id) {
-                    if (!isValidOptionId($db, $option_id)) {
-                        error_log("Invalid answer_option_id: " . $option_id);
-                        continue;
-                    }
-
-                    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-                    $stmt->bindParam(':sub_question_id', $sub_question_id, PDO::PARAM_INT);
-                    $stmt->bindParam(':answer_option_id', $option_id, PDO::PARAM_INT);
-                    $answer_text = $_POST['other_' . htmlspecialchars($sub_question_id)] ?? null;
-                    $stmt->bindParam(':answer_text', $answer_text, PDO::PARAM_STR);
-                    $stmt->execute();
-                }
-            } else {
-                if (!isValidOptionId($db, $answer)) {
-                    error_log("Invalid answer_option_id: " . $answer);
-                    continue;
-                }
-
-                $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-                $stmt->bindParam(':sub_question_id', $sub_question_id, PDO::PARAM_INT);
-                $stmt->bindParam(':answer_option_id', $answer, PDO::PARAM_INT);
-                $answer_text = $_POST['other_' . htmlspecialchars($sub_question_id)] ?? null;
-                $stmt->bindParam(':answer_text', $answer_text, PDO::PARAM_STR);
-                $stmt->execute();
-            }
+        
+        // Proses penyimpanan jawaban
+        $answerController = new AnswerController();
+        $result = $answerController->saveAnswer($_POST);
+        
+        if ($result['status'] === 'success') {
+            header('Location: /traceritesa/tracer/views/questions/result.php');
+            exit;
+        } else {
+            throw new \Exception($result['message'] ?? 'Terjadi kesalahan saat menyimpan jawaban');
         }
+        
+    } catch (\Exception $e) {
+        LogHelper::log($e->getMessage(), 'ERROR');
+        $error = $e->getMessage() ?: 'Terjadi kesalahan sistem';
     }
 }
-
-// Function to check if option_id exists
-function isValidOptionId($db, $option_id) {
-    $checkQuery = "SELECT COUNT(*) FROM question_options WHERE id = :option_id";
-    $checkStmt = $db->prepare($checkQuery);
-    $checkStmt->bindParam(':option_id', $option_id, PDO::PARAM_INT);
-    $checkStmt->execute();
-    return $checkStmt->fetchColumn() > 0;
-}
-
-// Fetch questions and options from database
-$query = "SELECT * FROM questions";
-$stmt = $db->prepare($query);
-$stmt->execute();
-$questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -211,18 +173,23 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
+<?php if (isset($error)): ?>
+    <div class="absolute top-0 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+        <strong class="font-bold">Error!</strong>
+        <span class="block sm:inline"><?php echo isset($error) ? htmlspecialchars($error) : 'Terjadi kesalahan sistem'; ?></span>
+    </div>
+<?php endif; ?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer/views/components/navbar.php'; ?>
     <!-- section soal soal -->
     <section class="flex flex-col items-center justify-center py-20 bg-gray-100">
         <form method="post" action="" class="w-full max-w-5xl px-4">
             <input type="hidden" name="_csrf_token" value="<?= htmlspecialchars($csrfToken); ?>">
-            <div class="bg-gray-100 p-6 rounded-lg my-3 w-full">
+            <div class="bg-gray-100 p-6 rounded-lg my-3 w-full">    
                 <?php foreach ($questions as $question): ?>
                     <h2 class="text-lg font-semibold mb-2">Question <?= htmlspecialchars($question['id']); ?></h2>
                     <p class="text-gray-700 mb-4"><?= htmlspecialchars($question['question_text']); ?></p>
                     <div class="space-y-4">
                         <?php if ($question['type'] == 'paired_scale'): ?>
-                            <!-- Paired scale logic -->
                             <?php
                             $querySubQuestions = "SELECT * FROM sub_questions WHERE question_id = :question_id ORDER BY part";
                             $stmtSubQuestions = $db->prepare($querySubQuestions);
@@ -297,6 +264,16 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             $stmtOptions->execute();
                             $options = $stmtOptions->fetchAll(PDO::FETCH_ASSOC);
 
+                            // Tambahkan array untuk melacak pertanyaan yang sudah ditampilkan
+                            static $displayedQuestions = [];
+                            // Skip jika pertanyaan sudah ditampilkan sebelumnya
+                            if (in_array($question['id'], $displayedQuestions)) {
+                                continue;
+                            }
+
+                            // Tambahkan pertanyaan ke array yang sudah ditampilkan
+                            $displayedQuestions[] = $question['id'];
+
                             if (empty($options) || $question['type'] == 'text'): ?>
                                 <div class="flex items-center justify-start mt-2">
                                     <input
@@ -355,6 +332,25 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     letterSpan.classList.add("text-blue-600", "font-semibold", "mr-2");
                 }
             });
+        });
+
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const requiredInputs = document.querySelectorAll('input[required]');
+            let isValid = true;
+            
+            requiredInputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('border-red-500');
+                } else {
+                    input.classList.remove('border-red-500');
+                }
+            });
+            
+            if (!isValid) {
+                e.preventDefault();
+                alert('Mohon lengkapi semua pertanyaan yang wajib dijawab');
+            }
         });
     </script>
 </body>

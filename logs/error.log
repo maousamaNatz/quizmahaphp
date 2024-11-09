@@ -1,0 +1,13 @@
+[09-Nov-2024 02:34:13 Europe/Berlin] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'apacona.answers' doesn't exist
+[09-Nov-2024 02:35:04 Europe/Berlin] PHP Warning:  Undefined array key "answers" in D:\xampp\htdocs\traceritesa\tracer\src\Controller\AnswerController.php on line 22
+[09-Nov-2024 02:35:04 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in D:\xampp\htdocs\traceritesa\tracer\src\Controller\AnswerController.php on line 22
+[09-Nov-2024 02:35:04 Europe/Berlin] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'user_id' cannot be null
+[09-Nov-2024 02:35:04 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php on line 65
+[09-Nov-2024 02:35:04 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php on line 69
+[09-Nov-2024 02:35:04 Europe/Berlin] PHP Deprecated:  Exception::__construct(): Passing null to parameter #1 ($message) of type string is deprecated in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php on line 69
+[09-Nov-2024 02:53:15 Europe/Berlin] User ID tidak ditemukan dalam session
+[09-Nov-2024 02:53:15 Europe/Berlin] User ID tidak ditemukan
+[09-Nov-2024 02:55:50 Europe/Berlin] User ID tidak ditemukan dalam session
+[09-Nov-2024 02:55:50 Europe/Berlin] Silakan login kembali
+[09-Nov-2024 02:57:13 Europe/Berlin] Processing answer for user_id: 4
+[09-Nov-2024 05:21:04 Europe/Berlin] Processing answer for user_id: 5

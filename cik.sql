@@ -1,71 +1,55 @@
-    -- Tabel Users untuk menyimpan informasi pengguna
-    CREATE TABLE `users` (
-      `id` INT(10) NOT NULL AUTO_INCREMENT,
-      `nama` VARCHAR(250) NOT NULL,
-      `nim` VARCHAR(250) NOT NULL UNIQUE,
-      `email` VARCHAR(250) NOT NULL UNIQUE,
-      `tgl_lahir` DATE NOT NULL,
-      `thn_lulus` VARCHAR(250) NOT NULL,
-      `perguruan` VARCHAR(250) NOT NULL,
-      `nik` VARCHAR(250),
-      `npwp` VARCHAR(250),
-      PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Tabel Users untuk menyimpan informasi pengguna
+CREATE TABLE `users` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `nama` VARCHAR(250) NOT NULL,
+  `nim` VARCHAR(250) NOT NULL UNIQUE,
+  `email` VARCHAR(250) NOT NULL UNIQUE,
+  `tgl_lahir` DATE NOT NULL,
+  `thn_lulus` VARCHAR(250) NOT NULL,
+  `perguruan` VARCHAR(250) NOT NULL,
+  `nik` VARCHAR(250),
+  `npwp` VARCHAR(250),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-    -- Tabel Questions untuk menyimpan pertanyaan utama
-  -- Pada kolom ENUM yang mungkin mengalami error
-  CREATE TABLE `questions` (
-      `id` INT(10) NOT NULL AUTO_INCREMENT,
-      `question_text` TEXT NOT NULL,
-      `type` ENUM('scale', 'multiple_choice', 'paired_scale', 'text_input', 'double_text_input', 'scale_choice', 'text_choice') NOT NULL,
-      PRIMARY KEY (`id`)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Tabel Questions untuk menyimpan pertanyaan utama
+CREATE TABLE `questions` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `question_text` TEXT NOT NULL,
+  `type` ENUM('scale', 'multiple_choice', 'paired_scale', 'text_input', 'double_text_input', 'scale_choice', 'text_choice') NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-    -- Tabel Sub Questions untuk menyimpan sub-pertanyaan (misal bagian A dan B)
-    CREATE TABLE `sub_questions` (
-      `id` INT(10) NOT NULL AUTO_INCREMENT,
-      `question_id` INT(10) NOT NULL,
-      `sub_question_text` TEXT NOT NULL,
-      `part` ENUM('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J') DEFAULT NULL,
-      PRIMARY KEY (`id`),
-      FOREIGN KEY (`question_id`) REFERENCES `questions`(`id`) ON DELETE CASCADE
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Tabel Sub Questions untuk menyimpan sub-pertanyaan (misal bagian A dan B)
+CREATE TABLE `sub_questions` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `question_id` INT(10) NOT NULL,
+  `sub_question_text` TEXT NOT NULL,
+  `part` ENUM('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J') DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`question_id`) REFERENCES `questions`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-    -- Tabel Question Options untuk menyimpan opsi pertanyaan (jika pertanyaan memiliki pilihan jawaban)
-    CREATE TABLE `question_options` (
-      `id` INT(10) NOT NULL AUTO_INCREMENT,
-      `sub_question_id` INT(10) NOT NULL,
-      `option_label` CHAR(1) NOT NULL,
-      `option_text` VARCHAR(250) NOT NULL,
-      `option_value` INT(10) DEFAULT NULL,
-      `is_text_input_required` BOOLEAN DEFAULT FALSE,
-      PRIMARY KEY (`id`),
-      FOREIGN KEY (`sub_question_id`) REFERENCES `sub_questions`(`id`) ON DELETE CASCADE
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-    -- Tabel User Answers untuk menyimpan jawaban pengguna
-    CREATE TABLE `user_answers` (
-      `id` INT(10) NOT NULL AUTO_INCREMENT,
-      `user_id` INT(10) NOT NULL,
-      `sub_question_id` INT(10) NOT NULL,
-      `answer_option_id` INT(10) DEFAULT NULL,
-      `answer_text` TEXT DEFAULT NULL,
-      PRIMARY KEY (`id`),
-      FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
-      FOREIGN KEY (`sub_question_id`) REFERENCES `sub_questions`(`id`) ON DELETE CASCADE,
-      FOREIGN KEY (`answer_option_id`) REFERENCES `question_options`(`id`) ON DELETE SET NULL
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-    -- Tabel Answer Categories untuk mengelola kategori jawaban (opsional)
-    CREATE TABLE `answer_categories` (
-      `id` INT(10) NOT NULL AUTO_INCREMENT,
-      `category_name` VARCHAR(250) NOT NULL,
-      `display_text` VARCHAR(250) NOT NULL,
-      `category_value` INT(10) NOT NULL,
-      PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Insert untuk tabel Questions
+-- Tabel Question Options untuk menyimpan opsi pertanyaan (jika pertanyaan memiliki pilihan jawaban)
+CREATE TABLE `question_options` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `sub_question_id` INT(10) NOT NULL,
+  `option_label` CHAR(1) NOT NULL,
+  `option_text` VARCHAR(250) NOT NULL,
+  `option_value` INT(10) DEFAULT NULL,
+  `is_text_input_required` BOOLEAN DEFAULT FALSE,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`sub_question_id`) REFERENCES `sub_questions`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Tabel User Answers untuk menyimpan jawaban mahasiswa dalam format JSON
+CREATE TABLE `user_answers` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(10) NOT NULL,
+  `answers` JSON NOT NULL,  -- Menyimpan seluruh jawaban dalam format JSON
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+  UNIQUE KEY `unique_user_answer` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- Insert untuk tabel Questions
 INSERT INTO questions (question_text, type) VALUES
 ('Jelaskan status anda saat ini', 'scale'),

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link rel="icon" href="assets/img/logo.png">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -27,7 +28,7 @@
                 <td><?= htmlspecialchars($user['email']) ?></td>
                 <td><?= htmlspecialchars($user['thn_lulus']) ?></td>
                 <td><?= htmlspecialchars($user['perguruan']) ?></td>
-                <td><a href="results.php?user_id=<?= $user['id'] ?>">Lihat Jawaban</a></td>
+                <td><a href="show_answers.php?user_id=<?= $user['id'] ?>" class="text-blue-500 hover:text-blue-700">Lihat Jawaban</a></td>
             </tr>
             <?php endforeach; ?>
         </table>

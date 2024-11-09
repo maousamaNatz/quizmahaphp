@@ -1,8 +1,8 @@
 <footer class="bg-gray-800 text-white py-6 px-4">
         <div class="flex flex-col md:flex-row justify-between items-center container mx-auto">
             <div class="text-2xl font-bold mb-4 md:mb-0">
-                edu
-                <span class="text-red-500"> co </span>
+                Tracer
+                <span class="text-red-500"> Itesa </span>
             </div>
             <nav class="space-x-8 mb-4 md:mb-0">
                 <a class="text-white" href="#"> About us </a>
@@ -25,7 +25,13 @@
             </div>
         </div>
         <div class="text-center text-gray-500 mt-4">
-            Copyright 2021 - All right Reserved
+            Copyright <span class="apcb"></span> ~ <a href="https://github.com/maousamaNatz" class="hover:decoration-1 hover:text-white">Natz</a>
         </div>
         <div class="text-center text-gray-500 mt-2">Privacy Policy</div>
     </footer>
+
+<script>
+    const yearSpan = document.querySelector('.apcb');
+    yearSpan.textContent = new Date().getFullYear();
+</script>
+    

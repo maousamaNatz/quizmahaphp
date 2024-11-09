@@ -2,8 +2,12 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require_once __DIR__ . '/../controllers/UserController.php';
-session_start();
+require_once __DIR__ . '/../vendor/autoload.php';
+use App\Config\Database;
+use App\Helpers\SessionHelper;
+use App\Controller\UserController;
+
+SessionHelper::startSession();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
@@ -12,8 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if($response['status'] === 'success') {
             $_SESSION['user_id'] = $response['user_id'];
+            error_log("User ID set in session: " . $_SESSION['user_id']);
             $user_id = str_replace(array("\r", "\n"), '', $response['user_id']);
-            header('Location: ./publics/questions.php?user_id=' . urlencode($user_id));
+            header('Location: /traceritesa/tracer/questions?user_id=' . urlencode($user_id));
             exit();
         } else {
             $error = $response['message'];
@@ -30,6 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    
+    <link rel="icon" type="image/x-icon" href="/assets/img/logo.png">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Tracer itesa Muhammadiyah</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -41,7 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="" />
     <style>
       body {
         font-family: "Roboto", sans-serif;
