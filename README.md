@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="assets/img/logo.png" alt="Logo" width="100">
+    <img src="assets/media/logos.png" alt="Logo" width="100">
 </div>
 
 # Tracer Study
