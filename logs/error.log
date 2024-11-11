@@ -11,3 +11,108 @@
 [09-Nov-2024 02:55:50 Europe/Berlin] Silakan login kembali
 [09-Nov-2024 02:57:13 Europe/Berlin] Processing answer for user_id: 4
 [09-Nov-2024 05:21:04 Europe/Berlin] Processing answer for user_id: 5
+[11-Nov-2024 01:43:48 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database connection not available in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php:28
+Stack trace:
+#0 D:\xampp\htdocs\traceritesa\tracer\publics\questions.php(3): include()
+#1 {main}
+  thrown in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php on line 28
+[11-Nov-2024 01:43:54 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database connection not available in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php:28
+Stack trace:
+#0 D:\xampp\htdocs\traceritesa\tracer\publics\questions.php(3): include()
+#1 {main}
+  thrown in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php on line 28
+[2024-11-11 01:52:27] [ERROR] Error: Halaman tidak ditemukan
+File: D:\xampp\htdocs\traceritesa\tracer\index.php
+Line: 34
+Trace:
+#0 {main}
+[2024-11-11 01:52:27] [ERROR] Error: require_once(D:/xampp/htdocs/traceritesa/tracer/views/errors/404.php): Failed to open stream: No such file or directory
+File: D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php
+Line: 83
+Trace:
+#0 D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php(83): App\Helpers\ErrorHandler::handleError(2, 'require_once(D:...', 'D:\\xampp\\htdocs...', 83)
+#1 D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php(83): require_once()
+#2 D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php(42): App\Helpers\ErrorHandler::displayError(404, 'Halaman tidak d...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(34): App\Helpers\ErrorHandler::handleException(Object(Exception))
+#4 {main}
+[2024-11-11 01:52:27] [ERROR] Error: Uncaught ErrorException: require_once(D:/xampp/htdocs/traceritesa/tracer/views/errors/500.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php:83
+Stack trace:
+#0 D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php(83): App\Helpers\ErrorHandler::handleError(2, 'require_once(D:...', 'D:\\xampp\\htdocs...', 83)
+#1 D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php(83): require_once()
+#2 D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php(42): App\Helpers\ErrorHandler::displayError(500, 'require_once(D:...')
+#3 [internal function]: App\Helpers\ErrorHandler::handleException(Object(ErrorException))
+#4 {main}
+  thrown
+File: D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php
+Line: 83
+Trace:
+#0 [internal function]: App\Helpers\ErrorHandler::handleFatalError()
+#1 {main}
+[2024-11-11 01:53:48] [ERROR] Error: Halaman tidak ditemukan
+File: D:\xampp\htdocs\traceritesa\tracer\index.php
+Line: 34
+Trace:
+#0 {main}
+[2024-11-11 01:53:53] [ERROR] Error: Halaman tidak ditemukan
+File: D:\xampp\htdocs\traceritesa\tracer\index.php
+Line: 34
+Trace:
+#0 {main}
+[2024-11-11 01:53:55] [ERROR] Error: Halaman tidak ditemukan
+File: D:\xampp\htdocs\traceritesa\tracer\index.php
+Line: 34
+Trace:
+#0 {main}
+[2024-11-11 01:54:08] [ERROR] Error: Halaman tidak ditemukan
+File: D:\xampp\htdocs\traceritesa\tracer\index.php
+Line: 34
+Trace:
+#0 {main}
+[2024-11-11 01:54:10] [ERROR] Error: Halaman tidak ditemukan
+File: D:\xampp\htdocs\traceritesa\tracer\index.php
+Line: 34
+Trace:
+#0 {main}
+[2024-11-11 01:54:13] [ERROR] Error: Halaman tidak ditemukan
+File: D:\xampp\htdocs\traceritesa\tracer\index.php
+Line: 34
+Trace:
+#0 {main}
+[2024-11-11 01:54:19] [ERROR] Error: Halaman tidak ditemukan
+File: D:\xampp\htdocs\traceritesa\tracer\index.php
+Line: 34
+Trace:
+#0 {main}
+[2024-11-11 01:54:26] [ERROR] Error: Halaman tidak ditemukan
+File: D:\xampp\htdocs\traceritesa\tracer\index.php
+Line: 34
+Trace:
+#0 {main}
+[2024-11-11 01:56:28] [ERROR] Error: Halaman tidak ditemukan
+File: D:\xampp\htdocs\traceritesa\tracer\index.php
+Line: 34
+Trace:
+#0 {main}
+[2024-11-11 05:57:34] [ERROR] Error: Halaman tidak ditemukan
+File: D:\xampp\htdocs\traceritesa\tracer\index.php
+Line: 34
+Trace:
+#0 {main}
+[11-Nov-2024 05:57:41 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database connection not available in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php:28
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php on line 28
+[11-Nov-2024 05:57:58 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database connection not available in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php:28
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php on line 28
+[2024-11-11 06:26:42] [ERROR] Error: Halaman tidak ditemukan
+File: D:\xampp\htdocs\traceritesa\tracer\index.php
+Line: 34
+Trace:
+#0 {main}
+[2024-11-11 06:26:47] [ERROR] Error: Halaman tidak ditemukan
+File: D:\xampp\htdocs\traceritesa\tracer\index.php
+Line: 34
+Trace:
+#0 {main}

@@ -82,10 +82,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Tracer itesa Muhammadiyah</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/tracer/views/assets/css/styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
-    <link rel="icon" href="" />
+    <link rel="icon" href="/tracer/views/assets/media/logos.png" />
     <style>
         body {
             font-family: "Roboto", sans-serif;
@@ -170,6 +170,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             -webkit-user-select: none;
             user-select: none;
         }
+        .question-item {
+            transition: all 0.3s ease-in-out;
+        }
+        .question-item[style*="display: none"] {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        .question-item[style*="display: block"] {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -182,13 +193,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer/views/components/navbar.php'; ?>
     <!-- section soal soal -->
     <section class="flex flex-col items-center justify-center py-20 bg-gray-100">
-        <form method="post" action="" class="w-full max-w-5xl px-4">
+        <form method="post" action="" class="w-full max-w-5xl px-4 form" id="questionForm">
             <input type="hidden" name="_csrf_token" value="<?= htmlspecialchars($csrfToken); ?>">
             <div class="bg-gray-100 p-6 rounded-lg my-3 w-full">    
                 <?php foreach ($questions as $question): ?>
-                    <h2 class="text-lg font-semibold mb-2">Question <?= htmlspecialchars($question['id']); ?></h2>
-                    <p class="text-gray-700 mb-4"><?= htmlspecialchars($question['question_text']); ?></p>
-                    <div class="space-y-4">
+                    <div class="space-y-4 question-item" data-question-id="<?= htmlspecialchars($question['id']); ?>">
+                        <h2 class="text-lg font-semibold mb-2">Question <?= htmlspecialchars($question['id']); ?></h2>
+                        <p class="text-gray-700 mb-4"><?= htmlspecialchars($question['question_text']); ?></p>
                         <?php if ($question['type'] == 'paired_scale'): ?>
                             <?php
                             $querySubQuestions = "SELECT * FROM sub_questions WHERE question_id = :question_id ORDER BY part";
@@ -196,7 +207,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $stmtSubQuestions->bindParam(':question_id', $question['id']);
                             $stmtSubQuestions->execute();
                             $subQuestions = $stmtSubQuestions->fetchAll(PDO::FETCH_ASSOC);
-                            ?>
+                            ?>  
                             <div class="overflow-x-auto bg-white p-4 rounded-lg">
                                 <table class="min-w-full border-collapse">
                                     <thead>
@@ -286,8 +297,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <?php else: ?>
                                 <?php foreach ($options as $option): ?>
                                     <div class="checkbox-wrapper-1">
-                                        <input id="option_<?= $option['id'] ?>" class="substituted" type="<?= $question['type'] == 'scale' ? 'radio' : 'checkbox' ?>" name="question_<?= htmlspecialchars($question['id']); ?><?= $question['type'] == 'multiple_choice' ? '[]' : '' ?>" value="<?= htmlspecialchars($option['id']); ?>" aria-hidden="true" />
-                                        <label for="option_<?= $option['id'] ?>"><?= htmlspecialchars($option['option_text']); ?></label>
+                                        <input id="option_<?= $option['id'] ?>" 
+                                               class="substituted" 
+                                               type="radio" 
+                                               name="question_1" 
+                                               value="<?= htmlspecialchars($option['id']); ?>" />
+                                        <label for="option_<?= $option['id'] ?>">
+                                            <?= htmlspecialchars($option['option_text']); ?>
+                                        </label>
                                     </div>
                                     <?php if ($option['is_text_input_required']): ?>
                                         <div class="flex items-center justify-start mt-2">
@@ -309,49 +326,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </section>
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer/views/components/footer.php'; ?>
-    <script>
-        document.querySelector(".mobile-menu").addEventListener("click", function () {
-            const nav = document.querySelector("nav");
-            nav.classList.toggle("hidden");
-        });
-
-        document.querySelectorAll('input[type="radio"]').forEach((radio) => {
-            radio.addEventListener("change", function () {
-                document.querySelectorAll("label").forEach((label) => {
-                    label.classList.remove("text-blue-600");
-                });
-
-                document.querySelectorAll("label span").forEach((span) => {
-                    span.classList.remove("font-medium", "text-blue-600", "font-semibold");
-                });
-
-                const span = this.nextElementSibling;
-                span.classList.add("font-medium");
-                const letterSpan = span.querySelector("span");
-                if (letterSpan) {
-                    letterSpan.classList.add("text-blue-600", "font-semibold", "mr-2");
-                }
-            });
-        });
-
-        document.querySelector('form').addEventListener('submit', function(e) {
-            const requiredInputs = document.querySelectorAll('input[required]');
-            let isValid = true;
-            
-            requiredInputs.forEach(input => {
-                if (!input.value.trim()) {
-                    isValid = false;
-                    input.classList.add('border-red-500');
-                } else {
-                    input.classList.remove('border-red-500');
-                }
-            });
-            
-            if (!isValid) {
-                e.preventDefault();
-                alert('Mohon lengkapi semua pertanyaan yang wajib dijawab');
-            }
-        });
-    </script>
+    <script type="module" src="/traceritesa/tracer/views/assets/dist/assets/main-2ZaZc6YE.js"></script>
+    <script src="/traceritesa/tracer/views/assets/js/quest.js"></script>
 </body>
 </html>

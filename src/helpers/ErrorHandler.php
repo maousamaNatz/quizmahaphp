@@ -1,37 +1,88 @@
 <?php
 namespace App\Helpers;
 
-/**
- * Class ErrorHandler
- * 
- * @package App\Helpers
- * Menangani kesalahan HTTP dan mengarahkan ke halaman yang sesuai
- */
+use App\Helpers\LogHelper;
+
 class ErrorHandler {
-    /**
-     * Menangani kode kesalahan HTTP
-     * 
-     * @param int $code Kode status HTTP
-     * @return void
-     */
-    public static function handle($code) {
+    private static $errorViews = [
+        400 => '/views/codepages/codes/400.php',
+        401 => '/views/codepages/codes/401.php', 
+        403 => '/views/codepages/codes/403.php',
+        404 => '/views/codepages/codes/404.php',
+        500 => '/views/codepages/codes/500.php'
+    ];
+    
+    private static $errorTitles = [
+        400 => 'Bad Request',
+        401 => 'Unauthorized',
+        403 => 'Forbidden', 
+        404 => 'Not Found',
+        500 => 'Internal Server Error'
+    ];
+
+    public static function register() {
+        set_error_handler([self::class, 'handleError']);
+        set_exception_handler([self::class, 'handleException']);
+        register_shutdown_function([self::class, 'handleFatalError']);
+    }
+
+    public static function handleError($level, $message, $file = '', $line = 0) {
+        if (error_reporting() & $level) {
+            throw new \ErrorException($message, 0, $level, $file, $line);
+        }
+    }
+
+    public static function handleException(\Throwable $exception) {
+        $code = $exception->getCode();
+        if (!array_key_exists($code, self::$errorViews)) {
+            $code = 500;
+        }
+        
+        self::logError($exception);
+        self::displayError($code, $exception->getMessage());
+    }
+
+    public static function handleFatalError() {
+        $error = error_get_last();
+        if ($error !== null && in_array($error['type'], [E_ERROR, E_CORE_ERROR, E_COMPILE_ERROR])) {
+            self::handleException(new \ErrorException(
+                $error['message'], 
+                0, 
+                $error['type'], 
+                $error['file'], 
+                $error['line']
+            ));
+        }
+    }
+
+    private static function logError(\Throwable $exception) {
+        $message = sprintf(
+            "Error: %s\nFile: %s\nLine: %d\nTrace:\n%s",
+            $exception->getMessage(),
+            $exception->getFile(),
+            $exception->getLine(),
+            $exception->getTraceAsString()
+        );
+        
+        LogHelper::log($message, 'ERROR');
+    }
+
+    private static function displayError($code, $message = '') {
         http_response_code($code);
         
-        $baseUrl = '/traceritesa/tracer/views/codepages/';
+        $basePath = $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer';
+        $errorData = [
+            'code' => $code,
+            'title' => self::$errorTitles[$code] ?? 'Error',
+            'message' => $message ?: self::$errorTitles[$code]
+        ];
         
-        switch ($code) {
-            case 404:
-                header("Location: {$baseUrl}404.php"); // Halaman tidak ditemukan
-                break;
-            case 403:
-                header("Location: {$baseUrl}403.php"); // Akses ditolak
-                break;
-            case 500:
-                header("Location: {$baseUrl}500.php"); // Kesalahan server internal
-                break;
-            default:
-                header("Location: {$baseUrl}404.php");
-                break;
+        extract($errorData);
+        
+        if (isset(self::$errorViews[$code])) {
+            require_once $basePath . self::$errorViews[$code];
+        } else {
+            require_once $basePath . self::$errorViews[500];
         }
         exit();
     }

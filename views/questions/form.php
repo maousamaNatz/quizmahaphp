@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 require_once __DIR__ . '/../../src/config/Database.php';
 use App\Helpers\SessionHelper;
+use App\Controller\UserController;
 
 SessionHelper::startSession();
 
@@ -41,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-3 transition duration-300 ease focus:outline-none focus:border-red-400 hover:border-red-300 focus:ring-1 focus:ring-red-200 shadow-md"
                 id="nama"
                 name="nama"
+                required
                 type="text"
                 placeholder="Masukkan nama Anda"
               />
@@ -56,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-3 transition duration-300 ease focus:outline-none focus:border-red-400 hover:border-red-300 focus:ring-1 focus:ring-red-200 shadow-md"
                 id="tahunLulus"
                 name="thn_lulus"
+                required
                 type="date"
                 placeholder="Masukkan tahun lulus Anda"
               />
@@ -72,6 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 id="nim"
                 name="nim"
                 type="number"
+                required
                 placeholder="Masukkan NIM Anda"
               />
             </div>
@@ -86,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 name="perguruan"
                 id="perguruan"
                 class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-3 transition duration-300 ease focus:outline-none focus:border-red-400 hover:border-red-300 focus:ring-1 focus:ring-red-200 shadow-md"
+                required
               >
                 <option value="">Pilih Program Studi</option>
                 <option value="Rekayasa Perangkat Lunak">
@@ -112,6 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 name="email"
                 type="email"
                 placeholder="Masukkan email Anda"
+                required
               />
             </div>
             <div class="mb-4">
@@ -127,6 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 name="nik"
                 type="number"
                 placeholder="Masukkan NIK Anda"
+                required
               />
             </div>
             <div class="mb-4">
@@ -142,6 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 name="tgl_lahir"
                 type="date"
                 placeholder="Masukkan tanggal lahir Anda"
+                required
               />
             </div>
             <div class="mb-4">
@@ -157,7 +165,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 name="npwp"
                 type="number"
                 placeholder="Masukkan NPWP Anda"
-              />
+                required
+                />
             </div>
           </div>
           <div class="flex gap-4 items-center justify-center mt-6">

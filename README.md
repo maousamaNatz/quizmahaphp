@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="assets/media/logos.png" alt="Logo" width="100">
+    <img src="views/assets/media/logos.png" alt="Logo" width="100">
 </div>
 
 # Tracer Study
@@ -70,14 +70,13 @@ Tracer Study adalah aplikasi interaktif berbasis web yang dibangun menggunakan P
 
 ## Struktur Database
 
-<<<<<<< HEAD
 Aplikasi menggunakan beberapa tabel utama:
 - users: Menyimpan data pengguna
 - questions: Menyimpan pertanyaan survei
 - sub_questions: Menyimpan sub-pertanyaan
 - question_options: Menyimpan pilihan jawaban
 - user_answers: Menyimpan jawaban responden dalam format JSON
-=======
+
 ```
 DB_HOST=localhost
 DB_NAME=apacona
@@ -85,7 +84,6 @@ DB_USER=root
 DB_PASSWORD=
 
 ```
->>>>>>> da93a8d0d1ed807917bb6986e67d87e9664abe3c
 
 ## Keamanan
 

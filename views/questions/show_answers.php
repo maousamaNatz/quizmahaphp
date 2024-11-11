@@ -8,22 +8,17 @@ use App\Controller\QuestionController;
 
 SessionHelper::startSession();
 
-// Dapatkan user_id dari parameter URL
 $user_id = isset($_GET['user_id']) ? (int)$_GET['user_id'] : null;
 
 if (!$user_id) {
     die('ID User tidak valid');
 }
 
-// Inisialisasi controller
 $answerController = new AnswerController();
 $questionController = new QuestionController();
 
-// Ambil jawaban user
 $userAnswers = $answerController->getAnswersByUserId($user_id);
 $answers = json_decode($userAnswers['answers'], true);
-
-// Ambil semua pertanyaan
 $questions = $questionController->getAllQuestions();
 ?>
 
@@ -34,47 +29,38 @@ $questions = $questionController->getAllQuestions();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jawaban Tracer Study</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        body { font-family: "Roboto", sans-serif; }
+    </style>
 </head>
 <body class="bg-gray-100">
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer/views/components/navbar.php'; ?>
     
-    <div class="container mx-auto px-4 py-8">
+    <section class="container mx-auto px-4 py-8">
         <div class="bg-white rounded-lg shadow-lg p-6">
             <h1 class="text-2xl font-bold mb-6">Jawaban Tracer Study</h1>
             
-            <?php if ($answers): ?>
-                <div class="space-y-6">
-                    <?php foreach ($questions as $question): ?>
-                        <div class="border-b pb-4">
-                            <h3 class="font-semibold text-lg mb-2">
-                                <?= htmlspecialchars($question['question_text']) ?>
-                            </h3>
+            <div class="space-y-6" id="questionContainer">
+                <?php foreach ($questions as $index => $question): ?>
+                <div class="question-item border-b pb-4 mb-4" data-question-id="<?= $question['id'] ?>">
+                    <h3 class="font-semibold mb-2">
+                        <?= ($index + 1) . ". " . htmlspecialchars($question['question_text']) ?>
+                    </h3>
+                    <div class="answer-content pl-4">
+                        <?php if (isset($answers[$question['id']])): ?>
                             <p class="text-gray-700">
-                                <?php
-                                $answer = $answers[$question['id']] ?? 'Tidak dijawab';
-                                if (is_array($answer)) {
-                                    echo implode(', ', array_map('htmlspecialchars', $answer));
-                                } else {
-                                    echo htmlspecialchars($answer);
-                                }
-                                ?>
+                                <?= htmlspecialchars($answers[$question['id']]) ?>
                             </p>
-                        </div>
-                    <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
                 </div>
-            <?php else: ?>
-                <p class="text-gray-500">Tidak ada jawaban yang tersedia.</p>
-            <?php endif; ?>
-            
-            <div class="mt-6">
-                <a href="/traceritesa/tracer/views/questions/dash.php" 
-                   class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                    Kembali ke Dashboard
-                </a>
+                <?php endforeach; ?>
             </div>
         </div>
-    </div>
-    
+    </section>
+
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer/views/components/footer.php'; ?>
 </body>
 </html> 
