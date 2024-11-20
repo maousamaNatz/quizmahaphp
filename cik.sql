@@ -1,3 +1,18 @@
+CREATE DATABASE IF NOT EXISTS tracer;
+USE tracer;
+
+-- Tabel Login untuk menyimpan informasi login
+CREATE TABLE `login` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(250) NOT NULL,
+  `password` VARCHAR(250) NOT NULL,
+  `role` ENUM('admin', 'user') NOT NULL DEFAULT 'user',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Insert admin default dengan password yang dienkripsi base64 2x
+INSERT INTO `login` (username, password, role) VALUES ('adminitesam', 'YWRtaW5pbWFqYXlh', 'admin'); -- password: adminimajaya
+
 -- Tabel Users untuk menyimpan informasi pengguna
 CREATE TABLE `users` (
   `id` INT(10) NOT NULL AUTO_INCREMENT,
@@ -50,6 +65,7 @@ CREATE TABLE `user_answers` (
   FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
   UNIQUE KEY `unique_user_answer` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- Insert untuk tabel Questions
 INSERT INTO questions (question_text, type) VALUES
 ('Jelaskan status anda saat ini', 'scale'),

@@ -19,6 +19,11 @@ class AuthController {
      * Menginisialisasi koneksi database dan model User
      */
     public function __construct() {
+        // Cek akses langsung ke controller
+        if (strpos($_SERVER['SCRIPT_FILENAME'], '/src/Controller/') !== false) {
+            require_once __DIR__ . '/../../views/codepages/codes/403.php';
+            exit();
+        }
         $database = new Database();
         $this->db = $database->connect();
         $this->user = new User($this->db);
@@ -43,7 +48,6 @@ class AuthController {
         $this->user->nama = $data['nama'];
         $this->user->nim = $data['nim'];
         $this->user->email = $data['email'];
-        $this->user->password = password_hash($data['password'], PASSWORD_BCRYPT);
         $this->user->tgl_lahir = $data['tgl_lahir'];
         $this->user->thn_lulus = $data['thn_lulus'];
         $this->user->perguruan = $data['perguruan'];

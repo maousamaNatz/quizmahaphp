@@ -1,0 +1,78 @@
+[20-Nov-2024 03:16:42 Europe/Berlin] Memulai proses POST request
+[20-Nov-2024 03:16:42 Europe/Berlin] User ID tidak valid: tidak ada
+[20-Nov-2024 03:16:42 Europe/Berlin] Error detail: User ID tidak valid
+[20-Nov-2024 03:16:42 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once()
+#1 D:\xampp\htdocs\traceritesa\tracer\index.php(73): App\Controller\HomeController->index(Array)
+#2 {main}
+[20-Nov-2024 03:16:42 Europe/Berlin] Request data: Array
+(
+    [nama] => awoidanwd
+    [thn_lulus] => 2024-11-14
+    [nim] => 41298421
+    [perguruan] => Teknik Komputer dan Jaringan
+    [email] => dawiuud@gmail.com
+    [nik] => 512341
+    [tgl_lahir] => 2024-11-19
+    [npwp] => 14231
+)
+
+[20-Nov-2024 03:23:33 Europe/Berlin] Memulai proses POST request
+[20-Nov-2024 03:23:33 Europe/Berlin] User ID tidak valid: tidak ada
+[20-Nov-2024 03:23:33 Europe/Berlin] Error detail: User ID tidak valid
+[20-Nov-2024 03:23:33 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once()
+#1 D:\xampp\htdocs\traceritesa\tracer\index.php(73): App\Controller\HomeController->index(Array)
+#2 {main}
+[20-Nov-2024 03:23:33 Europe/Berlin] Request data: Array
+(
+    [nama] => 248192832
+    [thn_lulus] => 2024-11-11
+    [nim] => 19213281924
+    [perguruan] => Teknik Komputer dan Jaringan
+    [email] => apcb@gmail.com
+    [nik] => 12831293
+    [tgl_lahir] => 2024-11-13
+    [npwp] => 4129387123
+)
+
+[20-Nov-2024 03:30:32 Europe/Berlin] Memulai proses POST request
+[20-Nov-2024 03:30:32 Europe/Berlin] User ID tidak valid: tidak ada
+[20-Nov-2024 03:30:32 Europe/Berlin] Error detail: User ID tidak valid
+[20-Nov-2024 03:30:32 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once()
+#1 D:\xampp\htdocs\traceritesa\tracer\index.php(73): App\Controller\HomeController->index(Array)
+#2 {main}
+[20-Nov-2024 03:30:32 Europe/Berlin] Request data: Array
+(
+    [nama] => dawidbuawdu
+    [thn_lulus] => 2024-11-12
+    [nim] => 19828137
+    [perguruan] => Multimedia
+    [email] => awiudb@gmail.com
+    [nik] => 12813782
+    [tgl_lahir] => 2024-11-15
+    [npwp] => 217329183
+)
+
+[20-Nov-2024 03:31:57 Europe/Berlin] Memulai proses POST request
+[20-Nov-2024 03:31:57 Europe/Berlin] === Start Create User Process ===
+[20-Nov-2024 03:31:57 Europe/Berlin] Input data: {"nama":"wdaiuwbd","thn_lulus":"2024-12-02","nim":"291392","perguruan":"Multimedia","email":"uidaub@gmail.com","nik":"12981392","tgl_lahir":"2024-11-21","npwp":"1213"}
+[20-Nov-2024 03:31:57 Europe/Berlin] Data validation passed
+[20-Nov-2024 03:31:57 Europe/Berlin] User data set successfully
+[20-Nov-2024 03:31:57 Europe/Berlin] === Starting User Creation in Model ===
+[20-Nov-2024 03:31:57 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan)
+[20-Nov-2024 03:31:57 Europe/Berlin] Parameters to bind: {":nama":"wdaiuwbd",":nim":"291392",":email":"uidaub@gmail.com",":tgl_lahir":"2024-11-21",":thn_lulus":"2024-12-02",":perguruan":"Multimedia"}
+[20-Nov-2024 03:31:57 Europe/Berlin] Bound parameter :nama with value: wdaiuwbd
+[20-Nov-2024 03:31:57 Europe/Berlin] Bound parameter :nim with value: 291392
+[20-Nov-2024 03:31:57 Europe/Berlin] Bound parameter :email with value: uidaub@gmail.com
+[20-Nov-2024 03:31:57 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-21
+[20-Nov-2024 03:31:57 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-12-02
+[20-Nov-2024 03:31:57 Europe/Berlin] Bound parameter :perguruan with value: Multimedia
+[20-Nov-2024 03:31:57 Europe/Berlin] User created successfully with ID: 14
+[20-Nov-2024 03:31:57 Europe/Berlin] User created successfully with ID: 14
+[20-Nov-2024 03:31:57 Europe/Berlin] Response dari createUser: Array
+(
+    [status] => success
+    [message] => Data berhasil disimpan
+    [user_id] => 14
+)
+

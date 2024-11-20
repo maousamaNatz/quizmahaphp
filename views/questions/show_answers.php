@@ -43,20 +43,50 @@ $questions = $questionController->getAllQuestions();
             <h1 class="text-2xl font-bold mb-6">Jawaban Tracer Study</h1>
             
             <div class="space-y-6" id="questionContainer">
-                <?php foreach ($questions as $index => $question): ?>
-                <div class="question-item border-b pb-4 mb-4" data-question-id="<?= $question['id'] ?>">
-                    <h3 class="font-semibold mb-2">
-                        <?= ($index + 1) . ". " . htmlspecialchars($question['question_text']) ?>
-                    </h3>
-                    <div class="answer-content pl-4">
-                        <?php if (isset($answers[$question['id']])): ?>
+                <?php foreach ($questions as $question): 
+                    if (isset($answers[$question['id']])):
+                        $answerText = $answers[$question['id']];
+                ?>
+                    <div class="question-item border-b pb-4 mb-4">
+                        <h3 class="font-semibold mb-2">
+                            <?= htmlspecialchars($question['question_text']) ?>
+                        </h3>
+                        <div class="answer-content pl-4">
                             <p class="text-gray-700">
-                                <?= htmlspecialchars($answers[$question['id']]) ?>
+                                <?php 
+                                if (is_array($answerText)) {
+                                    if (isset($answerText[0]['sub_question'])) {
+                                        // Untuk pertanyaan dengan sub-pertanyaan (seperti nomor 11)
+                                        echo "<div class='grid grid-cols-1 gap-2'>";
+                                        foreach ($answerText as $subAnswer) {
+                                            echo "<div class='border-b pb-2'>";
+                                            echo "<strong>" . htmlspecialchars($subAnswer['sub_question']) . "</strong><br>";
+                                            echo "Bagian " . htmlspecialchars($subAnswer['part']) . ": ";
+                                            echo htmlspecialchars($subAnswer['answer']);
+                                            echo "</div>";
+                                        }
+                                        echo "</div>";
+                                    } else {
+                                        // Untuk jawaban multiple choice
+                                        echo implode(", ", array_map('htmlspecialchars', $answerText));
+                                    }
+                                } else {
+                                    echo htmlspecialchars($answerText);
+                                }
+                                ?>
                             </p>
-                        <?php endif; ?>
+                        </div>
                     </div>
-                </div>
-                <?php endforeach; ?>
+                <?php 
+                    endif; 
+                endforeach; 
+                
+                if (empty($answers)): 
+                ?>
+                    <div class="text-center text-gray-500 py-8">
+                        <p class="text-xl">Belum ada jawaban yang tersedia</p>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>

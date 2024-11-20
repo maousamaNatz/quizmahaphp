@@ -1,2 +1,2 @@
-./app.log
-./error.log
+*.log
+!.gitignore

@@ -1,6 +1,28 @@
 <?php
-require_once __DIR__ . '/../../src/config/Database.php';
+// Konfigurasi error logging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('log_errors', 1);
+
+// Definisikan path log yang benar
+$logPath = __DIR__ . '/../../logs/error.log';
+$logDir = dirname($logPath);
+
+// Buat direktori logs jika belum ada
+if (!is_dir($logDir)) {
+    mkdir($logDir, 0777, true);
+}
+
+// Buat file log jika belum ada
+if (!file_exists($logPath)) {
+    touch($logPath);
+    chmod($logPath, 0666); // Ubah permission agar bisa ditulis
+}
+
+ini_set('error_log', $logPath);
 require_once __DIR__ . '/../../vendor/autoload.php';
+
+use App\Config\Database;
 use App\Helpers\SessionHelper;
 use App\Controller\AnswerController;
 use Symfony\Component\Security\Csrf\CsrfTokenManager;
@@ -8,6 +30,7 @@ use Symfony\Component\Security\Csrf\TokenGenerator\UriSafeTokenGenerator;
 use Symfony\Component\Security\Csrf\TokenStorage\NativeSessionTokenStorage;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use App\Helpers\LogHelper;
+use App\Helpers\AssetHelper;
 
 SessionHelper::startSession();
 
@@ -53,27 +76,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Di bagian form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-        // Validasi input
-        foreach ($_POST as $key => $value) {
-            if (strpos($key, 'question_') === 0 && empty($value)) {
-                throw new \Exception('Semua pertanyaan wajib dijawab');
-            }
+        $db = new Database();
+        $connection = $db->connect();
+        
+        if (!$connection) {
+            throw new Exception("Koneksi database gagal");
         }
         
-        // Proses penyimpanan jawaban
+        error_log("POST Data: " . print_r($_POST, true));
+        
         $answerController = new AnswerController();
         $result = $answerController->saveAnswer($_POST);
         
+        error_log("Save result: " . print_r($result, true));
+        
         if ($result['status'] === 'success') {
+            $_SESSION['user_id'] = $result['user_id'];
             header('Location: /traceritesa/tracer/views/questions/result.php');
             exit;
         } else {
-            throw new \Exception($result['message'] ?? 'Terjadi kesalahan saat menyimpan jawaban');
+            throw new \Exception($result['message']);
         }
         
     } catch (\Exception $e) {
-        LogHelper::log($e->getMessage(), 'ERROR');
-        $error = $e->getMessage() ?: 'Terjadi kesalahan sistem';
+        error_log("Error saat menyimpan jawaban: " . $e->getMessage());
+        error_log("Stack trace: " . $e->getTraceAsString());
+        error_log("POST data: " . print_r($_POST, true));
+        
+        header('Location: /traceritesa/tracer/views/codepages/codes/500.php');
+        exit();
     }
 }
 ?>
@@ -82,10 +113,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Tracer itesa Muhammadiyah</title>
-    <link rel="stylesheet" href="/tracer/views/assets/css/styles.css">
+    <link rel="stylesheet" href="<?php echo AssetHelper::url('css/styles.css'); ?>">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
-    <link rel="icon" href="/tracer/views/assets/media/logos.png" />
+    <link rel="icon" href="<?php echo AssetHelper::url('media/logos.png'); ?>" />
     <style>
         body {
             font-family: "Roboto", sans-serif;
@@ -181,11 +212,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             opacity: 1;
             transform: translateY(0);
         }
+        .question-item[style*="display: none"] {
+            display: none !important;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
+    
+  <?php include $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer/views/components/loading.php'; ?>
 <?php if (isset($error)): ?>
-    <div class="absolute top-0 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+    <div class="absolute top-0 left-0 w-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" >
         <strong class="font-bold">Error!</strong>
         <span class="block sm:inline"><?php echo isset($error) ? htmlspecialchars($error) : 'Terjadi kesalahan sistem'; ?></span>
     </div>
@@ -197,7 +233,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="hidden" name="_csrf_token" value="<?= htmlspecialchars($csrfToken); ?>">
             <div class="bg-gray-100 p-6 rounded-lg my-3 w-full">    
                 <?php foreach ($questions as $question): ?>
-                    <div class="space-y-4 question-item" data-question-id="<?= htmlspecialchars($question['id']); ?>">
+                    <div class="space-y-4 question-item mb-6" 
+                         data-question-id="<?= $question['id'] ?>" 
+                         data-question-type="<?= $question['type'] ?>">
                         <h2 class="text-lg font-semibold mb-2">Question <?= htmlspecialchars($question['id']); ?></h2>
                         <p class="text-gray-700 mb-4"><?= htmlspecialchars($question['question_text']); ?></p>
                         <?php if ($question['type'] == 'paired_scale'): ?>
@@ -266,6 +304,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     </tbody>
                                 </table>
                             </div>
+                        <?php elseif ($question['type'] == 'double_text_input'): ?>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                                <div class="flex items-center justify-start">
+                                    <input
+                                        type="text"
+                                        name="question_<?= htmlspecialchars($question['id']); ?>_1"
+                                        placeholder="Masukkan nama kota"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+                                <div class="flex items-center justify-start">
+                                    <input
+                                        type="text"
+                                        name="question_<?= htmlspecialchars($question['id']); ?>_2"
+                                        placeholder="Masukkan nama provinsi"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+                            </div>
                         <?php else: ?>
                             <!-- Other question types -->
                             <?php
@@ -291,28 +348,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         type="text"
                                         name="other_<?= htmlspecialchars($question['id']); ?>"
                                         placeholder="Silakan isi jawaban Anda"
-                                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                    />
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"/>
                                 </div>
                             <?php else: ?>
                                 <?php foreach ($options as $option): ?>
                                     <div class="checkbox-wrapper-1">
                                         <input id="option_<?= $option['id'] ?>" 
                                                class="substituted" 
-                                               type="radio" 
-                                               name="question_1" 
+                                               type="<?= $question['type'] === 'multiple_choice' ? 'checkbox' : 'radio' ?>" 
+                                               name="question_<?= htmlspecialchars($question['id']); ?><?= $question['type'] === 'multiple_choice' ? '[]' : '' ?>" 
                                                value="<?= htmlspecialchars($option['id']); ?>" />
                                         <label for="option_<?= $option['id'] ?>">
                                             <?= htmlspecialchars($option['option_text']); ?>
                                         </label>
-                                    </div>
+                                    </div>  
                                     <?php if ($option['is_text_input_required']): ?>
                                         <div class="flex items-center justify-start mt-2">
                                             <input
                                                 type="text"
                                                 name="other_<?= htmlspecialchars($question['id']); ?>"
                                                 placeholder="Silakan sebutkan"
-                                                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-100"
+                                                disabled
                                             />
                                         </div>
                                     <?php endif; ?>
@@ -326,7 +383,75 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </section>
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer/views/components/footer.php'; ?>
-    <script type="module" src="/traceritesa/tracer/views/assets/dist/assets/main-2ZaZc6YE.js"></script>
-    <script src="/traceritesa/tracer/views/assets/js/quest.js"></script>
+    <script>
+        // Tambahkan ini sebelum Alpine.js dimuat
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('notifications', {
+                items: []
+            });
+        });
+    </script>
+    <script type="module" src="<?php echo AssetHelper::url('node_modules/alpinejs/dist/cdn.min.js'); ?>"></script>
+    <script type="module" src="<?php echo AssetHelper::url('dist/assets/main-DlMiVXK5.js'); ?>"></script>
+    <script src="<?php echo AssetHelper::url('js/quest.js'); ?>"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('questionForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const firstQuestionAnswer = document.querySelector('input[name="question_1"]:checked')?.value;
+                    if (!firstQuestionAnswer) {
+                        alert('Mohon jawab pertanyaan pertama');
+                        return;
+                    }
+
+                    let isValid = true;
+                    const unansweredQuestions = [];
+                    
+                    // Hanya validasi pertanyaan yang terlihat
+                    document.querySelectorAll('.question-item[style*="display: block"]').forEach((item) => {
+                        const questionId = item.getAttribute('data-question-id');
+                        let hasAnswer = false;
+                        
+                        // Cek tipe pertanyaan
+                        const questionType = item.getAttribute('data-question-type');
+                        
+                        if (questionType === 'double_text_input') {
+                            const input1 = item.querySelector(`input[name="question_${questionId}_1"]`);
+                            const input2 = item.querySelector(`input[name="question_${questionId}_2"]`);
+                            
+                            if (input1.value.trim() !== '' && input2.value.trim() !== '') {
+                                hasAnswer = true;
+                            }
+                        } else {
+                            // Logika validasi yang sudah ada untuk tipe lainnya
+                            const inputs = item.querySelectorAll('input[type="radio"], input[type="checkbox"], input[type="text"]');
+                            inputs.forEach(input => {
+                                if (input.type === 'text' && input.value.trim() !== '') {
+                                    hasAnswer = true;
+                                } else if ((input.type === 'radio' || input.type === 'checkbox') && input.checked) {
+                                    hasAnswer = true;
+                                }
+                            });
+                        }
+
+                        if (!hasAnswer) {
+                            isValid = false;
+                            unansweredQuestions.push(`Pertanyaan ${questionId}`);
+                        }
+                    });
+
+                    if (!isValid) {
+                        alert(`Mohon jawab semua pertanyaan berikut: ${unansweredQuestions.join(', ')}`);
+                        return;
+                    }
+
+                    form.submit();
+                });
+            }
+        });
+    </script>
 </body>
 </html>

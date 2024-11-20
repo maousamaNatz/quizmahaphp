@@ -1,4 +1,8 @@
 <?php
+if (!defined('APP_RUNNING')) {
+    require_once __DIR__ . '/../views/codepages/codes/403.php';
+    exit();
+}
 
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
@@ -32,8 +36,47 @@ $routes->add('result', new Route('/result/{user_id}', [
 ]));
 
 // Route untuk dashboard admin
-$routes->add('admin_dashboard', new Route('/admin/dashboard', [
-    '_controller' => 'App\Controller\AdminController::dashboard',
+$routes->add('admin_dashboard', new Route('/dash', [
+    '_controller' => 'App\Controller\AdminController::showDashboard'
+]));
+
+// Route untuk login admin
+$routes->add('admin_login', new Route('/login', [
+    '_controller' => 'App\Controller\AdminController::showLogin'
+]));
+
+// Route untuk proses login
+$routes->add('admin_login_process', new Route('/login/process', [
+    '_controller' => 'App\Controller\AdminController::processLogin'
+]));
+
+// Route untuk logout
+$routes->add('admin_logout', new Route('/logout', [
+    '_controller' => 'App\Controller\AdminController::logout'
+]));
+
+// Route untuk assets
+$routes->add('assets', new Route('/assets/{type}/{file}', [
+    '_controller' => 'App\Controller\AssetController::serve',
+    'requirements' => [
+        'type' => 'css|js|media',
+        'file' => '.+'
+    ]
+]));
+
+// Route untuk halaman login
+$routes->add('login', new Route('/login', [
+    '_controller' => 'App\Controller\AuthController::showLogin'
+]));
+
+// Route untuk proses login
+// $routes->add('login_process', new Route('/login/process', [
+//     '_controller' => 'App\Controller\AuthController::processLogin'
+// ]));
+
+// Route untuk logout
+$routes->add('logout', new Route('/logout', [
+    '_controller' => 'App\Controller\AuthController::logout'
 ]));
 
 return $routes;

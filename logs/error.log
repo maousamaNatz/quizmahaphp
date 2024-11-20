@@ -1,118 +1,161 @@
-[09-Nov-2024 02:34:13 Europe/Berlin] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'apacona.answers' doesn't exist
-[09-Nov-2024 02:35:04 Europe/Berlin] PHP Warning:  Undefined array key "answers" in D:\xampp\htdocs\traceritesa\tracer\src\Controller\AnswerController.php on line 22
-[09-Nov-2024 02:35:04 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in D:\xampp\htdocs\traceritesa\tracer\src\Controller\AnswerController.php on line 22
-[09-Nov-2024 02:35:04 Europe/Berlin] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'user_id' cannot be null
-[09-Nov-2024 02:35:04 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php on line 65
-[09-Nov-2024 02:35:04 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type bool in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php on line 69
-[09-Nov-2024 02:35:04 Europe/Berlin] PHP Deprecated:  Exception::__construct(): Passing null to parameter #1 ($message) of type string is deprecated in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php on line 69
-[09-Nov-2024 02:53:15 Europe/Berlin] User ID tidak ditemukan dalam session
-[09-Nov-2024 02:53:15 Europe/Berlin] User ID tidak ditemukan
-[09-Nov-2024 02:55:50 Europe/Berlin] User ID tidak ditemukan dalam session
-[09-Nov-2024 02:55:50 Europe/Berlin] Silakan login kembali
-[09-Nov-2024 02:57:13 Europe/Berlin] Processing answer for user_id: 4
-[09-Nov-2024 05:21:04 Europe/Berlin] Processing answer for user_id: 5
-[11-Nov-2024 01:43:48 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database connection not available in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php:28
-Stack trace:
-#0 D:\xampp\htdocs\traceritesa\tracer\publics\questions.php(3): include()
-#1 {main}
-  thrown in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php on line 28
-[11-Nov-2024 01:43:54 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database connection not available in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php:28
-Stack trace:
-#0 D:\xampp\htdocs\traceritesa\tracer\publics\questions.php(3): include()
-#1 {main}
-  thrown in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php on line 28
-[2024-11-11 01:52:27] [ERROR] Error: Halaman tidak ditemukan
-File: D:\xampp\htdocs\traceritesa\tracer\index.php
-Line: 34
-Trace:
-#0 {main}
-[2024-11-11 01:52:27] [ERROR] Error: require_once(D:/xampp/htdocs/traceritesa/tracer/views/errors/404.php): Failed to open stream: No such file or directory
-File: D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php
-Line: 83
-Trace:
-#0 D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php(83): App\Helpers\ErrorHandler::handleError(2, 'require_once(D:...', 'D:\\xampp\\htdocs...', 83)
-#1 D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php(83): require_once()
-#2 D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php(42): App\Helpers\ErrorHandler::displayError(404, 'Halaman tidak d...')
-#3 D:\xampp\htdocs\traceritesa\tracer\index.php(34): App\Helpers\ErrorHandler::handleException(Object(Exception))
-#4 {main}
-[2024-11-11 01:52:27] [ERROR] Error: Uncaught ErrorException: require_once(D:/xampp/htdocs/traceritesa/tracer/views/errors/500.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php:83
-Stack trace:
-#0 D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php(83): App\Helpers\ErrorHandler::handleError(2, 'require_once(D:...', 'D:\\xampp\\htdocs...', 83)
-#1 D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php(83): require_once()
-#2 D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php(42): App\Helpers\ErrorHandler::displayError(500, 'require_once(D:...')
-#3 [internal function]: App\Helpers\ErrorHandler::handleException(Object(ErrorException))
-#4 {main}
-  thrown
-File: D:\xampp\htdocs\traceritesa\tracer\src\helpers\ErrorHandler.php
-Line: 83
-Trace:
-#0 [internal function]: App\Helpers\ErrorHandler::handleFatalError()
-#1 {main}
-[2024-11-11 01:53:48] [ERROR] Error: Halaman tidak ditemukan
-File: D:\xampp\htdocs\traceritesa\tracer\index.php
-Line: 34
-Trace:
-#0 {main}
-[2024-11-11 01:53:53] [ERROR] Error: Halaman tidak ditemukan
-File: D:\xampp\htdocs\traceritesa\tracer\index.php
-Line: 34
-Trace:
-#0 {main}
-[2024-11-11 01:53:55] [ERROR] Error: Halaman tidak ditemukan
-File: D:\xampp\htdocs\traceritesa\tracer\index.php
-Line: 34
-Trace:
-#0 {main}
-[2024-11-11 01:54:08] [ERROR] Error: Halaman tidak ditemukan
-File: D:\xampp\htdocs\traceritesa\tracer\index.php
-Line: 34
-Trace:
-#0 {main}
-[2024-11-11 01:54:10] [ERROR] Error: Halaman tidak ditemukan
-File: D:\xampp\htdocs\traceritesa\tracer\index.php
-Line: 34
-Trace:
-#0 {main}
-[2024-11-11 01:54:13] [ERROR] Error: Halaman tidak ditemukan
-File: D:\xampp\htdocs\traceritesa\tracer\index.php
-Line: 34
-Trace:
-#0 {main}
-[2024-11-11 01:54:19] [ERROR] Error: Halaman tidak ditemukan
-File: D:\xampp\htdocs\traceritesa\tracer\index.php
-Line: 34
-Trace:
-#0 {main}
-[2024-11-11 01:54:26] [ERROR] Error: Halaman tidak ditemukan
-File: D:\xampp\htdocs\traceritesa\tracer\index.php
-Line: 34
-Trace:
-#0 {main}
-[2024-11-11 01:56:28] [ERROR] Error: Halaman tidak ditemukan
-File: D:\xampp\htdocs\traceritesa\tracer\index.php
-Line: 34
-Trace:
-#0 {main}
-[2024-11-11 05:57:34] [ERROR] Error: Halaman tidak ditemukan
-File: D:\xampp\htdocs\traceritesa\tracer\index.php
-Line: 34
-Trace:
-#0 {main}
-[11-Nov-2024 05:57:41 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database connection not available in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php:28
-Stack trace:
-#0 {main}
-  thrown in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php on line 28
-[11-Nov-2024 05:57:58 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database connection not available in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php:28
-Stack trace:
-#0 {main}
-  thrown in D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php on line 28
-[2024-11-11 06:26:42] [ERROR] Error: Halaman tidak ditemukan
-File: D:\xampp\htdocs\traceritesa\tracer\index.php
-Line: 34
-Trace:
-#0 {main}
-[2024-11-11 06:26:47] [ERROR] Error: Halaman tidak ditemukan
-File: D:\xampp\htdocs\traceritesa\tracer\index.php
-Line: 34
-Trace:
-#0 {main}
+[20-Nov-2024 03:34:44 Europe/Berlin] POST Data: Array
+(
+    [_csrf_token] => 09600a.ZdiBeUcw3sdHzk2PPfGnzmMSwe1V4P569GB25zEtEcg.Xb61O3EHlZ4lpy7NDLvzrFB37KcGmLg-wlQTqERgYrI3v7JBIHTvmDWbKg
+    [question_1] => 1
+    [other_2] => APCB
+    [other_3] => APCB
+    [question_4_1] => APCB
+    [question_4_2] => APCB
+    [question_5] => 8
+    [other_6] => APCB
+    [other_7] => APCB
+    [question_8] => 15
+    [question_9] => 19
+    [question_10] => 26
+    [question_11] => Array
+        (
+            [0] => 1
+            [1] => 1
+            [2] => 2
+            [3] => 2
+            [4] => 3
+            [5] => 3
+            [6] => 4
+            [7] => 4
+            [8] => 5
+            [9] => 5
+            [10] => 6
+            [11] => 6
+            [12] => 7
+            [13] => 7
+        )
+
+    [other_12] => APCB
+    [question_13] => 29
+    [other_13] => APCB
+    [question_14] => Array
+        (
+            [0] => 32
+            [1] => 33
+            [2] => 37
+        )
+
+    [other_15] => APCB
+    [other_16] => APCB
+    [other_17] => APCB
+    [question_18] => 49
+    [question_19] => Array
+        (
+            [0] => 52
+            [1] => 53
+            [2] => 54
+        )
+
+)
+
+[20-Nov-2024 03:34:44 Europe/Berlin] Received POST data: Array
+(
+    [_csrf_token] => 09600a.ZdiBeUcw3sdHzk2PPfGnzmMSwe1V4P569GB25zEtEcg.Xb61O3EHlZ4lpy7NDLvzrFB37KcGmLg-wlQTqERgYrI3v7JBIHTvmDWbKg
+    [question_1] => 1
+    [other_2] => APCB
+    [other_3] => APCB
+    [question_4_1] => APCB
+    [question_4_2] => APCB
+    [question_5] => 8
+    [other_6] => APCB
+    [other_7] => APCB
+    [question_8] => 15
+    [question_9] => 19
+    [question_10] => 26
+    [question_11] => Array
+        (
+            [0] => 1
+            [1] => 1
+            [2] => 2
+            [3] => 2
+            [4] => 3
+            [5] => 3
+            [6] => 4
+            [7] => 4
+            [8] => 5
+            [9] => 5
+            [10] => 6
+            [11] => 6
+            [12] => 7
+            [13] => 7
+        )
+
+    [other_12] => APCB
+    [question_13] => 29
+    [other_13] => APCB
+    [question_14] => Array
+        (
+            [0] => 32
+            [1] => 33
+            [2] => 37
+        )
+
+    [other_15] => APCB
+    [other_16] => APCB
+    [other_17] => APCB
+    [question_18] => 49
+    [question_19] => Array
+        (
+            [0] => 52
+            [1] => 53
+            [2] => 54
+        )
+
+)
+
+[20-Nov-2024 03:34:44 Europe/Berlin] User ID from session: 14
+[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 1 with value: 1
+[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 4 with value: APCB
+[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 4 with value: APCB
+[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 5 with value: 8
+[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 8 with value: 15
+[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 9 with value: 19
+[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 10 with value: 26
+[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 11 with value: Array
+(
+    [0] => 1
+    [1] => 1
+    [2] => 2
+    [3] => 2
+    [4] => 3
+    [5] => 3
+    [6] => 4
+    [7] => 4
+    [8] => 5
+    [9] => 5
+    [10] => 6
+    [11] => 6
+    [12] => 7
+    [13] => 7
+)
+
+[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 13 with value: 29
+[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 14 with value: Array
+(
+    [0] => 32
+    [1] => 33
+    [2] => 37
+)
+
+[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 18 with value: 49
+[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 19 with value: Array
+(
+    [0] => 52
+    [1] => 53
+    [2] => 54
+)
+
+[20-Nov-2024 03:34:44 Europe/Berlin] Final answers to be saved: {"1":"Bekerja (full time \/ part time)","4":{"kota":"APCB","provinsi":"APCB"},"5":"Institusi\/organisasi multilateral","8":"Cukup erat","9":"Tingkat yang sama","10":"Beasiswa AFIRMASI","11":["Bekerja (full time \/ part time)","Bekerja (full time \/ part time)","Belum memungkinkan bekerja","Belum memungkinkan bekerja","Wiraswasta","Wiraswasta","Melanjutkan Pendidikan","Melanjutkan Pendidikan","Tidak kerja tetapi sedang mencari kerja","Tidak kerja tetapi sedang mencari kerja","Instansi pemerintah","Instansi pemerintah","BUMN\/BUMD","BUMN\/BUMD"],"13":"kira kira berapa bulan sebelum lulus ","14":["Melalui iklan di koran\/majalah, brosur","Melamar ke perusahaan tanpa mengetahui lowongan yang ada","Menghubungi kemenakertrans"],"18":"Cukup Puas","19":["pertanyaan tidak sesuai, Pekerjaan saya sekarang sudah sesuai dengan pendidikan saya","Saya belum mendapatkan pekerjaan yang lebih sesuai","Di pekerjaan ini saya memperoleh prospek karir yang baik"]}
+[20-Nov-2024 03:34:44 Europe/Berlin] Answers saved successfully for user 14
+[20-Nov-2024 03:34:44 Europe/Berlin] Save result: Array
+(
+    [status] => success
+    [message] => Jawaban berhasil disimpan
+    [user_id] => 14
+)
+

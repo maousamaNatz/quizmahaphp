@@ -1,6 +1,9 @@
 <?php
 namespace App\Models;
 
+use PDO;
+use PDOException;
+
 /**
  * Class User
  * 
@@ -37,6 +40,7 @@ class User {
      */
     public function __construct($db) {
         $this->conn = $db;
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     /**
@@ -45,30 +49,48 @@ class User {
      * @return bool True if the user was created successfully, false otherwise.
      */
     public function create() {
-        $query = "INSERT INTO " . $this->table . " (nama, nim, email, tgl_lahir, thn_lulus, perguruan, nik, npwp)
-                  VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan, :nik, :npwp)";
-
-        $stmt = $this->conn->prepare($query);
-
-        // Bind parameters
-        $stmt->bindParam(':nama', $this->nama); 
-        $stmt->bindParam(':nim', $this->nim);
-        $stmt->bindParam(':email', $this->email);
-        $stmt->bindParam(':tgl_lahir', $this->tgl_lahir);
-        $stmt->bindParam(':thn_lulus', $this->thn_lulus);
-        $stmt->bindParam(':perguruan', $this->perguruan);
-        $stmt->bindParam(':nik', $this->nik);
-        $stmt->bindParam(':npwp', $this->npwp);
-
-        // Execute query
-        if($stmt->execute()) {
-            $this->id = $this->conn->lastInsertId(); // Get the newly created user ID
-            error_log("New user created with ID: " . $this->id);
-            return true;
+        try {
+            error_log("=== Starting User Creation in Model ===");
+            
+            $query = "INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan)";
+            
+            error_log("Preparing query: " . $query);
+            
+            $stmt = $this->conn->prepare($query);
+            
+            // Bind parameters dengan logging
+            $params = [
+                ':nama' => $this->nama,
+                ':nim' => $this->nim,
+                ':email' => $this->email,
+                ':tgl_lahir' => $this->tgl_lahir,
+                ':thn_lulus' => $this->thn_lulus,
+                ':perguruan' => $this->perguruan
+            ];
+            
+            error_log("Parameters to bind: " . json_encode($params));
+            
+            foreach($params as $key => $value) {
+                $stmt->bindValue($key, $value);
+                error_log("Bound parameter $key with value: $value");
+            }
+            
+            if ($stmt->execute()) {
+                $this->id = $this->conn->lastInsertId();
+                error_log("User created successfully with ID: " . $this->id);
+                return true;
+            }
+            
+            $error = $stmt->errorInfo();
+            error_log("Query execution failed: " . print_r($error, true));
+            return false;
+            
+        } catch (PDOException $e) {
+            error_log("Database Error: " . $e->getMessage());
+            error_log("SQL State: " . $e->getCode());
+            throw new \Exception("Database error: " . $e->getMessage());
         }
-
-        error_log("Failed to create user");
-        return false;
     }
 
     /**

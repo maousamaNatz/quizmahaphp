@@ -44,21 +44,28 @@ class Answer {
      */
     public function save($data) {
         try {
-            $query = "INSERT INTO " . $this->table . " (user_id, question_id, answer_text) 
-                     VALUES (:user_id, :question_id, :answer_text)";
+            $query = "INSERT INTO user_answers (user_id, answers) 
+                     VALUES (:user_id, :answers)
+                     ON DUPLICATE KEY UPDATE answers = :answers";
             
             $stmt = $this->db->prepare($query);
+            $answersJson = json_encode($data['answers']);
             
             $stmt->bindParam(':user_id', $data['user_id']);
-            $stmt->bindParam(':question_id', $data['question_id']); 
-            $stmt->bindParam(':answer_text', $data['answer_text']);
+            $stmt->bindParam(':answers', $answersJson);
             
-            return $stmt->execute() ? 
-                ['status' => 'success', 'message' => 'Jawaban berhasil disimpan'] : 
-                ['status' => 'error', 'message' => 'Gagal menyimpan jawaban'];
+            if ($stmt->execute()) {
+                return [
+                    'status' => 'success',
+                    'message' => 'Jawaban berhasil disimpan',
+                    'user_id' => $data['user_id']
+                ];
+            }
+            
+            return ['status' => 'error', 'message' => 'Gagal menyimpan jawaban'];
                 
         } catch (\PDOException $e) {
-            error_log($e->getMessage());
+            error_log("Database Error: " . $e->getMessage());
             return ['status' => 'error', 'message' => 'Terjadi kesalahan sistem'];
         }
     }
