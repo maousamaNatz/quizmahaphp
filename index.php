@@ -1,4 +1,6 @@
 <?php
+ob_start();
+
 define('APP_RUNNING', true);
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -78,4 +80,6 @@ try {
     $code = $e->getCode() ?: 500;
     ErrorHandler::handleException(new \Exception($e->getMessage(), $code));
 }
+
+ob_end_flush();
 ?>

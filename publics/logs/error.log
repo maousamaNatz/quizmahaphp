@@ -76,3 +76,1391 @@
     [user_id] => 14
 )
 
+[20-Nov-2024 03:46:10 Europe/Berlin] Memulai proses POST request
+[20-Nov-2024 03:46:10 Europe/Berlin] === Start Create User Process ===
+[20-Nov-2024 03:46:10 Europe/Berlin] Input data: {"nama":"awoawndawo","thn_lulus":"2024-11-18","nim":"2912849124","perguruan":"Multimedia","email":"d9awidawd@gmail.com","nik":"121843129","tgl_lahir":"2024-11-13","npwp":"12942194781"}
+[20-Nov-2024 03:46:10 Europe/Berlin] Data validation passed
+[20-Nov-2024 03:46:10 Europe/Berlin] User data set successfully
+[20-Nov-2024 03:46:10 Europe/Berlin] === Starting User Creation in Model ===
+[20-Nov-2024 03:46:10 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan)
+[20-Nov-2024 03:46:10 Europe/Berlin] Parameters to bind: {":nama":"awoawndawo",":nim":"2912849124",":email":"d9awidawd@gmail.com",":tgl_lahir":"2024-11-13",":thn_lulus":"2024-11-18",":perguruan":"Multimedia"}
+[20-Nov-2024 03:46:10 Europe/Berlin] Bound parameter :nama with value: awoawndawo
+[20-Nov-2024 03:46:10 Europe/Berlin] Bound parameter :nim with value: 2912849124
+[20-Nov-2024 03:46:10 Europe/Berlin] Bound parameter :email with value: d9awidawd@gmail.com
+[20-Nov-2024 03:46:10 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-13
+[20-Nov-2024 03:46:10 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-18
+[20-Nov-2024 03:46:10 Europe/Berlin] Bound parameter :perguruan with value: Multimedia
+[20-Nov-2024 03:46:10 Europe/Berlin] User created successfully with ID: 15
+[20-Nov-2024 03:46:10 Europe/Berlin] User created successfully with ID: 15
+[20-Nov-2024 03:46:10 Europe/Berlin] Response dari createUser: Array
+(
+    [status] => success
+    [message] => Data berhasil disimpan
+    [user_id] => 15
+)
+
+[20-Nov-2024 03:47:28 Europe/Berlin] Memulai proses POST request
+[20-Nov-2024 03:47:28 Europe/Berlin] === Start Create User Process ===
+[20-Nov-2024 03:47:28 Europe/Berlin] Input data: {"nama":"awoawndawo","thn_lulus":"2024-11-18","nim":"2912849124","perguruan":"Multimedia","email":"d9awidawd@gmail.com","nik":"121843129","tgl_lahir":"2024-11-13","npwp":"12942194781"}
+[20-Nov-2024 03:47:28 Europe/Berlin] Data validation passed
+[20-Nov-2024 03:47:28 Europe/Berlin] User data set successfully
+[20-Nov-2024 03:47:28 Europe/Berlin] === Starting User Creation in Model ===
+[20-Nov-2024 03:47:28 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan)
+[20-Nov-2024 03:47:28 Europe/Berlin] Parameters to bind: {":nama":"awoawndawo",":nim":"2912849124",":email":"d9awidawd@gmail.com",":tgl_lahir":"2024-11-13",":thn_lulus":"2024-11-18",":perguruan":"Multimedia"}
+[20-Nov-2024 03:47:28 Europe/Berlin] Bound parameter :nama with value: awoawndawo
+[20-Nov-2024 03:47:28 Europe/Berlin] Bound parameter :nim with value: 2912849124
+[20-Nov-2024 03:47:28 Europe/Berlin] Bound parameter :email with value: d9awidawd@gmail.com
+[20-Nov-2024 03:47:28 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-13
+[20-Nov-2024 03:47:28 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-18
+[20-Nov-2024 03:47:28 Europe/Berlin] Bound parameter :perguruan with value: Multimedia
+[20-Nov-2024 03:47:28 Europe/Berlin] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2912849124' for key 'nim'
+[20-Nov-2024 03:47:28 Europe/Berlin] SQL State: 23000
+[20-Nov-2024 03:47:28 Europe/Berlin] ERROR in createUser: Database error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2912849124' for key 'nim'
+[20-Nov-2024 03:47:28 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(74): App\Models\User->create()
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(43): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(73): App\Controller\HomeController->index(Array)
+#4 {main}
+[20-Nov-2024 03:47:28 Europe/Berlin] POST data: Array
+(
+    [nama] => awoawndawo
+    [thn_lulus] => 2024-11-18
+    [nim] => 2912849124
+    [perguruan] => Multimedia
+    [email] => d9awidawd@gmail.com
+    [nik] => 121843129
+    [tgl_lahir] => 2024-11-13
+    [npwp] => 12942194781
+)
+
+[20-Nov-2024 03:47:28 Europe/Berlin] Response dari createUser: Array
+(
+    [status] => error
+    [message] => Database error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2912849124' for key 'nim'
+)
+
+[20-Nov-2024 03:47:28 Europe/Berlin] Error detail: Database error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2912849124' for key 'nim'
+[20-Nov-2024 03:47:28 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once()
+#1 D:\xampp\htdocs\traceritesa\tracer\index.php(73): App\Controller\HomeController->index(Array)
+#2 {main}
+[20-Nov-2024 03:47:28 Europe/Berlin] Request data: Array
+(
+    [nama] => awoawndawo
+    [thn_lulus] => 2024-11-18
+    [nim] => 2912849124
+    [perguruan] => Multimedia
+    [email] => d9awidawd@gmail.com
+    [nik] => 121843129
+    [tgl_lahir] => 2024-11-13
+    [npwp] => 12942194781
+)
+
+[20-Nov-2024 03:48:43 Europe/Berlin] Memulai proses POST request
+[20-Nov-2024 03:48:43 Europe/Berlin] === Start Create User Process ===
+[20-Nov-2024 03:48:43 Europe/Berlin] Input data: {"nama":"awiudaw","thn_lulus":"2024-11-13","nim":"182491842","perguruan":"Teknik Komputer dan Jaringan","email":"dawidb@gmail.com","nik":"189128421","tgl_lahir":"2024-11-14","npwp":"124981824912"}
+[20-Nov-2024 03:48:43 Europe/Berlin] Data validation passed
+[20-Nov-2024 03:48:43 Europe/Berlin] User data set successfully
+[20-Nov-2024 03:48:43 Europe/Berlin] === Starting User Creation in Model ===
+[20-Nov-2024 03:48:43 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan)
+[20-Nov-2024 03:48:43 Europe/Berlin] Parameters to bind: {":nama":"awiudaw",":nim":"182491842",":email":"dawidb@gmail.com",":tgl_lahir":"2024-11-14",":thn_lulus":"2024-11-13",":perguruan":"Teknik Komputer dan Jaringan"}
+[20-Nov-2024 03:48:43 Europe/Berlin] Bound parameter :nama with value: awiudaw
+[20-Nov-2024 03:48:43 Europe/Berlin] Bound parameter :nim with value: 182491842
+[20-Nov-2024 03:48:43 Europe/Berlin] Bound parameter :email with value: dawidb@gmail.com
+[20-Nov-2024 03:48:43 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-14
+[20-Nov-2024 03:48:43 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-13
+[20-Nov-2024 03:48:43 Europe/Berlin] Bound parameter :perguruan with value: Teknik Komputer dan Jaringan
+[20-Nov-2024 03:48:43 Europe/Berlin] User created successfully with ID: 17
+[20-Nov-2024 03:48:43 Europe/Berlin] User created successfully with ID: 17
+[20-Nov-2024 03:48:43 Europe/Berlin] Response dari createUser: Array
+(
+    [status] => success
+    [message] => Data berhasil disimpan
+    [user_id] => 17
+)
+
+[20-Nov-2024 04:06:58 Europe/Berlin] Memulai proses POST request
+[20-Nov-2024 04:06:58 Europe/Berlin] === Start Create User Process ===
+[20-Nov-2024 04:06:58 Europe/Berlin] Input data: {"nama":"jdadnawidanadadianduawdaiudnawdnadnaidadawdawdiawudawujidawiduawdui","thn_lulus":"2024-11-13","nim":"81249128214892","perguruan":"Teknik Komputer dan Jaringan","email":"iaudawiudbwadi@gmail.com","nik":"12984192482","tgl_lahir":"2024-11-14","npwp":"21984128942"}
+[20-Nov-2024 04:06:58 Europe/Berlin] Data validation passed
+[20-Nov-2024 04:06:58 Europe/Berlin] User data set successfully
+[20-Nov-2024 04:06:58 Europe/Berlin] === Starting User Creation in Model ===
+[20-Nov-2024 04:06:58 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan)
+[20-Nov-2024 04:06:58 Europe/Berlin] Parameters to bind: {":nama":"jdadnawidanadadianduawdaiudnawdnadnaidadawdawdiawudawujidawiduawdui",":nim":"81249128214892",":email":"iaudawiudbwadi@gmail.com",":tgl_lahir":"2024-11-14",":thn_lulus":"2024-11-13",":perguruan":"Teknik Komputer dan Jaringan"}
+[20-Nov-2024 04:06:58 Europe/Berlin] Bound parameter :nama with value: jdadnawidanadadianduawdaiudnawdnadnaidadawdawdiawudawujidawiduawdui
+[20-Nov-2024 04:06:58 Europe/Berlin] Bound parameter :nim with value: 81249128214892
+[20-Nov-2024 04:06:58 Europe/Berlin] Bound parameter :email with value: iaudawiudbwadi@gmail.com
+[20-Nov-2024 04:06:58 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-14
+[20-Nov-2024 04:06:58 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-13
+[20-Nov-2024 04:06:58 Europe/Berlin] Bound parameter :perguruan with value: Teknik Komputer dan Jaringan
+[20-Nov-2024 04:06:58 Europe/Berlin] User created successfully with ID: 18
+[20-Nov-2024 04:06:58 Europe/Berlin] User created successfully with ID: 18
+[20-Nov-2024 04:06:58 Europe/Berlin] Response dari createUser: Array
+(
+    [status] => success
+    [message] => Data berhasil disimpan
+    [user_id] => 18
+)
+
+[21-Nov-2024 01:51:37 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 01:51:37 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 01:51:37 Europe/Berlin] Input data: {"nama":"dawg","thn_lulus":"2024-11-19","nim":"91839183","perguruan":"Teknik Komputer dan Jaringan","email":"wuda@gmail.com","nik":"12012841249812","tgl_lahir":"2024-11-12","npwp":"12812984124"}
+[21-Nov-2024 01:51:37 Europe/Berlin] Data validation passed
+[21-Nov-2024 01:51:37 Europe/Berlin] User data set successfully
+[21-Nov-2024 01:51:37 Europe/Berlin] === Starting User Creation in Model ===
+[21-Nov-2024 01:51:37 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan)
+[21-Nov-2024 01:51:37 Europe/Berlin] Parameters to bind: {":nama":"dawg",":nim":"91839183",":email":"wuda@gmail.com",":tgl_lahir":"2024-11-12",":thn_lulus":"2024-11-19",":perguruan":"Teknik Komputer dan Jaringan"}
+[21-Nov-2024 01:51:37 Europe/Berlin] Bound parameter :nama with value: dawg
+[21-Nov-2024 01:51:37 Europe/Berlin] Bound parameter :nim with value: 91839183
+[21-Nov-2024 01:51:37 Europe/Berlin] Bound parameter :email with value: wuda@gmail.com
+[21-Nov-2024 01:51:37 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-12
+[21-Nov-2024 01:51:37 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-19
+[21-Nov-2024 01:51:37 Europe/Berlin] Bound parameter :perguruan with value: Teknik Komputer dan Jaringan
+[21-Nov-2024 01:51:37 Europe/Berlin] User created successfully with ID: 19
+[21-Nov-2024 01:51:37 Europe/Berlin] User created successfully with ID: 19
+[21-Nov-2024 01:51:37 Europe/Berlin] Response dari createUser: Array
+(
+    [status] => success
+    [message] => Data berhasil disimpan
+    [user_id] => 19
+)
+
+[21-Nov-2024 02:49:53 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 02:49:53 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 02:49:53 Europe/Berlin] Input data: {"nama":"123rr","thn_lulus":"2024-11-12","nim":"2114124","perguruan":"Multimedia","email":"412312@gmail.com","nik":"4124123124","tgl_lahir":"2024-11-22","npwp":"51231241252"}
+[21-Nov-2024 02:49:53 Europe/Berlin] Data validation passed
+[21-Nov-2024 02:49:53 Europe/Berlin] User data set successfully
+[21-Nov-2024 02:49:53 Europe/Berlin] === Starting User Creation in Model ===
+[21-Nov-2024 02:49:53 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan)
+[21-Nov-2024 02:49:53 Europe/Berlin] Parameters to bind: {":nama":"123rr",":nim":"2114124",":email":"412312@gmail.com",":tgl_lahir":"2024-11-22",":thn_lulus":"2024-11-12",":perguruan":"Multimedia"}
+[21-Nov-2024 02:49:53 Europe/Berlin] Bound parameter :nama with value: 123rr
+[21-Nov-2024 02:49:53 Europe/Berlin] Bound parameter :nim with value: 2114124
+[21-Nov-2024 02:49:53 Europe/Berlin] Bound parameter :email with value: 412312@gmail.com
+[21-Nov-2024 02:49:53 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-22
+[21-Nov-2024 02:49:53 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-12
+[21-Nov-2024 02:49:53 Europe/Berlin] Bound parameter :perguruan with value: Multimedia
+[21-Nov-2024 02:49:53 Europe/Berlin] User created successfully with ID: 20
+[21-Nov-2024 02:49:53 Europe/Berlin] User created successfully with ID: 20
+[21-Nov-2024 02:49:53 Europe/Berlin] Response dari createUser: Array
+(
+    [status] => success
+    [message] => Data berhasil disimpan
+    [user_id] => 20
+)
+
+[21-Nov-2024 03:05:33 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:05:33 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 03:05:33 Europe/Berlin] Input data: {"nama":"adwad","thn_lulus":"2024-11-26","nim":"1241412412","perguruan":"Teknik Komputer dan Jaringan","email":"124214@gmail.com","nik":"1242412","tgl_lahir":"2024-11-14","npwp":"12321412412312"}
+[21-Nov-2024 03:05:33 Europe/Berlin] Data validation passed
+[21-Nov-2024 03:05:33 Europe/Berlin] User data set successfully
+[21-Nov-2024 03:05:33 Europe/Berlin] === Starting User Creation in Model ===
+[21-Nov-2024 03:05:33 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan, nik, npwp) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan, :nik, :npwp)
+[21-Nov-2024 03:05:33 Europe/Berlin] Parameters to bind: {":nama":"adwad",":nim":"1241412412",":email":"124214@gmail.com",":tgl_lahir":"2024-11-14",":thn_lulus":"2024-11-26",":perguruan":"Teknik Komputer dan Jaringan",":nik":"1242412",":npwp":"12321412412312"}
+[21-Nov-2024 03:05:33 Europe/Berlin] Bound parameter :nama with value: adwad
+[21-Nov-2024 03:05:33 Europe/Berlin] Bound parameter :nim with value: 1241412412
+[21-Nov-2024 03:05:33 Europe/Berlin] Bound parameter :email with value: 124214@gmail.com
+[21-Nov-2024 03:05:33 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-14
+[21-Nov-2024 03:05:33 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-26
+[21-Nov-2024 03:05:33 Europe/Berlin] Bound parameter :perguruan with value: Teknik Komputer dan Jaringan
+[21-Nov-2024 03:05:33 Europe/Berlin] Bound parameter :nik with value: 1242412
+[21-Nov-2024 03:05:33 Europe/Berlin] Bound parameter :npwp with value: 12321412412312
+[21-Nov-2024 03:05:33 Europe/Berlin] User created successfully with ID: 21
+[21-Nov-2024 03:05:33 Europe/Berlin] User created successfully with ID: 21
+[21-Nov-2024 03:05:33 Europe/Berlin] Response dari createUser: Array
+(
+    [status] => success
+    [message] => Data berhasil disimpan
+    [user_id] => 21
+)
+
+[21-Nov-2024 03:17:58 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:17:58 Europe/Berlin] Error detail: Nama hanya boleh berisi huruf, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 03:17:58 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once()
+#1 D:\xampp\htdocs\traceritesa\tracer\index.php(73): App\Controller\HomeController->index(Array)
+#2 {main}
+[21-Nov-2024 03:17:58 Europe/Berlin] Request data: Array
+(
+    [nama] => 1242412
+    [thn_lulus] => 2024-11-04
+    [nim] => 4123123
+    [perguruan] => Multimedia
+    [email] => kanayariyo85@gmail.com
+    [nik] => 5214124
+    [tgl_lahir] => 2024-11-14
+    [npwp] => 4123123
+)
+
+[21-Nov-2024 03:19:24 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:19:24 Europe/Berlin] Error detail: Nama hanya boleh berisi huruf, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 03:19:24 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once()
+#1 D:\xampp\htdocs\traceritesa\tracer\index.php(73): App\Controller\HomeController->index(Array)
+#2 {main}
+[21-Nov-2024 03:19:24 Europe/Berlin] Request data: Array
+(
+    [nama] => 24123412
+    [thn_lulus] => 2024-11-12
+    [nim] => 412312
+    [perguruan] => Teknik Komputer dan Jaringan
+    [email] => oawdn@gmail.com
+    [nik] => 412312
+    [tgl_lahir] => 2024-11-15
+    [npwp] => 4123123
+)
+
+[21-Nov-2024 03:24:49 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:27:17 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:27:27 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:28:20 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:31:08 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:32:24 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:32:57 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:37:00 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:37:21 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:39:37 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:42:58 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:49:26 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:54:33 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 03:56:44 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 04:02:48 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 04:03:19 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 04:08:59 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 04:08:59 Europe/Berlin] Error detail: Nama hanya boleh berisi huruf, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 04:08:59 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once()
+#1 D:\xampp\htdocs\traceritesa\tracer\index.php(73): App\Controller\HomeController->index(Array)
+#2 {main}
+[21-Nov-2024 04:08:59 Europe/Berlin] Request data: Array
+(
+    [nama] => 412412biawbdiaw
+    [thn_lulus] => 2024-11-19
+    [nim] => 1241231
+    [perguruan] => Sistem Informasi
+    [email] => 2412314@gmail.com
+    [nik] => 124124123
+    [tgl_lahir] => 2024-11-06
+    [npwp] => 131424
+)
+
+[21-Nov-2024 04:10:37 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 04:10:37 Europe/Berlin] Error detail: NPWP harus 15 digit
+[21-Nov-2024 04:10:37 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once()
+#1 D:\xampp\htdocs\traceritesa\tracer\index.php(73): App\Controller\HomeController->index(Array)
+#2 {main}
+[21-Nov-2024 04:10:37 Europe/Berlin] Request data: Array
+(
+    [nama] => awdonawindaw
+    [thn_lulus] => 2024-11-11
+    [nim] => 19283192
+    [perguruan] => Teknik Komputer dan Jaringan
+    [email] => awiudb@gmail.com
+    [nik] => 9999999999999999
+    [tgl_lahir] => 2024-11-06
+    [npwp] => 9999999999999999
+)
+
+[21-Nov-2024 04:17:58 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 04:17:58 Europe/Berlin] Error detail: Nama hanya boleh berisi huruf, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 04:17:58 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once()
+#1 D:\xampp\htdocs\traceritesa\tracer\index.php(73): App\Controller\HomeController->index(Array)
+#2 {main}
+[21-Nov-2024 04:17:58 Europe/Berlin] Request data: Array
+(
+    [nama] => 4123
+    [thn_lulus] => 2024-11-19
+    [nim] => 412314
+    [perguruan] => Sistem Informasi
+    [email] => 12412@gmail.com
+    [nik] => 4123414
+    [tgl_lahir] => 2024-11-01
+    [npwp] => 121231
+)
+
+[21-Nov-2024 04:25:21 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 04:25:21 Europe/Berlin] Error detail: Nama hanya boleh berisi huruf, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 04:25:21 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once()
+#1 D:\xampp\htdocs\traceritesa\tracer\index.php(73): App\Controller\HomeController->index(Array)
+#2 {main}
+[21-Nov-2024 04:25:21 Europe/Berlin] Request data: Array
+(
+    [show_notification] => 1
+    [nama] => 412312
+    [thn_lulus] => 2024-11-19
+    [nim] => 412
+    [perguruan] => Multimedia
+    [email] => doawn@gmail.com
+    [nik] => 4124
+    [tgl_lahir] => 2024-11-11
+    [npwp] => 4123
+)
+
+[21-Nov-2024 04:28:12 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 04:31:34 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 04:31:34 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 04:50:54 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 04:50:54 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 04:50:54 Europe/Berlin] Input data: {"nama":"2048124","thn_lulus":"2024-10-31","nim":"2090312","perguruan":"Multimedia","email":"awuid@gmail.com","nik":"7418233","tgl_lahir":"2024-11-11","npwp":"091241"}
+[21-Nov-2024 04:50:54 Europe/Berlin] Data validation passed
+[21-Nov-2024 04:50:54 Europe/Berlin] User data set successfully
+[21-Nov-2024 04:50:54 Europe/Berlin] === Starting User Creation in Model ===
+[21-Nov-2024 04:50:54 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan, nik, npwp) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan, :nik, :npwp)
+[21-Nov-2024 04:50:54 Europe/Berlin] Parameters to bind: {":nama":"2048124",":nim":"2090312",":email":"awuid@gmail.com",":tgl_lahir":"2024-11-11",":thn_lulus":"2024-10-31",":perguruan":"Multimedia",":nik":"7418233",":npwp":"091241"}
+[21-Nov-2024 04:50:54 Europe/Berlin] Bound parameter :nama with value: 2048124
+[21-Nov-2024 04:50:54 Europe/Berlin] Bound parameter :nim with value: 2090312
+[21-Nov-2024 04:50:54 Europe/Berlin] Bound parameter :email with value: awuid@gmail.com
+[21-Nov-2024 04:50:54 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-11
+[21-Nov-2024 04:50:54 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-10-31
+[21-Nov-2024 04:50:54 Europe/Berlin] Bound parameter :perguruan with value: Multimedia
+[21-Nov-2024 04:50:54 Europe/Berlin] Bound parameter :nik with value: 7418233
+[21-Nov-2024 04:50:54 Europe/Berlin] Bound parameter :npwp with value: 091241
+[21-Nov-2024 04:50:54 Europe/Berlin] User created successfully with ID: 22
+[21-Nov-2024 04:50:54 Europe/Berlin] User created successfully with ID: 22
+[21-Nov-2024 04:51:57 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 04:51:57 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 04:51:57 Europe/Berlin] Input data: {"nama":"2048124","thn_lulus":"2024-10-31","nim":"2090312","perguruan":"Multimedia","email":"awuid@gmail.com","nik":"7418233","tgl_lahir":"2024-11-11","npwp":"091241"}
+[21-Nov-2024 04:51:57 Europe/Berlin] Data validation passed
+[21-Nov-2024 04:51:57 Europe/Berlin] User data set successfully
+[21-Nov-2024 04:51:57 Europe/Berlin] === Starting User Creation in Model ===
+[21-Nov-2024 04:51:57 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan, nik, npwp) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan, :nik, :npwp)
+[21-Nov-2024 04:51:57 Europe/Berlin] Parameters to bind: {":nama":"2048124",":nim":"2090312",":email":"awuid@gmail.com",":tgl_lahir":"2024-11-11",":thn_lulus":"2024-10-31",":perguruan":"Multimedia",":nik":"7418233",":npwp":"091241"}
+[21-Nov-2024 04:51:57 Europe/Berlin] Bound parameter :nama with value: 2048124
+[21-Nov-2024 04:51:57 Europe/Berlin] Bound parameter :nim with value: 2090312
+[21-Nov-2024 04:51:57 Europe/Berlin] Bound parameter :email with value: awuid@gmail.com
+[21-Nov-2024 04:51:57 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-11
+[21-Nov-2024 04:51:57 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-10-31
+[21-Nov-2024 04:51:57 Europe/Berlin] Bound parameter :perguruan with value: Multimedia
+[21-Nov-2024 04:51:57 Europe/Berlin] Bound parameter :nik with value: 7418233
+[21-Nov-2024 04:51:57 Europe/Berlin] Bound parameter :npwp with value: 091241
+[21-Nov-2024 04:51:57 Europe/Berlin] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2090312' for key 'nim'
+[21-Nov-2024 04:51:57 Europe/Berlin] SQL State: 23000
+[21-Nov-2024 04:51:57 Europe/Berlin] ERROR in createUser: Database error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2090312' for key 'nim'
+[21-Nov-2024 04:51:57 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(74): App\Models\User->create()
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(274): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 04:51:57 Europe/Berlin] POST data: Array
+(
+    [nama] => 2048124
+    [thn_lulus] => 2024-10-31
+    [nim] => 2090312
+    [perguruan] => Multimedia
+    [email] => awuid@gmail.com
+    [nik] => 7418233
+    [tgl_lahir] => 2024-11-11
+    [npwp] => 091241
+)
+
+[21-Nov-2024 04:57:24 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 04:57:24 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 04:57:24 Europe/Berlin] Input data: {"nama":"2048124","thn_lulus":"2024-10-31","nim":"2090312","perguruan":"Multimedia","email":"awuid@gmail.com","nik":"7418233","tgl_lahir":"2024-11-11","npwp":"091241"}
+[21-Nov-2024 04:58:47 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 04:58:47 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 04:58:47 Europe/Berlin] Input data: {"nama":"2048124","thn_lulus":"2024-10-31","nim":"2090312","perguruan":"Multimedia","email":"awuid@gmail.com","nik":"7418233","tgl_lahir":"2024-11-11","npwp":"091241"}
+[21-Nov-2024 04:59:14 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 04:59:14 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 04:59:14 Europe/Berlin] Input data: {"nama":"2048124","thn_lulus":"2024-10-31","nim":"2090312","perguruan":"Multimedia","email":"awuid@gmail.com","nik":"7418233","tgl_lahir":"2024-11-11","npwp":"091241"}
+[21-Nov-2024 05:00:24 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:00:24 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:00:24 Europe/Berlin] Input data: {"nama":"2048124","thn_lulus":"2024-10-31","nim":"2090312","perguruan":"Multimedia","email":"awuid@gmail.com","nik":"7418233","tgl_lahir":"2024-11-11","npwp":"091241"}
+[21-Nov-2024 05:03:41 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:03:41 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:03:41 Europe/Berlin] Input data: {"nama":"2048124","thn_lulus":"2024-10-31","nim":"2090312","perguruan":"Multimedia","email":"awuid@gmail.com","nik":"7418233","tgl_lahir":"2024-11-11","npwp":"091241"}
+[21-Nov-2024 05:03:41 Europe/Berlin] ERROR in createUser: Undefined property: App\Models\User::$db
+[21-Nov-2024 05:03:41 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\models\User.php(121): App\Helpers\ErrorHandler::handleError(2, 'Undefined prope...', 'D:\\xampp\\htdocs...', 121)
+#1 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(68): App\Models\User->exists('nim', '2090312')
+#2 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#3 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(276): include('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#5 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#6 {main}
+[21-Nov-2024 05:03:41 Europe/Berlin] POST data: Array
+(
+    [nama] => 2048124
+    [thn_lulus] => 2024-10-31
+    [nim] => 2090312
+    [perguruan] => Multimedia
+    [email] => awuid@gmail.com
+    [nik] => 7418233
+    [tgl_lahir] => 2024-11-11
+    [npwp] => 091241
+)
+
+[21-Nov-2024 05:04:31 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:04:31 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:04:31 Europe/Berlin] Input data: {"nama":"2048124","thn_lulus":"2024-10-31","nim":"2090312","perguruan":"Multimedia","email":"awuid@gmail.com","nik":"7418233","tgl_lahir":"2024-11-11","npwp":"091241"}
+[21-Nov-2024 05:04:31 Europe/Berlin] ERROR in createUser: Nim sudah terdaftar
+[21-Nov-2024 05:04:31 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(276): include('D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 05:04:31 Europe/Berlin] POST data: Array
+(
+    [nama] => 2048124
+    [thn_lulus] => 2024-10-31
+    [nim] => 2090312
+    [perguruan] => Multimedia
+    [email] => awuid@gmail.com
+    [nik] => 7418233
+    [tgl_lahir] => 2024-11-11
+    [npwp] => 091241
+)
+
+[21-Nov-2024 05:06:06 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:06:06 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:06:06 Europe/Berlin] Input data: {"nama":"SRI YUNIATI","thn_lulus":"2024-11-12","nim":"33333333","perguruan":"Multimedia","email":"123@gmail.com","nik":"1213","tgl_lahir":"2024-11-05","npwp":"312"}
+[21-Nov-2024 05:08:25 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:08:25 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:08:25 Europe/Berlin] Input data: {"nama":"SRI YUNIATI","thn_lulus":"2024-11-12","nim":"33333333","perguruan":"Multimedia","email":"123@gmail.com","nik":"1213","tgl_lahir":"2024-11-05","npwp":"312"}
+[21-Nov-2024 05:08:39 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:08:39 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:08:39 Europe/Berlin] Input data: {"nama":"SRI YUNIATI","thn_lulus":"2024-11-12","nim":"33333333","perguruan":"Multimedia","email":"123@gmail.com","nik":"1213","tgl_lahir":"2024-11-05","npwp":"312"}
+[21-Nov-2024 05:12:27 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:12:27 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:12:27 Europe/Berlin] Input data: {"nama":"SRI YUNIATI","thn_lulus":"2024-11-12","nim":"33333333","perguruan":"Multimedia","email":"123@gmail.com","nik":"1213","tgl_lahir":"2024-11-05","npwp":"312"}
+[21-Nov-2024 05:12:27 Europe/Berlin] Data validation passed
+[21-Nov-2024 05:12:27 Europe/Berlin] User data set successfully
+[21-Nov-2024 05:12:27 Europe/Berlin] === Starting User Creation in Model ===
+[21-Nov-2024 05:12:27 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan, nik, npwp) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan, :nik, :npwp)
+[21-Nov-2024 05:12:27 Europe/Berlin] Parameters to bind: {":nama":"SRI YUNIATI",":nim":"33333333",":email":"123@gmail.com",":tgl_lahir":"2024-11-05",":thn_lulus":"2024-11-12",":perguruan":"Multimedia",":nik":"1213",":npwp":"312"}
+[21-Nov-2024 05:12:27 Europe/Berlin] Bound parameter :nama with value: SRI YUNIATI
+[21-Nov-2024 05:12:27 Europe/Berlin] Bound parameter :nim with value: 33333333
+[21-Nov-2024 05:12:27 Europe/Berlin] Bound parameter :email with value: 123@gmail.com
+[21-Nov-2024 05:12:27 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-05
+[21-Nov-2024 05:12:27 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-12
+[21-Nov-2024 05:12:27 Europe/Berlin] Bound parameter :perguruan with value: Multimedia
+[21-Nov-2024 05:12:27 Europe/Berlin] Bound parameter :nik with value: 1213
+[21-Nov-2024 05:12:27 Europe/Berlin] Bound parameter :npwp with value: 312
+[21-Nov-2024 05:12:27 Europe/Berlin] User created successfully with ID: 24
+[21-Nov-2024 05:12:27 Europe/Berlin] User created successfully with ID: 24
+[21-Nov-2024 05:13:53 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:13:53 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:13:53 Europe/Berlin] Input data: {"nama":"124","thn_lulus":"2024-11-05","nim":"18234212","perguruan":"Teknik Komputer dan Jaringan","email":"wdano@gmail.com","nik":"412321","tgl_lahir":"2024-11-18","npwp":"1412312"}
+[21-Nov-2024 05:13:53 Europe/Berlin] Validation error: NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:13:53 Europe/Berlin] ERROR in createUser: NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:13:53 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(276): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 05:16:11 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:16:11 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:16:11 Europe/Berlin] Input data: {"nama":"124","thn_lulus":"2024-11-05","nim":"18234212","perguruan":"Teknik Komputer dan Jaringan","email":"wdano@gmail.com","nik":"412321","tgl_lahir":"2024-11-18","npwp":"1412312"}
+[21-Nov-2024 05:16:11 Europe/Berlin] Validation error: NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:16:11 Europe/Berlin] ERROR in createUser: NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:16:11 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(276): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 05:17:07 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:17:07 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:17:07 Europe/Berlin] Input data: {"nama":"124","thn_lulus":"2024-11-05","nim":"18234212","perguruan":"Teknik Komputer dan Jaringan","email":"wdano@gmail.com","nik":"412321","tgl_lahir":"2024-11-18","npwp":"1412312"}
+[21-Nov-2024 05:17:07 Europe/Berlin] Validation error: NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:17:07 Europe/Berlin] ERROR in createUser: NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:17:07 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(276): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 05:17:36 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:17:36 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:17:36 Europe/Berlin] Input data: {"nama":"124","thn_lulus":"2024-11-12","nim":"4123123","perguruan":"Multimedia","email":"412321@gmail.com","nik":"4123","tgl_lahir":"2024-11-11","npwp":"412312"}
+[21-Nov-2024 05:17:36 Europe/Berlin] Validation error: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:17:36 Europe/Berlin] ERROR in createUser: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:17:36 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(276): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 05:19:06 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:19:06 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:19:06 Europe/Berlin] Input data: {"nama":"124","thn_lulus":"2024-11-12","nim":"4123123","perguruan":"Multimedia","email":"412321@gmail.com","nik":"4123","tgl_lahir":"2024-11-11","npwp":"412312"}
+[21-Nov-2024 05:19:06 Europe/Berlin] Validation error: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:19:06 Europe/Berlin] ERROR in createUser: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:19:06 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(276): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 05:19:36 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:19:36 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:19:36 Europe/Berlin] Input data: {"nama":"124","thn_lulus":"2024-11-12","nim":"4123123","perguruan":"Multimedia","email":"412321@gmail.com","nik":"4123","tgl_lahir":"2024-11-11","npwp":"412312"}
+[21-Nov-2024 05:19:36 Europe/Berlin] Validation error: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:19:36 Europe/Berlin] ERROR in createUser: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:19:36 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(276): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 05:20:37 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:20:37 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:20:37 Europe/Berlin] Input data: {"nama":"124","thn_lulus":"2024-11-12","nim":"4123123","perguruan":"Multimedia","email":"412321@gmail.com","nik":"4123","tgl_lahir":"2024-11-11","npwp":"412312"}
+[21-Nov-2024 05:20:37 Europe/Berlin] Validation error: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:20:37 Europe/Berlin] ERROR in createUser: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:20:37 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(276): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 05:21:02 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:21:02 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:21:02 Europe/Berlin] Input data: {"nama":"124","thn_lulus":"2024-11-12","nim":"4123123","perguruan":"Multimedia","email":"412321@gmail.com","nik":"4123","tgl_lahir":"2024-11-11","npwp":"412312"}
+[21-Nov-2024 05:21:02 Europe/Berlin] Validation error: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:21:02 Europe/Berlin] ERROR in createUser: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:21:02 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(276): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 05:25:42 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:25:42 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:25:42 Europe/Berlin] Input data: {"nama":"124","thn_lulus":"2024-11-12","nim":"4123123","perguruan":"Multimedia","email":"412321@gmail.com","nik":"4123","tgl_lahir":"2024-11-11","npwp":"412312"}
+[21-Nov-2024 05:25:42 Europe/Berlin] Validation error: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:25:42 Europe/Berlin] ERROR in createUser: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:25:42 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(278): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 05:26:57 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:26:57 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:26:57 Europe/Berlin] Input data: {"nama":"124","thn_lulus":"2024-11-12","nim":"4123123","perguruan":"Multimedia","email":"412321@gmail.com","nik":"4123","tgl_lahir":"2024-11-11","npwp":"412312"}
+[21-Nov-2024 05:26:57 Europe/Berlin] Validation error: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:26:57 Europe/Berlin] ERROR in createUser: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:26:57 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(278): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 05:27:35 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 05:27:35 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 05:27:35 Europe/Berlin] Input data: {"nama":"124","thn_lulus":"2024-11-12","nim":"4123123","perguruan":"Multimedia","email":"412321@gmail.com","nik":"4123","tgl_lahir":"2024-11-11","npwp":"412312"}
+[21-Nov-2024 05:27:35 Europe/Berlin] Validation error: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:27:35 Europe/Berlin] ERROR in createUser: NIK sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 05:27:35 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(278): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 06:16:35 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 06:16:35 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 06:16:35 Europe/Berlin] Input data: {"nama":"214124","thn_lulus":"2024-11-14","nim":"412412","perguruan":"Rekayasa Perangkat Lunak","email":"123@gmail.com","nik":"4512421","tgl_lahir":"2024-11-14","npwp":"512412"}
+[21-Nov-2024 06:16:35 Europe/Berlin] Validation error: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:16:35 Europe/Berlin] ERROR in createUser: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:16:35 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(278): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 06:19:01 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 06:19:01 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 06:19:01 Europe/Berlin] Input data: {"nama":"214124","thn_lulus":"2024-11-14","nim":"412412","perguruan":"Rekayasa Perangkat Lunak","email":"123@gmail.com","nik":"4512421","tgl_lahir":"2024-11-14","npwp":"512412"}
+[21-Nov-2024 06:19:01 Europe/Berlin] Validation error: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:19:01 Europe/Berlin] ERROR in createUser: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:19:01 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(278): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 06:20:13 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 06:20:13 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 06:20:13 Europe/Berlin] Input data: {"nama":"214124","thn_lulus":"2024-11-14","nim":"412412","perguruan":"Rekayasa Perangkat Lunak","email":"123@gmail.com","nik":"4512421","tgl_lahir":"2024-11-14","npwp":"512412"}
+[21-Nov-2024 06:20:13 Europe/Berlin] Validation error: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:20:13 Europe/Berlin] ERROR in createUser: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:20:13 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(278): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 06:20:46 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 06:20:46 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 06:20:46 Europe/Berlin] Input data: {"nama":"214124","thn_lulus":"2024-11-14","nim":"412412","perguruan":"Rekayasa Perangkat Lunak","email":"123@gmail.com","nik":"4512421","tgl_lahir":"2024-11-14","npwp":"512412"}
+[21-Nov-2024 06:20:46 Europe/Berlin] Validation error: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:20:46 Europe/Berlin] ERROR in createUser: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:20:46 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(278): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 06:20:51 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 06:20:51 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 06:20:51 Europe/Berlin] Input data: {"nama":"214124","thn_lulus":"2024-11-14","nim":"412412","perguruan":"Rekayasa Perangkat Lunak","email":"123@gmail.com","nik":"4512421","tgl_lahir":"2024-11-14","npwp":"512412"}
+[21-Nov-2024 06:20:51 Europe/Berlin] Validation error: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:20:51 Europe/Berlin] ERROR in createUser: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:20:51 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(278): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 06:21:38 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 06:21:38 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 06:21:38 Europe/Berlin] Input data: {"nama":"214124","thn_lulus":"2024-11-14","nim":"412412","perguruan":"Rekayasa Perangkat Lunak","email":"123@gmail.com","nik":"4512421","tgl_lahir":"2024-11-14","npwp":"512412"}
+[21-Nov-2024 06:21:38 Europe/Berlin] Validation error: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:21:38 Europe/Berlin] ERROR in createUser: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:21:38 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(278): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 06:22:46 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 06:22:46 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 06:22:46 Europe/Berlin] Input data: {"nama":"214124","thn_lulus":"2024-11-14","nim":"412412","perguruan":"Rekayasa Perangkat Lunak","email":"123@gmail.com","nik":"4512421","tgl_lahir":"2024-11-14","npwp":"512412"}
+[21-Nov-2024 06:22:46 Europe/Berlin] Validation error: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:22:46 Europe/Berlin] ERROR in createUser: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:22:46 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(278): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 06:24:28 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 06:24:28 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 06:24:28 Europe/Berlin] Input data: {"nama":"214124","thn_lulus":"2024-11-14","nim":"412412","perguruan":"Rekayasa Perangkat Lunak","email":"123@gmail.com","nik":"4512421","tgl_lahir":"2024-11-14","npwp":"512412"}
+[21-Nov-2024 06:24:28 Europe/Berlin] Validation error: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:24:28 Europe/Berlin] ERROR in createUser: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:24:28 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(277): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 06:25:22 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 06:25:22 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 06:25:22 Europe/Berlin] Input data: {"nama":"214124","thn_lulus":"2024-11-14","nim":"412412","perguruan":"Rekayasa Perangkat Lunak","email":"123@gmail.com","nik":"4512421","tgl_lahir":"2024-11-14","npwp":"512412"}
+[21-Nov-2024 06:25:22 Europe/Berlin] Validation error: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:25:22 Europe/Berlin] ERROR in createUser: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:25:22 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(277): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 06:26:05 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 06:26:05 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 06:26:05 Europe/Berlin] Input data: {"nama":"24124","thn_lulus":"2024-11-05","nim":"41241","perguruan":"Multimedia","email":"123@gmail.com4","nik":"1231","tgl_lahir":"2024-11-11","npwp":"123"}
+[21-Nov-2024 06:26:05 Europe/Berlin] Validation error: NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:26:05 Europe/Berlin] ERROR in createUser: NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:26:05 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(277): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 06:26:37 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 06:26:37 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 06:26:37 Europe/Berlin] Input data: {"nama":"24124","thn_lulus":"2024-11-05","nim":"41241","perguruan":"Multimedia","email":"123@gmail.com4","nik":"1231","tgl_lahir":"2024-11-11","npwp":"123"}
+[21-Nov-2024 06:26:37 Europe/Berlin] Validation error: NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:26:37 Europe/Berlin] ERROR in createUser: NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:26:37 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(277): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 06:27:03 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 06:27:03 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 06:27:03 Europe/Berlin] Input data: {"nama":"42141","thn_lulus":"2024-11-12","nim":"4123","perguruan":"Teknik Komputer dan Jaringan","email":"412312@gmail.com","nik":"1231","tgl_lahir":"2024-10-31","npwp":"123"}
+[21-Nov-2024 06:27:03 Europe/Berlin] Validation error: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:27:03 Europe/Berlin] ERROR in createUser: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:27:03 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(277): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 06:29:02 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 06:29:02 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 06:29:02 Europe/Berlin] Input data: {"nama":"42141","thn_lulus":"2024-11-12","nim":"4123","perguruan":"Teknik Komputer dan Jaringan","email":"412312@gmail.com","nik":"1231","tgl_lahir":"2024-10-31","npwp":"123"}
+[21-Nov-2024 06:29:02 Europe/Berlin] Validation error: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:29:02 Europe/Berlin] ERROR in createUser: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:29:02 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(277): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 06:36:12 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 06:36:12 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 06:36:12 Europe/Berlin] Input data: {"nama":"42141","thn_lulus":"2024-11-12","nim":"4123","perguruan":"Teknik Komputer dan Jaringan","email":"412312@gmail.com","nik":"1231","tgl_lahir":"2024-10-31","npwp":"123"}
+[21-Nov-2024 06:36:12 Europe/Berlin] Validation error: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:36:12 Europe/Berlin] ERROR in createUser: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 06:36:12 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(277): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 07:03:53 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 07:03:53 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 07:03:53 Europe/Berlin] Input data: {"nama":"42141","thn_lulus":"2024-11-12","nim":"4123","perguruan":"Teknik Komputer dan Jaringan","email":"412312@gmail.com","nik":"1231","tgl_lahir":"2024-10-31","npwp":"123"}
+[21-Nov-2024 07:03:53 Europe/Berlin] Validation error: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 07:03:53 Europe/Berlin] ERROR in createUser: Email sudah terdaftar, NIK harus 16 digit, NPWP harus 15 digit
+[21-Nov-2024 07:03:53 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\form.php(15): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(277): include('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#4 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#5 {main}
+[21-Nov-2024 08:03:13 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:06:01 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:06:03 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:06:03 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:06:03 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:06:04 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:06:04 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:06:04 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:06:04 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:06:04 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:06:04 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:06:05 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:06:05 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:06:05 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:06:06 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:17:04 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:17:04 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:17:04 Europe/Berlin] Input data: {"nama":"animeindo","thn_lulus":"2024-11-06","nim":"214124","perguruan":"Multimedia","email":"4123@gmail.com","nik":"4123241232222222","tgl_lahir":"2024-11-01","npwp":"412324123222222"}
+[21-Nov-2024 08:17:04 Europe/Berlin] Validation error: Email sudah terdaftar
+[21-Nov-2024 08:17:04 Europe/Berlin] ERROR in createUser: Email sudah terdaftar
+[21-Nov-2024 08:17:04 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 08:17:09 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:17:09 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:17:09 Europe/Berlin] Input data: {"nama":"animeindo","thn_lulus":"2024-11-06","nim":"214124","perguruan":"Multimedia","email":"wtf@gmail.com","nik":"4123241232222222","tgl_lahir":"2024-11-01","npwp":"412324123222222"}
+[21-Nov-2024 08:17:09 Europe/Berlin] Data validation passed
+[21-Nov-2024 08:17:09 Europe/Berlin] User data set successfully
+[21-Nov-2024 08:17:09 Europe/Berlin] === Starting User Creation in Model ===
+[21-Nov-2024 08:17:09 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan, nik, npwp) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan, :nik, :npwp)
+[21-Nov-2024 08:17:09 Europe/Berlin] Parameters to bind: {":nama":"animeindo",":nim":"214124",":email":"wtf@gmail.com",":tgl_lahir":"2024-11-01",":thn_lulus":"2024-11-06",":perguruan":"Multimedia",":nik":"4123241232222222",":npwp":"412324123222222"}
+[21-Nov-2024 08:17:09 Europe/Berlin] Bound parameter :nama with value: animeindo
+[21-Nov-2024 08:17:09 Europe/Berlin] Bound parameter :nim with value: 214124
+[21-Nov-2024 08:17:09 Europe/Berlin] Bound parameter :email with value: wtf@gmail.com
+[21-Nov-2024 08:17:09 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-01
+[21-Nov-2024 08:17:09 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-06
+[21-Nov-2024 08:17:09 Europe/Berlin] Bound parameter :perguruan with value: Multimedia
+[21-Nov-2024 08:17:09 Europe/Berlin] Bound parameter :nik with value: 4123241232222222
+[21-Nov-2024 08:17:09 Europe/Berlin] Bound parameter :npwp with value: 412324123222222
+[21-Nov-2024 08:17:09 Europe/Berlin] User created successfully with ID: 25
+[21-Nov-2024 08:17:09 Europe/Berlin] User created successfully with ID: 25
+[21-Nov-2024 08:19:31 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:19:31 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:19:31 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 08:19:31 Europe/Berlin] Data validation passed
+[21-Nov-2024 08:19:31 Europe/Berlin] User data set successfully
+[21-Nov-2024 08:19:31 Europe/Berlin] === Starting User Creation in Model ===
+[21-Nov-2024 08:19:31 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan, nik, npwp) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan, :nik, :npwp)
+[21-Nov-2024 08:19:31 Europe/Berlin] Parameters to bind: {":nama":"affawfaw",":nim":"213",":email":"41231dowida@gmail.com",":tgl_lahir":"2024-11-14",":thn_lulus":"2024-11-06",":perguruan":"Sistem Informasi",":nik":"5112312414124112",":npwp":"512412321421412"}
+[21-Nov-2024 08:19:31 Europe/Berlin] Bound parameter :nama with value: affawfaw
+[21-Nov-2024 08:19:31 Europe/Berlin] Bound parameter :nim with value: 213
+[21-Nov-2024 08:19:31 Europe/Berlin] Bound parameter :email with value: 41231dowida@gmail.com
+[21-Nov-2024 08:19:31 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-14
+[21-Nov-2024 08:19:31 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-06
+[21-Nov-2024 08:19:31 Europe/Berlin] Bound parameter :perguruan with value: Sistem Informasi
+[21-Nov-2024 08:19:31 Europe/Berlin] Bound parameter :nik with value: 5112312414124112
+[21-Nov-2024 08:19:31 Europe/Berlin] Bound parameter :npwp with value: 512412321421412
+[21-Nov-2024 08:19:31 Europe/Berlin] User created successfully with ID: 26
+[21-Nov-2024 08:19:31 Europe/Berlin] User created successfully with ID: 26
+[21-Nov-2024 08:31:36 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:31:36 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:31:36 Europe/Berlin] Input data: {"nama":"anggun","thn_lulus":"2024-11-29","nim":"123456789","perguruan":"Teknik Komputer dan Jaringan","email":"rajasuki@gmail.com","nik":"9897654312345678","tgl_lahir":"2024-11-29","npwp":"098765423456789"}
+[21-Nov-2024 08:31:36 Europe/Berlin] Data validation passed
+[21-Nov-2024 08:31:36 Europe/Berlin] User data set successfully
+[21-Nov-2024 08:31:36 Europe/Berlin] === Starting User Creation in Model ===
+[21-Nov-2024 08:31:36 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan, nik, npwp) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan, :nik, :npwp)
+[21-Nov-2024 08:31:36 Europe/Berlin] Parameters to bind: {":nama":"anggun",":nim":"123456789",":email":"rajasuki@gmail.com",":tgl_lahir":"2024-11-29",":thn_lulus":"2024-11-29",":perguruan":"Teknik Komputer dan Jaringan",":nik":"9897654312345678",":npwp":"098765423456789"}
+[21-Nov-2024 08:31:36 Europe/Berlin] Bound parameter :nama with value: anggun
+[21-Nov-2024 08:31:36 Europe/Berlin] Bound parameter :nim with value: 123456789
+[21-Nov-2024 08:31:36 Europe/Berlin] Bound parameter :email with value: rajasuki@gmail.com
+[21-Nov-2024 08:31:36 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-29
+[21-Nov-2024 08:31:36 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-29
+[21-Nov-2024 08:31:36 Europe/Berlin] Bound parameter :perguruan with value: Teknik Komputer dan Jaringan
+[21-Nov-2024 08:31:36 Europe/Berlin] Bound parameter :nik with value: 9897654312345678
+[21-Nov-2024 08:31:36 Europe/Berlin] Bound parameter :npwp with value: 098765423456789
+[21-Nov-2024 08:31:36 Europe/Berlin] User created successfully with ID: 27
+[21-Nov-2024 08:31:36 Europe/Berlin] User created successfully with ID: 27
+[21-Nov-2024 08:34:56 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:34:56 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:34:56 Europe/Berlin] Input data: {"nama":"anggun","thn_lulus":"2024-11-29","nim":"123456789","perguruan":"Teknik Komputer dan Jaringan","email":"rajasuki@gmail.com","nik":"9897654312345678","tgl_lahir":"2024-11-29","npwp":"098765423456789"}
+[21-Nov-2024 08:34:56 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:34:56 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:34:56 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 08:52:12 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:52:12 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:52:12 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 08:52:12 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:12 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:12 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 08:52:15 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:52:15 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:52:15 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 08:52:15 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:15 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:15 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 08:52:15 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:52:15 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:52:15 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 08:52:15 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:15 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:15 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 08:52:16 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:52:16 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:52:16 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 08:52:16 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:16 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:16 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 08:52:16 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:52:16 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:52:16 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 08:52:16 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:16 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:16 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 08:52:16 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:52:16 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:52:16 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 08:52:16 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:16 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:16 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 08:52:17 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:52:17 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:52:17 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 08:52:17 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:17 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:17 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 08:52:17 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:52:17 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:52:17 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 08:52:17 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:17 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:17 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 08:52:17 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:52:17 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:52:17 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 08:52:17 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:17 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:17 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 08:52:18 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:52:18 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:52:18 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 08:52:18 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:18 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:18 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 08:52:18 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:52:18 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:52:18 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 08:52:18 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:18 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:18 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 08:52:18 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:52:18 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:52:18 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 08:52:18 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:18 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:18 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 08:52:19 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:52:19 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:52:19 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 08:52:19 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:19 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:19 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 08:52:30 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 08:52:30 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 08:52:30 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 08:52:30 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:30 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 08:52:30 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:36 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:36 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:36 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:36 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:36 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:36 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:38 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:38 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:38 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:38 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:38 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:38 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:38 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:38 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:38 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:38 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:38 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:38 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:38 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:38 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:38 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:38 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:38 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:38 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:39 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:39 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:39 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:39 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:39 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:39 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:39 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:39 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:39 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:39 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:39 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:39 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:40 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:40 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:40 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:40 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:40 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:40 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:40 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:40 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:40 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:40 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:40 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:40 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:40 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:40 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:40 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:40 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:40 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:40 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:41 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:41 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:41 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:41 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:41 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:41 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:41 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:41 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:41 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:41 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:41 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:41 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:41 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:41 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:41 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:41 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:41 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:41 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:42 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:42 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:42 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:42 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:42 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:42 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:42 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:42 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:42 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:42 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:42 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:42 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:42 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:42 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:42 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:42 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:42 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:42 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:43 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:43 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:43 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:43 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:43 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:43 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:43 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:43 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:43 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:43 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:43 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:43 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:43 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:43 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:43 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:43 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:43 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:43 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:44 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:44 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:44 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:44 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:44 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:44 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:47 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:47 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:47 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:47 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:47 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:47 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:47 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:47 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:47 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:47 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:47 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:47 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:49 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:49 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:49 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:49 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:49 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:49 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:50 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:50 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:50 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:50 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:50 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:50 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:50 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:50 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:50 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:50 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:50 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:50 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:50 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:50 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:50 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:50 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:50 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:50 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:02:51 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:02:51 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:02:51 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:02:51 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:51 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:02:51 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:12:34 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:12:34 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:12:34 Europe/Berlin] Input data: {"nama":"affawfaw","thn_lulus":"2024-11-06","nim":"213","perguruan":"Sistem Informasi","email":"41231dowida@gmail.com","nik":"5112312414124112","tgl_lahir":"2024-11-14","npwp":"512412321421412"}
+[21-Nov-2024 09:12:34 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:12:34 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[21-Nov-2024 09:12:34 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(91): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[21-Nov-2024 09:13:01 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:13:01 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:13:01 Europe/Berlin] Input data: {"nama":"apawobndoawid","thn_lulus":"2024-11-06","nim":"41232132","perguruan":"Sistem Informasi","email":"hadawdhw@gmail.com","nik":"2412442244121242","tgl_lahir":"2024-11-14","npwp":"412421441241212"}
+[21-Nov-2024 09:13:01 Europe/Berlin] Data validation passed
+[21-Nov-2024 09:13:01 Europe/Berlin] User data set successfully
+[21-Nov-2024 09:13:01 Europe/Berlin] === Starting User Creation in Model ===
+[21-Nov-2024 09:13:01 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan, nik, npwp) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan, :nik, :npwp)
+[21-Nov-2024 09:13:01 Europe/Berlin] Parameters to bind: {":nama":"apawobndoawid",":nim":"41232132",":email":"hadawdhw@gmail.com",":tgl_lahir":"2024-11-14",":thn_lulus":"2024-11-06",":perguruan":"Sistem Informasi",":nik":"2412442244121242",":npwp":"412421441241212"}
+[21-Nov-2024 09:13:01 Europe/Berlin] Bound parameter :nama with value: apawobndoawid
+[21-Nov-2024 09:13:01 Europe/Berlin] Bound parameter :nim with value: 41232132
+[21-Nov-2024 09:13:01 Europe/Berlin] Bound parameter :email with value: hadawdhw@gmail.com
+[21-Nov-2024 09:13:01 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-14
+[21-Nov-2024 09:13:01 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-06
+[21-Nov-2024 09:13:01 Europe/Berlin] Bound parameter :perguruan with value: Sistem Informasi
+[21-Nov-2024 09:13:01 Europe/Berlin] Bound parameter :nik with value: 2412442244121242
+[21-Nov-2024 09:13:01 Europe/Berlin] Bound parameter :npwp with value: 412421441241212
+[21-Nov-2024 09:13:01 Europe/Berlin] User created successfully with ID: 28
+[21-Nov-2024 09:13:01 Europe/Berlin] User created successfully with ID: 28
+[21-Nov-2024 09:42:54 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 09:42:55 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 09:42:55 Europe/Berlin] Input data: {"nama":"aoasbdauwd","thn_lulus":"2024-11-13","nim":"412312424","perguruan":"Multimedia","email":"oawdn@gmail.com","nik":"4123122414123122","tgl_lahir":"2024-11-12","npwp":"121241231241231"}
+[21-Nov-2024 09:42:55 Europe/Berlin] Data validation passed
+[21-Nov-2024 09:42:55 Europe/Berlin] User data set successfully
+[21-Nov-2024 09:42:55 Europe/Berlin] === Starting User Creation in Model ===
+[21-Nov-2024 09:42:55 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan, nik, npwp) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan, :nik, :npwp)
+[21-Nov-2024 09:42:55 Europe/Berlin] Parameters to bind: {":nama":"aoasbdauwd",":nim":"412312424",":email":"oawdn@gmail.com",":tgl_lahir":"2024-11-12",":thn_lulus":"2024-11-13",":perguruan":"Multimedia",":nik":"4123122414123122",":npwp":"121241231241231"}
+[21-Nov-2024 09:42:55 Europe/Berlin] Bound parameter :nama with value: aoasbdauwd
+[21-Nov-2024 09:42:55 Europe/Berlin] Bound parameter :nim with value: 412312424
+[21-Nov-2024 09:42:55 Europe/Berlin] Bound parameter :email with value: oawdn@gmail.com
+[21-Nov-2024 09:42:55 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-12
+[21-Nov-2024 09:42:55 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-13
+[21-Nov-2024 09:42:55 Europe/Berlin] Bound parameter :perguruan with value: Multimedia
+[21-Nov-2024 09:42:55 Europe/Berlin] Bound parameter :nik with value: 4123122414123122
+[21-Nov-2024 09:42:55 Europe/Berlin] Bound parameter :npwp with value: 121241231241231
+[21-Nov-2024 09:42:55 Europe/Berlin] User created successfully with ID: 29
+[21-Nov-2024 09:42:55 Europe/Berlin] User created successfully with ID: 29
+[21-Nov-2024 14:41:04 Europe/Berlin] Memulai proses POST request
+[21-Nov-2024 14:41:04 Europe/Berlin] === Start Create User Process ===
+[21-Nov-2024 14:41:04 Europe/Berlin] Input data: {"nama":"how to fight ","thn_lulus":"2024-11-19","nim":"912319831","perguruan":"Sistem Informasi","email":"awodjka@gmail.com","nik":"1872128173187218","tgl_lahir":"2024-11-14","npwp":"841249123712722"}
+[21-Nov-2024 14:41:04 Europe/Berlin] Data validation passed
+[21-Nov-2024 14:41:04 Europe/Berlin] User data set successfully
+[21-Nov-2024 14:41:04 Europe/Berlin] === Starting User Creation in Model ===
+[21-Nov-2024 14:41:04 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan, nik, npwp) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan, :nik, :npwp)
+[21-Nov-2024 14:41:04 Europe/Berlin] Parameters to bind: {":nama":"how to fight ",":nim":"912319831",":email":"awodjka@gmail.com",":tgl_lahir":"2024-11-14",":thn_lulus":"2024-11-19",":perguruan":"Sistem Informasi",":nik":"1872128173187218",":npwp":"841249123712722"}
+[21-Nov-2024 14:41:04 Europe/Berlin] Bound parameter :nama with value: how to fight 
+[21-Nov-2024 14:41:04 Europe/Berlin] Bound parameter :nim with value: 912319831
+[21-Nov-2024 14:41:04 Europe/Berlin] Bound parameter :email with value: awodjka@gmail.com
+[21-Nov-2024 14:41:04 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-14
+[21-Nov-2024 14:41:04 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-19
+[21-Nov-2024 14:41:04 Europe/Berlin] Bound parameter :perguruan with value: Sistem Informasi
+[21-Nov-2024 14:41:04 Europe/Berlin] Bound parameter :nik with value: 1872128173187218
+[21-Nov-2024 14:41:04 Europe/Berlin] Bound parameter :npwp with value: 841249123712722
+[21-Nov-2024 14:41:04 Europe/Berlin] User created successfully with ID: 30
+[21-Nov-2024 14:41:04 Europe/Berlin] User created successfully with ID: 30
+[22-Nov-2024 02:10:02 Europe/Berlin] Memulai proses POST request
+[22-Nov-2024 02:10:02 Europe/Berlin] === Start Create User Process ===
+[22-Nov-2024 02:10:02 Europe/Berlin] Input data: {"nama":"how to fight ","thn_lulus":"2024-11-19","nim":"912319831","perguruan":"Sistem Informasi","email":"awodjka@gmail.com","nik":"1872128173187218","tgl_lahir":"2024-11-14","npwp":"841249123712722"}
+[22-Nov-2024 02:10:03 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[22-Nov-2024 02:10:03 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[22-Nov-2024 02:10:03 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(109): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[22-Nov-2024 02:10:06 Europe/Berlin] Memulai proses POST request
+[22-Nov-2024 02:10:06 Europe/Berlin] === Start Create User Process ===
+[22-Nov-2024 02:10:06 Europe/Berlin] Input data: {"nama":"how to fight ","thn_lulus":"2024-11-19","nim":"912319831","perguruan":"Sistem Informasi","email":"awodjka@gmail.com","nik":"1872128173187218","tgl_lahir":"2024-11-14","npwp":"841249123712722"}
+[22-Nov-2024 02:10:06 Europe/Berlin] Validation error: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[22-Nov-2024 02:10:06 Europe/Berlin] ERROR in createUser: NIM sudah terdaftar, Email sudah terdaftar, NIK sudah terdaftar, NPWP sudah terdaftar
+[22-Nov-2024 02:10:06 Europe/Berlin] Stack trace: #0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\UserController.php(65): App\Controller\UserController->validateUserData(Array)
+#1 D:\xampp\htdocs\traceritesa\tracer\publics\index.php(109): App\Controller\UserController->createUser(Array)
+#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\HomeController.php(34): require_once('D:\\xampp\\htdocs...')
+#3 D:\xampp\htdocs\traceritesa\tracer\index.php(75): App\Controller\HomeController->index(Array)
+#4 {main}
+[22-Nov-2024 02:42:40 Europe/Berlin] Memulai proses POST request
+[22-Nov-2024 02:42:40 Europe/Berlin] === Start Create User Process ===
+[22-Nov-2024 02:42:40 Europe/Berlin] Input data: {"nama":"why off then","thn_lulus":"2024-11-19","nim":"9999999","perguruan":"Sistem Informasi","email":"andika@gmail.com","nik":"1082941212321312","tgl_lahir":"2024-11-13","npwp":"128941927312371"}
+[22-Nov-2024 02:42:40 Europe/Berlin] Data validation passed
+[22-Nov-2024 02:42:40 Europe/Berlin] User data set successfully
+[22-Nov-2024 02:42:40 Europe/Berlin] === Starting User Creation in Model ===
+[22-Nov-2024 02:42:40 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan, nik, npwp) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan, :nik, :npwp)
+[22-Nov-2024 02:42:40 Europe/Berlin] Parameters to bind: {":nama":"why off then",":nim":"9999999",":email":"andika@gmail.com",":tgl_lahir":"2024-11-13",":thn_lulus":"2024-11-19",":perguruan":"Sistem Informasi",":nik":"1082941212321312",":npwp":"128941927312371"}
+[22-Nov-2024 02:42:40 Europe/Berlin] Bound parameter :nama with value: why off then
+[22-Nov-2024 02:42:40 Europe/Berlin] Bound parameter :nim with value: 9999999
+[22-Nov-2024 02:42:40 Europe/Berlin] Bound parameter :email with value: andika@gmail.com
+[22-Nov-2024 02:42:40 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-13
+[22-Nov-2024 02:42:40 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-19
+[22-Nov-2024 02:42:40 Europe/Berlin] Bound parameter :perguruan with value: Sistem Informasi
+[22-Nov-2024 02:42:40 Europe/Berlin] Bound parameter :nik with value: 1082941212321312
+[22-Nov-2024 02:42:40 Europe/Berlin] Bound parameter :npwp with value: 128941927312371
+[22-Nov-2024 02:42:40 Europe/Berlin] User created successfully with ID: 31
+[22-Nov-2024 02:42:40 Europe/Berlin] User created successfully with ID: 31
+[22-Nov-2024 03:48:30 Europe/Berlin] Memulai proses POST request
+[22-Nov-2024 03:48:30 Europe/Berlin] === Start Create User Process ===
+[22-Nov-2024 03:48:30 Europe/Berlin] Input data: {"nama":"aiwda","thn_lulus":"2024-11-11","nim":"24981249182","perguruan":"Sistem Informasi","email":"idawbdui@gmail.com","nik":"1111111111111111","tgl_lahir":"2024-11-13","npwp":"111111111111111"}
+[22-Nov-2024 03:48:30 Europe/Berlin] Data validation passed
+[22-Nov-2024 03:48:30 Europe/Berlin] User data set successfully
+[22-Nov-2024 03:48:30 Europe/Berlin] === Starting User Creation in Model ===
+[22-Nov-2024 03:48:30 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan, nik, npwp) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan, :nik, :npwp)
+[22-Nov-2024 03:48:30 Europe/Berlin] Parameters to bind: {":nama":"aiwda",":nim":"24981249182",":email":"idawbdui@gmail.com",":tgl_lahir":"2024-11-13",":thn_lulus":"2024-11-11",":perguruan":"Sistem Informasi",":nik":"1111111111111111",":npwp":"111111111111111"}
+[22-Nov-2024 03:48:30 Europe/Berlin] Bound parameter :nama with value: aiwda
+[22-Nov-2024 03:48:30 Europe/Berlin] Bound parameter :nim with value: 24981249182
+[22-Nov-2024 03:48:30 Europe/Berlin] Bound parameter :email with value: idawbdui@gmail.com
+[22-Nov-2024 03:48:30 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-13
+[22-Nov-2024 03:48:30 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-11
+[22-Nov-2024 03:48:30 Europe/Berlin] Bound parameter :perguruan with value: Sistem Informasi
+[22-Nov-2024 03:48:30 Europe/Berlin] Bound parameter :nik with value: 1111111111111111
+[22-Nov-2024 03:48:30 Europe/Berlin] Bound parameter :npwp with value: 111111111111111
+[22-Nov-2024 03:48:30 Europe/Berlin] User created successfully with ID: 32
+[22-Nov-2024 03:48:30 Europe/Berlin] User created successfully with ID: 32
+[22-Nov-2024 12:47:34 Europe/Berlin] Memulai proses POST request
+[22-Nov-2024 12:47:34 Europe/Berlin] === Start Create User Process ===
+[22-Nov-2024 12:47:34 Europe/Berlin] Input data: {"nama":"ofnoawnia","thn_lulus":"2024-11-19","nim":"2189481232","perguruan":"Teknik Komputer dan Jaringan","email":"iawud@gmail.com","nik":"1919191919191919","tgl_lahir":"2024-11-13","npwp":"913192812819283"}
+[22-Nov-2024 12:47:34 Europe/Berlin] Data validation passed
+[22-Nov-2024 12:47:34 Europe/Berlin] User data set successfully
+[22-Nov-2024 12:47:34 Europe/Berlin] === Starting User Creation in Model ===
+[22-Nov-2024 12:47:34 Europe/Berlin] Preparing query: INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan, nik, npwp) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan, :nik, :npwp)
+[22-Nov-2024 12:47:34 Europe/Berlin] Parameters to bind: {":nama":"ofnoawnia",":nim":"2189481232",":email":"iawud@gmail.com",":tgl_lahir":"2024-11-13",":thn_lulus":"2024-11-19",":perguruan":"Teknik Komputer dan Jaringan",":nik":"1919191919191919",":npwp":"913192812819283"}
+[22-Nov-2024 12:47:34 Europe/Berlin] Bound parameter :nama with value: ofnoawnia
+[22-Nov-2024 12:47:34 Europe/Berlin] Bound parameter :nim with value: 2189481232
+[22-Nov-2024 12:47:34 Europe/Berlin] Bound parameter :email with value: iawud@gmail.com
+[22-Nov-2024 12:47:34 Europe/Berlin] Bound parameter :tgl_lahir with value: 2024-11-13
+[22-Nov-2024 12:47:34 Europe/Berlin] Bound parameter :thn_lulus with value: 2024-11-19
+[22-Nov-2024 12:47:34 Europe/Berlin] Bound parameter :perguruan with value: Teknik Komputer dan Jaringan
+[22-Nov-2024 12:47:34 Europe/Berlin] Bound parameter :nik with value: 1919191919191919
+[22-Nov-2024 12:47:34 Europe/Berlin] Bound parameter :npwp with value: 913192812819283
+[22-Nov-2024 12:47:34 Europe/Berlin] User created successfully with ID: 33
+[22-Nov-2024 12:47:34 Europe/Berlin] User created successfully with ID: 33

@@ -49,19 +49,20 @@ $adminRole = SessionHelper::get('admin_role');
         <!-- user -->
         <div class="dropdown relative md:static">
 
-          <button class="menu-btn focus:outline-none focus:shadow-outline flex flex-wrap items-center">
+          <button onclick="toggleDropdown()" class="menu-btn focus:outline-none focus:shadow-outline flex flex-wrap items-center p-2 rounded-md hover:bg-gray-200 transition-all duration-300 ease-in-out">
             <div class="ml-2 capitalize flex ">
               <h1 class="text-sm text-gray-800 font-semibold m-0 p-0 leading-none">
                 <?= htmlspecialchars($adminUsername) ?>
                 <span class="text-xs text-gray-600">(<?= htmlspecialchars($adminRole) ?>)</span>
               </h1>
-              <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i>
+              <!-- icon -->
+               
+              <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i> 
+              <!-- end icon -->
             </div>                        
           </button>
 
-          <button class="hidden fixed top-0 left-0 z-10 w-full h-full menu-overflow"></button>
-
-          <div class="text-gray-500 menu hidden md:mt-10 md:w-full rounded bg-white shadow-md absolute z-20 right-0 w-40 mt-5 py-2 animated faster">
+          <div id="dropdownMenu" class="text-gray-500 menu hidden md:mt-10 md:w-full rounded bg-white shadow-md absolute z-20 right-0 w-40 mt-5 py-2 animated faster">
 
             <!-- item -->
             <a class="px-4 py-2 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 hover:text-gray-900 transition-all duration-300 ease-in-out" href="#">
@@ -90,3 +91,31 @@ $adminRole = SessionHelper::get('admin_role');
 
   </div>
 <!-- end navbar -->
+
+<script>
+// Toggle Dropdown
+function toggleDropdown() {
+  document.getElementById('dropdownMenu').classList.toggle('hidden');
+}
+
+// Toggle Sidebar
+document.getElementById('sliderBtn').addEventListener('click', function() {
+  document.getElementById('sidebar').classList.toggle('md:hidden');
+  document.getElementById('sidebar').classList.toggle('animated');
+});
+
+// Toggle Navbar di Mobile
+document.getElementById('navbarToggle').addEventListener('click', function() {
+  document.getElementById('navbar').classList.toggle('md:hidden');
+});
+
+// Tutup dropdown ketika klik di luar
+window.onclick = function(event) {
+  if (!event.target.matches('.menu-btn')) {
+    var dropdowns = document.getElementById('dropdownMenu');
+    if (!dropdowns.classList.contains('hidden')) {
+      dropdowns.classList.add('hidden');
+    }
+  }
+}
+</script>

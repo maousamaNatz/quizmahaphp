@@ -30,36 +30,121 @@ ini_set('error_log', $logPath);
 require_once __DIR__ . '/../vendor/autoload.php';
 use App\Config\Database;
 use App\Helpers\SessionHelper;
-use App\Controller\UserController;
+use App\Controller\UserController;  
+use App\Controller\AnswerController;
 use App\Helpers\AssetHelper;
 
+
 SessionHelper::startSession();
+
+if (isset($_SESSION['user_id'])) {
+    require_once __DIR__ . '/../src/Controller/AnswerController.php';
+    require_once __DIR__ . '/../src/config/Database.php';
+    
+    $db = new Database();
+    $answerController = new AnswerController($db);
+    
+    $hasAnswers = $answerController->checkUserHasAnswers($_SESSION['user_id']);
+    
+    if ($hasAnswers) {
+        $hash = $answerController->generateHash($_SESSION['user_id']);
+        header('Location: /traceritesa/tracer/lihatapcb?q=' . urlencode($hash));
+        exit;
+    }
+}
+
+function generateCSRFToken() {
+    if (empty($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+    return $_SESSION['csrf_token'];
+}
+
+function validateCSRFToken($token) {
+    return !empty($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
+}
+
+$csrfToken = generateCSRFToken();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         error_log("Memulai proses POST request");
+        $errors = [];
+        
+        // Validasi field kosong
+        $requiredFields = [
+            'nama' => 'Nama',
+            'nim' => 'NIM',
+            'email' => 'Email',
+            'tgl_lahir' => 'Tanggal Lahir',
+            'thn_lulus' => 'Tahun Lulus',
+            'perguruan' => 'Program Studi',
+            'nik' => 'NIK',
+            'npwp' => 'NPWP'
+        ];
+        
+        foreach ($requiredFields as $field => $label) {
+            if (empty($_POST[$field])) {
+                $errors[] = "$label harus diisi";
+            }
+        }
+        
+        // Lanjutkan dengan validasi lainnya
+        if (!empty($errors)) {
+            if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
+                header('Content-Type: application/json');
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => implode(", ", $errors)
+                ]);
+                exit;
+            }
+            throw new Exception(implode(", ", $errors));
+        }
         
         $userController = new UserController();
         $response = $userController->createUser($_POST);
         
-        error_log("Response dari createUser: " . print_r($response, true));
-        
         if ($response['status'] === 'success') {
             $_SESSION['user_id'] = $response['user_id'];
-            header('Location: /traceritesa/tracer/questions?user_id=' . urlencode($response['user_id']));
-            exit();
+            $hash = $userController->generateHash($response['user_id']);
+            
+            if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
+                header('Content-Type: application/json');
+                echo json_encode([
+                    'status' => 'success',
+                    'message' => 'Data berhasil disimpan',
+                    'redirect' => '/traceritesa/tracer/penunjangmasadepan?q=' . urlencode($hash)
+                ]);
+                exit;
+            }
         } else {
+            if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
+                header('Content-Type: application/json');
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => $response['message']
+                ]);
+                exit;
+            }
             throw new Exception($response['message']);
         }
         
     } catch (\Exception $e) {
-        error_log("Error detail: " . $e->getMessage());
-        error_log("Stack trace: " . $e->getTraceAsString());
-        error_log("Request data: " . print_r($_REQUEST, true));
+        error_log("Error: " . $e->getMessage());
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
+            header('Content-Type: application/json');
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ]);
+            exit;
+        }
         
-        $_SESSION['error'] = $e->getMessage();
-        header('Location: /traceritesa/tracer');
-        exit();
+        $_SESSION['flash_message'] = [
+            'type' => 'error',
+            'message' => $e->getMessage()
+        ];
     }
 }
 ?>
@@ -68,9 +153,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/x-icon" href="/assets/img/logo.png">
+    <link rel="icon" type="image/x-icon" href="<?php echo AssetHelper::url('media/logos.png'); ?>">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Tracer Itesa Muhammadiyah</title>
+    <meta name="description" content="Tracer Itesa Muhammadiyah">
+    <meta name="author" content="maousamanatz">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
     <link rel="icon" href="<?php echo AssetHelper::url('media/logos.png'); ?>" />
     <link href="<?php echo AssetHelper::url('css/styles.css'); ?>" rel="stylesheet" />
@@ -152,8 +239,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         display: none !important; 
       }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css">
 </head>
 <body class="bg-gray-50 text-gray-800">
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer/views/components/loading.php'; ?>
@@ -176,19 +264,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
              src="https://storage.googleapis.com/a1aa/image/pFZoKAUJwHqfd6NoNJgk7GMWynYsYe9peezUdIN58ZpIPVKOB.jpg"/>
       </div>
     </section>
-
+    <script type="module" src="<?php echo AssetHelper::url('dist/assets/main-CSgIVEFG.js'); ?>"></script>
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer/views/questions/form.php'; ?>
   </div>    
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer/views/components/footer.php'; ?>
-<script type="module" src="<?php echo AssetHelper::url('dist/assets/main-DlMiVXK5.js'); ?>"></script>
 
 <?php if (isset($error) && !empty($error)): ?>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     Alpine.store('notifications').add('<?php echo htmlspecialchars($error); ?>', 'error');
   });
-</script>
+</script> 
 <?php endif; ?>
 
 <?php if (isset($success) && !empty($success)): ?>
@@ -197,65 +284,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     Alpine.store('notifications').add('<?php echo htmlspecialchars($success); ?>', 'success');
   });
 </script>
-<?php endif; ?>
+<?php endif; ?>  
 
+<?php if(isset($_SESSION['flash_message'])): ?>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const form = document.querySelector('form');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Reset validasi
-      document.querySelectorAll('input, select').forEach(field => {
-        field.classList.remove('border-red-500', 'ring-red-200');
-        field.classList.add('border-slate-200');
-      });
-
-      let isValid = true;
-      let emptyFields = [];
-
-      // Validasi field wajib
-      const requiredFields = {
-        nama: "Nama",
-        nim: "NIM", 
-        email: "Email",
-        tgl_lahir: "Tanggal Lahir",
-        thn_lulus: "Tahun Lulus",
-        perguruan: "Program Studi"
-      };
-
-      Object.entries(requiredFields).forEach(([fieldName, label]) => {
-        const field = document.querySelector(`[name="${fieldName}"]`);
-        if (!field.value.trim()) {
-          field.classList.remove('border-slate-200');
-          field.classList.add('border-red-500', 'ring-red-200');
-          isValid = false;
-          emptyFields.push(label);
-        }
-      });
-
-      if (!isValid) {
-        Alpine.store('notifications').add(`Field berikut harus diisi: ${emptyFields.join(", ")}`, 'error');
-        return;
-      }
-
-      // Validasi email
-      const emailField = document.querySelector('[name="email"]');
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(emailField.value)) {
-        emailField.classList.add('border-red-500', 'ring-red-200');
-        Alpine.store('notifications').add('Format email tidak valid', 'error');
-        return;
-      }
-
-      // Submit form jika valid
-      form.submit();
+    // Tampilkan notifikasi
+    Alpine.store('notifications').add(
+        '<?php echo htmlspecialchars($_SESSION['flash_message']['message']); ?>', 
+        '<?php echo $_SESSION['flash_message']['type']; ?>'
+    );
+    
+    // Isi kembali form jika ada data
+    <?php if(isset($_SESSION['form_data'])): ?>
+    const formData = <?php echo json_encode($_SESSION['form_data']); ?>;
+    Object.keys(formData).forEach(key => {
+        const field = document.querySelector(`[name="${key}"]`);
+        if (field) field.value = formData[key];
     });
-  }
+    <?php endif; ?>
 });
-
 </script>
-  
+<?php 
+    unset($_SESSION['flash_message']);
+    unset($_SESSION['form_data']);
+endif; ?>
 </body> 
 </html> 

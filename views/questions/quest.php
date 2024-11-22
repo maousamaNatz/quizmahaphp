@@ -31,9 +31,20 @@ use Symfony\Component\Security\Csrf\TokenStorage\NativeSessionTokenStorage;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use App\Helpers\LogHelper;
 use App\Helpers\AssetHelper;
+use App\Controller\QuestionController;
 
 SessionHelper::startSession();
 
+if (isset($_SESSION['user_id'])) {
+    $answerController = new AnswerController();
+    $userAnswers = $answerController->getAnswersByUserId($_SESSION['user_id']);
+    
+    if ($userAnswers) {
+        $hash = $answerController->generateHash($_SESSION['user_id']);
+        header('Location: /traceritesa/tracer/views/questions/show_answers.php?q=' . urlencode($hash));
+        exit;
+    }
+}
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -76,6 +87,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Di bagian form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
+        $hash = $_GET['q'] ?? null;
+        if (!$hash) {
+            throw new Exception('Parameter hash tidak valid');
+        }
+        
+        $answerController = new AnswerController();
+        $userId = $answerController->decodeHash($hash);
+        
+        if (!$userId) {
+            throw new Exception('ID tidak valid');
+        }
+        
         $db = new Database();
         $connection = $db->connect();
         
@@ -92,7 +115,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if ($result['status'] === 'success') {
             $_SESSION['user_id'] = $result['user_id'];
-            header('Location: /traceritesa/tracer/views/questions/result.php');
+            $answerController = new AnswerController();
+            $hash = $answerController->generateHash($result['user_id']);
+            
+            header('Content-Type: application/json');
+            echo json_encode([
+                'status' => 'success',
+                'message' => 'Data berhasil disimpan',
+                'redirect' => '/traceritesa/tracer/views/questions/result.php?q=' . urlencode($hash),
+                'user_id' => $result['user_id'],
+                'hash' => $hash
+            ]);
             exit;
         } else {
             throw new \Exception($result['message']);
@@ -103,6 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         error_log("Stack trace: " . $e->getTraceAsString());
         error_log("POST data: " . print_r($_POST, true));
         
+        $_SESSION['error'] = $e->getMessage();
         header('Location: /traceritesa/tracer/views/codepages/codes/500.php');
         exit();
     }
@@ -111,6 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <script type="module" src="<?php echo AssetHelper::url('dist/assets/main-BjlnE9AH.js'); ?>"></script>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Tracer itesa Muhammadiyah</title>
     <link rel="stylesheet" href="<?php echo AssetHelper::url('css/styles.css'); ?>">
@@ -230,7 +265,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- section soal soal -->
     <section class="flex flex-col items-center justify-center py-20 bg-gray-100">
         <form method="post" action="" class="w-full max-w-5xl px-4 form" id="questionForm">
-            <input type="hidden" name="_csrf_token" value="<?= htmlspecialchars($csrfToken); ?>">
+            <input type="hidden" name="_csrf_token" value="<?php echo $csrfToken; ?>">
             <div class="bg-gray-100 p-6 rounded-lg my-3 w-full">    
                 <?php foreach ($questions as $question): ?>
                     <div class="space-y-4 question-item mb-6" 
@@ -309,7 +344,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="flex items-center justify-start">
                                     <input
                                         type="text"
-                                        name="question_<?= htmlspecialchars($question['id']); ?>_1"
+                                        name="question_<?= htmlspecialchars($question['id']); ?>_text1"
                                         placeholder="Masukkan nama kota"
                                         class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                     />
@@ -317,7 +352,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="flex items-center justify-start">
                                     <input
                                         type="text"
-                                        name="question_<?= htmlspecialchars($question['id']); ?>_2"
+                                        name="question_<?= htmlspecialchars($question['id']); ?>_text2"
                                         placeholder="Masukkan nama provinsi"
                                         class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                     />
@@ -383,50 +418,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </section>
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer/views/components/footer.php'; ?>
+    <script type="module" src="<?php echo AssetHelper::url('dist/assets/main-CSgIVEFG.js'); ?>"></script>
     <script>
-        // Tambahkan ini sebelum Alpine.js dimuat
-        document.addEventListener('alpine:init', () => {
-            Alpine.store('notifications', {
-                items: []
-            });
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof Alpine !== 'undefined') {
+                Alpine.store('notifications', {
+                    items: []
+                });
+            }
         });
     </script>
-    <script type="module" src="<?php echo AssetHelper::url('node_modules/alpinejs/dist/cdn.min.js'); ?>"></script>
-    <script type="module" src="<?php echo AssetHelper::url('dist/assets/main-DlMiVXK5.js'); ?>"></script>
     <script src="<?php echo AssetHelper::url('js/quest.js'); ?>"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('questionForm');
             if (form) {
-                form.addEventListener('submit', function(e) {
+                form.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     
                     const firstQuestionAnswer = document.querySelector('input[name="question_1"]:checked')?.value;
                     if (!firstQuestionAnswer) {
-                        alert('Mohon jawab pertanyaan pertama');
+                        Alpine.store('notifications').add('Mohon jawab pertanyaan pertama', 'error');
                         return;
                     }
 
                     let isValid = true;
                     const unansweredQuestions = [];
                     
-                    // Hanya validasi pertanyaan yang terlihat
+                    // Validasi pertanyaan yang terlihat
                     document.querySelectorAll('.question-item[style*="display: block"]').forEach((item) => {
                         const questionId = item.getAttribute('data-question-id');
+                        const questionType = item.getAttribute('data-question-type');
                         let hasAnswer = false;
                         
-                        // Cek tipe pertanyaan
-                        const questionType = item.getAttribute('data-question-type');
-                        
+                        // Khusus untuk pertanyaan dengan 2 input text
                         if (questionType === 'double_text_input') {
-                            const input1 = item.querySelector(`input[name="question_${questionId}_1"]`);
-                            const input2 = item.querySelector(`input[name="question_${questionId}_2"]`);
+                            const input1 = item.querySelector(`input[name="question_${questionId}_text1"]`);
+                            const input2 = item.querySelector(`input[name="question_${questionId}_text2"]`);
                             
-                            if (input1.value.trim() !== '' && input2.value.trim() !== '') {
+                            if (input1 && input2 && input1.value.trim() !== '' && input2.value.trim() !== '') {
                                 hasAnswer = true;
                             }
                         } else {
-                            // Logika validasi yang sudah ada untuk tipe lainnya
                             const inputs = item.querySelectorAll('input[type="radio"], input[type="checkbox"], input[type="text"]');
                             inputs.forEach(input => {
                                 if (input.type === 'text' && input.value.trim() !== '') {
@@ -444,11 +477,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     });
 
                     if (!isValid) {
-                        alert(`Mohon jawab semua pertanyaan berikut: ${unansweredQuestions.join(', ')}`);
+                        Alpine.store('notifications').add(
+                            `Mohon jawab semua pertanyaan berikut: ${unansweredQuestions.join(', ')}`,
+                            'error'
+                        );
                         return;
                     }
 
-                    form.submit();
+                    try {
+                        const formData = new FormData(form);
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest'
+                            }
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (data.status === 'success') {
+                            // Simpan data di localStorage
+                            localStorage.setItem('hasAnswered', 'true');
+                            localStorage.setItem('userId', data.user_id);
+                            localStorage.setItem('userHash', data.hash);
+                            
+                            Alpine.store('notifications').add('Data berhasil disimpan', 'success');
+                            
+                            // Redirect dengan timeout
+                            setTimeout(() => {
+                                window.location.href = data.redirect;
+                            }, 1000);
+                        } else {
+                            Alpine.store('notifications').add(data.message || 'Terjadi kesalahan', 'error');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        Alpine.store('notifications').add('Terjadi kesalahan sistem', 'error');
+                    }
                 });
             }
         });

@@ -47,8 +47,22 @@ function handleQuestionVisibility() {
     });
 }
 
-// Inisialisasi saat halaman dimuat
+function checkPreviousAnswer() {
+    const userId = localStorage.getItem('userId');
+    const hash = localStorage.getItem('userHash');
+    
+    if (userId && hash) {
+        // Redirect ke halaman show_answers
+        window.location.href = `/traceritesa/tracer/views/questions/show_answers.php?q=${hash}`;
+        return true;
+    }
+    return false;
+}
+
+// Panggil fungsi saat halaman dimuat
 document.addEventListener('DOMContentLoaded', function() {
+    checkPreviousAnswer();
+
     // Sembunyikan semua pertanyaan kecuali pertanyaan pertama
     const questionItems = document.querySelectorAll('.question-item');
     questionItems.forEach(item => {
@@ -71,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Form validation
     const form = document.getElementById('questionForm');
     if (form) {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const firstQuestionAnswer = document.querySelector('input[name="question_1"]:checked')?.value;
@@ -107,7 +121,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            form.submit();
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    Alpine.store('notifications').add('Data berhasil disimpan', 'success');
+                    // Simpan data di localStorage
+                    localStorage.setItem('hasAnswered', 'true');
+                    localStorage.setItem('userId', result.user_id);
+                    localStorage.setItem('userHash', result.hash);
+                    
+                    // Redirect ke halaman result
+                    setTimeout(() => {
+                        window.location.href = result.redirect;
+                    }, 1000);
+                } else {
+                    Alpine.store('notifications').add(result.message || 'Terjadi kesalahan', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                Alpine.store('notifications').add('Terjadi kesalahan sistem', 'error');
+            }
         });
     }
 }); 

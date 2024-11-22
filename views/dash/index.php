@@ -27,7 +27,7 @@ AdminAuthMiddleware::authenticate();
     line-height: inherit;
   }
   </style>
-  <title>Welcome To Tracer</title>
+  <title>Dashboard</title>
 </head>
 <body class="bg-gray-100 overflow-hidden">
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/traceritesa/tracer/views/components/navbardash.php'; ?>
@@ -51,7 +51,7 @@ AdminAuthMiddleware::authenticate();
             
             <!-- image -->
             <div class="img-wrapper w-40 h-40 flex justify-center items-center">
-                <img src="./img/happy.svg" alt="img title">
+                <img src="<?= AssetHelper::url('media/apcb.svg') ?>" alt="img title">
             </div>
             <!-- end image -->
 

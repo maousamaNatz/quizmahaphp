@@ -27,13 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <section id="formSection" class="w-full flex-col justify-center items-center">
   <div class="flex items-center justify-center">
-    <?php if (!empty($error)): ?>
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-      <span class="block sm:inline"><?php echo htmlspecialchars($error); ?></span>
-      </div>
-    <?php endif; ?>
     <div class="w-full md:max-w-4xl md:mx-auto px-2 md:px-4">
-      <form id="questionForm" method="POST" class="bg-white shadow-md rounded px-4 md:px-8 pt-6 pb-8 mb-4">
+      <form id="questionForm" class="bg-white shadow-md rounded px-4 md:px-8 pt-6 pb-8 mb-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="mb-4">
             <label

@@ -31,7 +31,7 @@ class AnswerController {
                     exit();
                 }
         $database = new Database();
-        $this->db = $database->connect();
+        $this->db = $database->getConnection();
         $this->answer = new Answer($this->db);
     }
 
@@ -107,11 +107,12 @@ class AnswerController {
             $stmt->bindParam(':answers', $answersJson);
             
             if ($stmt->execute()) {
-                error_log("Answers saved successfully for user $userId");
+                $hash = $this->generateHash($userId);
                 return [
-                    'status' => 'success', 
-                    'message' => 'Jawaban berhasil disimpan',
-                    'user_id' => $userId
+                    'status' => 'success',
+                    'message' => 'Data berhasil disimpan',
+                    'user_id' => $userId,
+                    'hash' => $hash
                 ];
             }
             
@@ -218,6 +219,116 @@ class AnswerController {
             error_log("Error in getAnswerText: " . $e->getMessage());
             return $answerId;
         }
+    }
+
+    public function viewAnswers() {
+        try {
+            $hash = $_GET['q'] ?? null;
+            if (!$hash) {
+                throw new \Exception('Parameter tidak valid');
+            }
+            
+            // Decode hash untuk mendapatkan user_id
+            $userId = $this->decodeHash($hash);
+            
+            if (!$userId) {
+                throw new \Exception('ID tidak valid');
+            }
+            
+            $userAnswers = $this->getAnswersByUserId($userId);
+            $questionController = new QuestionController();
+            $questions = $questionController->getAllQuestions();
+            
+            require_once __DIR__ . '/../../views/questions/show_answers.php';
+            
+        } catch (\Exception $e) {
+            error_log("Error viewing answers: " . $e->getMessage());
+            header('Location: /traceritesa/tracer/views/codepages/codes/404.php');
+            exit();
+        }
+    }
+
+    public function generateHash($userId) {
+        $key = 'penunjang_' . date('Ymd');
+        return hash('sha256', $userId . $key);
+    }
+
+    public function decodeHash($hash) {
+        try {
+            $query = "SELECT id FROM users WHERE SHA2(CONCAT(id, 'penunjang_" . date('Ymd') . "'), 256) = :hash";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':hash', $hash);
+            $stmt->execute();
+            
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result ? $result['id'] : null;
+        } catch (\PDOException $e) {
+            error_log("Error decoding hash: " . $e->getMessage());
+            return null;
+        }
+    }
+
+    public function showResult() {
+        try {
+            $user_id = $_SESSION['user_id'] ?? null;
+            
+            if (!$user_id) {
+                throw new \Exception('Sesi tidak valid');
+            }
+            
+            require_once __DIR__ . '/../../views/questions/result.php';
+            
+        } catch (\Exception $e) {
+            error_log("Error showing result: " . $e->getMessage());
+            header('Location: /traceritesa/tracer/views/codepages/codes/404.php');
+            exit();
+        }
+    }
+    public function getAllAnswers() {
+        try {
+            $query = "SELECT user_answers.*, users.nama, users.nim, users.perguruan, users.thn_lulus 
+                     FROM user_answers 
+                     JOIN users ON user_answers.user_id = users.id 
+                     ORDER BY user_answers.created_at DESC";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            error_log("Error getting all answers: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function getAllAnswersWithUserDetails() {
+        try {
+            $query = "SELECT user_answers.*, users.nama, users.nim, users.perguruan, users.thn_lulus, users.id as user_id 
+                      FROM user_answers 
+                      JOIN users ON user_answers.user_id = users.id 
+                      ORDER BY users.nama ASC";
+                      
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            // Filter jawaban berdasarkan opsi nomor 1
+            foreach ($results as $key => $result) {
+                $answers = json_decode($result['answers'], true);
+                if (isset($answers['1'])) {
+                    $results[$key]['status_kerja'] = $answers['1'];
+                }
+            }
+            
+            return $results;
+        } catch (\PDOException $e) {
+            error_log("Error getting answers with user details: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function checkUserHasAnswers($userId) {
+        // Implementasi logika untuk mengecek jawaban user
+        // Contoh:
+        return $this->model->hasAnswers($userId);
     }
 }
 ?>

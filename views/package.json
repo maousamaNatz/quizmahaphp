@@ -1,18 +1,18 @@
 {
-  "name": "views",
-  "version": "1.0.0",
+  "name": "frontends-tracer-itesa",
+  "version": "0.0.3",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "dev": "npx tailwindcss -i ./style.css -o ./assets/css/styles.css --watch",
+    "dev": "npx tailwindcss -i ./style.css -o ./assets/css/styles.css --watch --minify",
     "devs": "vite",
     "build": "vite build",
     "watch": "vite build --watch"
   },
   "keywords": [],
-  "author": "Natzsixn",
+  "author": "Itesa Muhammadiyah",
   "license": "ISC",
   "description": "itesa Tracer Study",
   "devDependencies": {

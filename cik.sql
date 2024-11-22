@@ -10,9 +10,6 @@ CREATE TABLE `login` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Insert admin default dengan password yang dienkripsi base64 2x
-INSERT INTO `login` (username, password, role) VALUES ('adminitesam', 'YWRtaW5pbWFqYXlh', 'admin'); -- password: adminimajaya
-
 -- Tabel Users untuk menyimpan informasi pengguna
 CREATE TABLE `users` (
   `id` INT(10) NOT NULL AUTO_INCREMENT,
@@ -65,6 +62,10 @@ CREATE TABLE `user_answers` (
   FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
   UNIQUE KEY `unique_user_answer` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+-- Insert admin default dengan password yang dienkripsi base64 2x
+INSERT INTO `login` (username, password, role) VALUES ('adminitesam', 'YWRtaW5pbWFqYXlh', 'admin'); -- password: adminimajaya
 
 -- Insert untuk tabel Questions
 INSERT INTO questions (question_text, type) VALUES

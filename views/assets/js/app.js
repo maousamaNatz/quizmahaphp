@@ -7,17 +7,21 @@ function handleLoading() {
         showLoading();
     }
     
-    // Tangkap submit form
     document.querySelector('form').addEventListener('submit', function(e) {
-        // Simpan state loading
+        e.preventDefault();
         sessionStorage.setItem(loadingKey, 'loading');
-        showLoading();
+        Alpine.store('notifications').add('Data berhasil ditambahkan', 'success');
+        
+        setTimeout(() => {
+            sessionStorage.removeItem(loadingKey);
+            this.submit();
+        }, 1000);
     });
     
     function showLoading() {
-        // Tampilkan loading spinner
         const loadingEl = document.createElement('div');
         loadingEl.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+        loadingEl.id = 'loadingOverlay';
         loadingEl.innerHTML = `
             <div class="bg-white p-5 rounded-lg flex flex-col items-center">
                 <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
@@ -26,12 +30,26 @@ function handleLoading() {
         `;
         document.body.appendChild(loadingEl);
         
-        // Disable form
-        document.querySelector('form').classList.add('opacity-50', 'pointer-events-none');
+        // Tambah animasi fade in
+        gsap.from(loadingEl, {
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.inOut"
+        });
+    }
+    
+    function hideLoading() {
+        const loadingEl = document.getElementById('loadingOverlay');
+        if (loadingEl) {
+            gsap.to(loadingEl, {
+                opacity: 0,
+                duration: 0.3,
+                ease: "power2.inOut",
+                onComplete: () => loadingEl.remove()
+            });
+        }
     }
 }
 
-// Hapus loading state saat halaman selesai load
-window.addEventListener('load', function() {
-    sessionStorage.removeItem('form_loading_state');
-});
+// Panggil fungsi saat DOM loaded
+document.addEventListener('DOMContentLoaded', handleLoading);

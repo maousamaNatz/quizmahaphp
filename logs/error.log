@@ -1,17 +1,17 @@
-[20-Nov-2024 03:34:44 Europe/Berlin] POST Data: Array
+[22-Nov-2024 13:21:11 Europe/Berlin] POST Data: Array
 (
-    [_csrf_token] => 09600a.ZdiBeUcw3sdHzk2PPfGnzmMSwe1V4P569GB25zEtEcg.Xb61O3EHlZ4lpy7NDLvzrFB37KcGmLg-wlQTqERgYrI3v7JBIHTvmDWbKg
-    [question_1] => 1
-    [other_2] => APCB
-    [other_3] => APCB
-    [question_4_1] => APCB
-    [question_4_2] => APCB
+    [_csrf_token] => 33c42.RJVVMcN-JiSL2ECwtQ0sC4c-DEZ0ObjQ4J6FOx0pTyM.KcYyfotIV2DajRTBwlVPPNh1Rj4XD_qqjtv9QyhsEHE91wpggillRfGtGQ
+    [question_1] => 3
+    [other_2] => 
+    [other_3] => 29wdnawidnoada
+    [question_4_text1] => wdiaubnwiduawd
+    [question_4_text2] => awiduabwiduaw
     [question_5] => 8
-    [other_6] => APCB
-    [other_7] => APCB
+    [other_6] => oiwudaiuda
+    [other_7] => aiwudnaiwdbnaw
     [question_8] => 15
     [question_9] => 19
-    [question_10] => 26
+    [question_10] => 22
     [question_11] => Array
         (
             [0] => 1
@@ -30,43 +30,43 @@
             [13] => 7
         )
 
-    [other_12] => APCB
-    [question_13] => 29
-    [other_13] => APCB
+    [other_12] => 039jrqwdjo
+    [question_13] => 31
     [question_14] => Array
         (
             [0] => 32
             [1] => 33
-            [2] => 37
+            [2] => 34
         )
 
-    [other_15] => APCB
-    [other_16] => APCB
-    [other_17] => APCB
+    [other_15] => oawdoadawoidawdidawodaw
+    [other_16] => aowuidawudbaidubadiuabd
+    [other_17] => aiuwdbaiwudbawuidaw
     [question_18] => 49
     [question_19] => Array
         (
             [0] => 52
             [1] => 53
             [2] => 54
+            [3] => 58
         )
 
 )
 
-[20-Nov-2024 03:34:44 Europe/Berlin] Received POST data: Array
+[22-Nov-2024 13:21:11 Europe/Berlin] Received POST data: Array
 (
-    [_csrf_token] => 09600a.ZdiBeUcw3sdHzk2PPfGnzmMSwe1V4P569GB25zEtEcg.Xb61O3EHlZ4lpy7NDLvzrFB37KcGmLg-wlQTqERgYrI3v7JBIHTvmDWbKg
-    [question_1] => 1
-    [other_2] => APCB
-    [other_3] => APCB
-    [question_4_1] => APCB
-    [question_4_2] => APCB
+    [_csrf_token] => 33c42.RJVVMcN-JiSL2ECwtQ0sC4c-DEZ0ObjQ4J6FOx0pTyM.KcYyfotIV2DajRTBwlVPPNh1Rj4XD_qqjtv9QyhsEHE91wpggillRfGtGQ
+    [question_1] => 3
+    [other_2] => 
+    [other_3] => 29wdnawidnoada
+    [question_4_text1] => wdiaubnwiduawd
+    [question_4_text2] => awiduabwiduaw
     [question_5] => 8
-    [other_6] => APCB
-    [other_7] => APCB
+    [other_6] => oiwudaiuda
+    [other_7] => aiwudnaiwdbnaw
     [question_8] => 15
     [question_9] => 19
-    [question_10] => 26
+    [question_10] => 22
     [question_11] => Array
         (
             [0] => 1
@@ -85,38 +85,38 @@
             [13] => 7
         )
 
-    [other_12] => APCB
-    [question_13] => 29
-    [other_13] => APCB
+    [other_12] => 039jrqwdjo
+    [question_13] => 31
     [question_14] => Array
         (
             [0] => 32
             [1] => 33
-            [2] => 37
+            [2] => 34
         )
 
-    [other_15] => APCB
-    [other_16] => APCB
-    [other_17] => APCB
+    [other_15] => oawdoadawoidawdidawodaw
+    [other_16] => aowuidawudbaidubadiuabd
+    [other_17] => aiuwdbaiwudbawuidaw
     [question_18] => 49
     [question_19] => Array
         (
             [0] => 52
             [1] => 53
             [2] => 54
+            [3] => 58
         )
 
 )
 
-[20-Nov-2024 03:34:44 Europe/Berlin] User ID from session: 14
-[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 1 with value: 1
-[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 4 with value: APCB
-[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 4 with value: APCB
-[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 5 with value: 8
-[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 8 with value: 15
-[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 9 with value: 19
-[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 10 with value: 26
-[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 11 with value: Array
+[22-Nov-2024 13:21:11 Europe/Berlin] User ID from session: 33
+[22-Nov-2024 13:21:11 Europe/Berlin] Processing question ID: 1 with value: 3
+[22-Nov-2024 13:21:11 Europe/Berlin] Processing question ID: 4_text1 with value: wdiaubnwiduawd
+[22-Nov-2024 13:21:11 Europe/Berlin] Processing question ID: 4_text2 with value: awiduabwiduaw
+[22-Nov-2024 13:21:11 Europe/Berlin] Processing question ID: 5 with value: 8
+[22-Nov-2024 13:21:11 Europe/Berlin] Processing question ID: 8 with value: 15
+[22-Nov-2024 13:21:11 Europe/Berlin] Processing question ID: 9 with value: 19
+[22-Nov-2024 13:21:11 Europe/Berlin] Processing question ID: 10 with value: 22
+[22-Nov-2024 13:21:11 Europe/Berlin] Processing question ID: 11 with value: Array
 (
     [0] => 1
     [1] => 1
@@ -134,28 +134,29 @@
     [13] => 7
 )
 
-[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 13 with value: 29
-[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 14 with value: Array
+[22-Nov-2024 13:21:11 Europe/Berlin] Processing question ID: 13 with value: 31
+[22-Nov-2024 13:21:11 Europe/Berlin] Processing question ID: 14 with value: Array
 (
     [0] => 32
     [1] => 33
-    [2] => 37
+    [2] => 34
 )
 
-[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 18 with value: 49
-[20-Nov-2024 03:34:44 Europe/Berlin] Processing question ID: 19 with value: Array
+[22-Nov-2024 13:21:11 Europe/Berlin] Processing question ID: 18 with value: 49
+[22-Nov-2024 13:21:11 Europe/Berlin] Processing question ID: 19 with value: Array
 (
     [0] => 52
     [1] => 53
     [2] => 54
+    [3] => 58
 )
 
-[20-Nov-2024 03:34:44 Europe/Berlin] Final answers to be saved: {"1":"Bekerja (full time \/ part time)","4":{"kota":"APCB","provinsi":"APCB"},"5":"Institusi\/organisasi multilateral","8":"Cukup erat","9":"Tingkat yang sama","10":"Beasiswa AFIRMASI","11":["Bekerja (full time \/ part time)","Bekerja (full time \/ part time)","Belum memungkinkan bekerja","Belum memungkinkan bekerja","Wiraswasta","Wiraswasta","Melanjutkan Pendidikan","Melanjutkan Pendidikan","Tidak kerja tetapi sedang mencari kerja","Tidak kerja tetapi sedang mencari kerja","Instansi pemerintah","Instansi pemerintah","BUMN\/BUMD","BUMN\/BUMD"],"13":"kira kira berapa bulan sebelum lulus ","14":["Melalui iklan di koran\/majalah, brosur","Melamar ke perusahaan tanpa mengetahui lowongan yang ada","Menghubungi kemenakertrans"],"18":"Cukup Puas","19":["pertanyaan tidak sesuai, Pekerjaan saya sekarang sudah sesuai dengan pendidikan saya","Saya belum mendapatkan pekerjaan yang lebih sesuai","Di pekerjaan ini saya memperoleh prospek karir yang baik"]}
-[20-Nov-2024 03:34:44 Europe/Berlin] Answers saved successfully for user 14
-[20-Nov-2024 03:34:44 Europe/Berlin] Save result: Array
+[22-Nov-2024 13:21:11 Europe/Berlin] Final answers to be saved: {"1":"Wiraswasta","4_text1":{"kota":"","provinsi":""},"4_text2":{"kota":"","provinsi":""},"5":"Institusi\/organisasi multilateral","8":"Cukup erat","9":"Tingkat yang sama","10":"Biaya sendiri\/keluarga","11":["Bekerja (full time \/ part time)","Bekerja (full time \/ part time)","Belum memungkinkan bekerja","Belum memungkinkan bekerja","Wiraswasta","Wiraswasta","Melanjutkan Pendidikan","Melanjutkan Pendidikan","Tidak kerja tetapi sedang mencari kerja","Tidak kerja tetapi sedang mencari kerja","Instansi pemerintah","Instansi pemerintah","BUMN\/BUMD","BUMN\/BUMD"],"13":"saya tidak mencari kerja","14":["Melalui iklan di koran\/majalah, brosur","Melamar ke perusahaan tanpa mengetahui lowongan yang ada","Pergi ke bursa\/pameran kerja"],"18":"Cukup Puas","19":["pertanyaan tidak sesuai, Pekerjaan saya sekarang sudah sesuai dengan pendidikan saya","Saya belum mendapatkan pekerjaan yang lebih sesuai","Di pekerjaan ini saya memperoleh prospek karir yang baik","pekerjaan saya saat ini lebih aman\/terjamin\/secure"]}
+[22-Nov-2024 13:21:11 Europe/Berlin] Save result: Array
 (
     [status] => success
-    [message] => Jawaban berhasil disimpan
-    [user_id] => 14
+    [message] => Data berhasil disimpan
+    [user_id] => 33
+    [hash] => 450453e5f5c200bd111bae0a90375b9138b3eb83987da2c88ec95115ccdac704
 )
 

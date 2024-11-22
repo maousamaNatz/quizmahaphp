@@ -58,7 +58,6 @@ class UserController
             
             // Validasi koneksi database
             if (!$this->db) {
-                error_log("ERROR: Koneksi database gagal");
                 throw new \Exception("Koneksi database gagal");
             }
             
@@ -70,7 +69,7 @@ class UserController
             $this->setUserData($data);
             error_log("User data set successfully");
             
-            // Coba create user
+            // Create user
             if ($this->user->create()) {
                 $userId = $this->user->id;
                 error_log("User created successfully with ID: " . $userId);
@@ -82,13 +81,11 @@ class UserController
                 ];
             }
             
-            error_log("ERROR: Failed to create user");
             throw new \Exception("Gagal menyimpan data");
             
         } catch (\Exception $e) {
             error_log("ERROR in createUser: " . $e->getMessage());
             error_log("Stack trace: " . $e->getTraceAsString());
-            error_log("POST data: " . print_r($data, true));
             
             return [
                 'status' => 'error',
@@ -98,15 +95,54 @@ class UserController
     }
 
     private function validateUserData($data) {
-        $required = ['nama', 'nim', 'email', 'tgl_lahir', 'thn_lulus', 'perguruan'];
-        foreach ($required as $field) {
-            if (empty($data[$field])) {
-                throw new \Exception("Field $field wajib diisi");
+        try {
+            // Validasi field yang required
+            $required = ['nama', 'nim', 'email', 'tgl_lahir', 'thn_lulus', 'perguruan'];
+            $errors = [];
+            
+            foreach ($required as $field) {
+                if (empty($data[$field])) {
+                    $errors[] = "Field " . ucfirst($field) . " harus diisi";
+                }
             }
-        }
-        
-        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-            throw new \Exception("Format email tidak valid");
+            
+            // Validasi field unik
+            $uniqueFields = [
+                'nim' => 'NIM',
+                'email' => 'Email',
+                'nik' => 'NIK',
+                'npwp' => 'NPWP'
+            ];
+            
+            foreach ($uniqueFields as $field => $label) {
+                if (!empty($data[$field]) && $this->user->exists($field, $data[$field])) {
+                    $errors[] = "$label sudah terdaftar";
+                }
+            }
+            
+            // Validasi format email
+            if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                $errors[] = "Format email tidak valid";
+            }
+            
+            // Validasi panjang NIK dan NPWP jika diisi
+            if (!empty($data['nik']) && strlen($data['nik']) !== 16) {
+                $errors[] = "NIK harus 16 digit";
+            }
+            
+            if (!empty($data['npwp']) && strlen($data['npwp']) !== 15) {
+                $errors[] = "NPWP harus 15 digit";
+            }
+            
+            // Jika ada error, throw exception
+            if (!empty($errors)) {
+                throw new \Exception(implode(", ", $errors));
+            }
+            
+            return true;
+        } catch (\Exception $e) {
+            error_log("Validation error: " . $e->getMessage());
+            throw $e;
         }
     }
 
@@ -114,11 +150,55 @@ class UserController
         $this->user->nama = $data['nama'];
         $this->user->nim = $data['nim'];
         $this->user->email = $data['email'];
-        $this->user->tgl_lahir = $data['tgl_lahir'];
+        $this->user->tgl_lahir = $data['tgl_lahir'];    
         $this->user->thn_lulus = $data['thn_lulus'];
         $this->user->perguruan = $data['perguruan'];
         $this->user->nik = $data['nik'] ?? null;
         $this->user->npwp = $data['npwp'] ?? null;
+    }
+
+    public function generateHash($userId) {
+        $key = 'penunjang_' . date('Ymd');
+        return hash('sha256', $userId . $key);
+    }
+
+    private function decodeHash($hash) {
+        try {
+            $query = "SELECT id FROM users WHERE SHA2(CONCAT(id, 'penunjang_" . date('Ymd') . "'), 256) = :hash";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':hash', $hash);
+            $stmt->execute();
+            
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result ? $result['id'] : null;
+        } catch (\PDOException $e) {
+            error_log("Error decoding hash: " . $e->getMessage());
+            return null;
+        }
+    }
+
+    public function getUserById($userId) {
+        try {
+            $query = "SELECT id, nama, nim, perguruan, thn_lulus, email, nik, tgl_lahir, npwp 
+                     FROM users 
+                     WHERE id = :user_id";
+            
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':user_id', $userId);
+            $stmt->execute();
+            
+            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+            if (!$result) {
+                throw new \Exception('User tidak ditemukan');
+            }
+            
+            return $result;
+            
+        } catch (\PDOException $e) {
+            error_log("Error in getUserById: " . $e->getMessage());
+            return null;
+        }
     }
 }
 

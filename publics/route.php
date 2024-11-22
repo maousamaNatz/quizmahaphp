@@ -20,7 +20,7 @@ $routes->add('registration', new Route('/registration', [
 ]));
 
 // Route untuk halaman pertanyaan
-$routes->add('questions', new Route('/questions', [
+$routes->add('questions', new Route('/penunjangmasadepan', [
     '_controller' => 'App\Controller\QuestionController::show',
 ]));
 
@@ -30,9 +30,8 @@ $routes->add('save_answers', new Route('/save-answers', [
 ]));
 
 // Route untuk halaman hasil
-$routes->add('result', new Route('/result/{user_id}', [
-    '_controller' => 'App\Controller\ResultController::show',
-    'requirements' => ['user_id' => '\d+']
+$routes->add('result', new Route('/result', [
+    '_controller' => 'App\Controller\AnswerController::showResult',
 ]));
 
 // Route untuk dashboard admin
@@ -77,6 +76,12 @@ $routes->add('login', new Route('/login', [
 // Route untuk logout
 $routes->add('logout', new Route('/logout', [
     '_controller' => 'App\Controller\AuthController::logout'
+]));
+
+// Route untuk melihat jawaban dengan hash
+$routes->add('view_answers', new Route('/lihatapcb', [
+    '_controller' => 'App\Controller\AnswerController::viewAnswers',
+    'methods' => ['GET']
 ]));
 
 return $routes;

@@ -1,17 +1,27 @@
-q<?php
+<?php
 require_once __DIR__ . '/../../vendor/autoload.php';
 require_once __DIR__ . '/../../src/config/Database.php';
 
 use App\Helpers\SessionHelper;
+use App\Controller\AnswerController;
 
 SessionHelper::startSession();
 
-// Dapatkan user_id dari session
-$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+// Dapatkan hash dari parameter URL
+$hash = isset($_GET['q']) ? $_GET['q'] : null;
+
+if (!$hash) {
+    die('Parameter tidak valid');
+}
+
+$answerController = new AnswerController();
+$user_id = $answerController->decodeHash($hash);
 
 if (!$user_id) {
-    die('Sesi tidak valid');
+    die('Hash tidak valid');
 }
+
+$_SESSION['user_id'] = $user_id;
 ?>
 
 <html lang="en">
@@ -47,11 +57,20 @@ if (!$user_id) {
           <p class="text-gray-600 text-center mb-8">
             Jawaban Anda telah berhasil disimpan. Anda dapat melihat ringkasan jawaban Anda dengan mengklik tombol di bawah ini.
           </p>
+          <?php
+          $hash = $answerController->generateHash($user_id);
+          ?>
           <a 
-            href="/traceritesa/tracer/views/questions/show_answers.php?user_id=<?php echo $user_id; ?>" 
+            href="/traceritesa/tracer/lihatapcb?q=<?php echo urlencode($hash); ?>" 
             class="bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-lg transition duration-200"
           >
             Lihat Jawaban
+          </a>
+          <a 
+            href="/traceritesa/tracer/" 
+            class="bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-lg transition duration-200"
+          >
+            Kembali ke Beranda
           </a>
         </div>
       </div>

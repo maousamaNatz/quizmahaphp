@@ -52,8 +52,8 @@ class User {
         try {
             error_log("=== Starting User Creation in Model ===");
             
-            $query = "INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan) 
-                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan)";
+            $query = "INSERT INTO users (nama, nim, email, tgl_lahir, thn_lulus, perguruan, nik, npwp) 
+                     VALUES (:nama, :nim, :email, :tgl_lahir, :thn_lulus, :perguruan, :nik, :npwp)";
             
             error_log("Preparing query: " . $query);
             
@@ -66,7 +66,9 @@ class User {
                 ':email' => $this->email,
                 ':tgl_lahir' => $this->tgl_lahir,
                 ':thn_lulus' => $this->thn_lulus,
-                ':perguruan' => $this->perguruan
+                ':perguruan' => $this->perguruan,
+                ':nik' => $this->nik,
+                ':npwp' => $this->npwp
             ];
             
             error_log("Parameters to bind: " . json_encode($params));
@@ -113,6 +115,24 @@ class User {
             }
         }
         return false;
+    }
+    
+    public function exists($field, $value) {
+        try {
+            if (empty($value)) {
+                return false;
+            }
+            
+            $query = "SELECT COUNT(*) FROM {$this->table} WHERE {$field} = :value";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':value', $value);
+            $stmt->execute();
+            
+            return $stmt->fetchColumn() > 0;
+        } catch (\PDOException $e) {
+            error_log("Error checking existence: " . $e->getMessage());
+            throw new \Exception("Gagal memeriksa data");
+        }
     }
 }
 ?>

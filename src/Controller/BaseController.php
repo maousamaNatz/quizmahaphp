@@ -6,14 +6,23 @@ class BaseController
     protected function __construct()
     {
         if (!defined('APP_RUNNING')) {
-            require_once __DIR__ . '/../../views/codepages/codes/403.php';
-            exit();
+            $this->blockAccess();
         }
 
         if (strpos($_SERVER['SCRIPT_FILENAME'], '/src/Controller/') !== false) {
-            require_once __DIR__ . '/../../views/codepages/codes/403.php';
-            exit();
+            $this->blockAccess();
         }
+    }
+
+    protected function blockAccess()
+    {
+        http_response_code(403);
+        if (file_exists(__DIR__ . '/../../views/codepages/codes/403.php')) {
+            require_once __DIR__ . '/../../views/codepages/codes/403.php';
+        } else {
+            echo "403 Forbidden";
+        }
+        exit();
     }
 
     protected function validateCSRF($token)

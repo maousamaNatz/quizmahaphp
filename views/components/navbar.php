@@ -1,10 +1,13 @@
 <?php
 use App\Helpers\AssetHelper;
-
+$createUrl = function($path) {
+  $baseUrl = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/publics');
+  return $baseUrl . $path;
+};
 ?>
 <!-- component -->
 <nav class="relative px-4 py-4 flex justify-between items-center bg-white">
-  <a class="text-2xl font-bold flex items-center gap-2 leading-none" href="#">
+  <a href="<?= $createUrl('/') ?>" class="text-2xl font-bold flex items-center gap-2 leading-none">
       <img src="<?= AssetHelper::url('media/logos.png') ?>" alt="logo" class="h-12">  
       <span>
         Tracer <span class="text-red-500">Itesa</span>
@@ -20,16 +23,16 @@ use App\Helpers\AssetHelper;
   </div>
   <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
   <li class="mb-1">
-          <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Home</a>
+          <a class="block p-4 text-sm font-semibold text-gray-400 hover:text-black rounded" href="<?= $createUrl('/') ?>">Home</a>
         </li>
         <li class="mb-1">
-          <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Itesa.ac.id</a>
+          <a class="block p-4 text-sm font-semibold text-gray-400 hover:text-black rounded" href="https://itesa.ac.id">Itesa.ac.id</a>
         </li>
         <li class="mb-1">
-          <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">PMB</a>
+          <a class="block p-4 text-sm font-semibold text-gray-400 hover:text-black rounded" href="https://pmb.itesa.ac.id">PMB</a>
         </li>
   </ul>
-  <a class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 bg-red-500 hover:bg-red-600 text-sm text-white font-bold  rounded-xl transition duration-200" href="#">Sign In</a>
+  <a class="px-4 md:flex hidden py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-all duration-300 ease-in-out" href="<?= $createUrl('/login') ?>">Sign In</a>
 </nav>
 <!-- mobile menu -->
 <div class="navbar-menu relative z-50 hidden transition-all duration-300">
@@ -57,10 +60,10 @@ use App\Helpers\AssetHelper;
     </div>
     <div class="mt-auto">
       <div class="pt-6">
-        <a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 bg-red-500 hover:bg-red-600 text-white rounded-xl" href="#">Sign in</a>
+        <a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 bg-red-500 hover:bg-red-600 text-white rounded-xl" href="<?= $createUrl('/login') ?>">Sign in</a>
       </div>
       <p class="my-4 text-xs text-center text-gray-400">
-        Copyright By <a href="https://github.com/maousamaNatz" class="hover:decoration-1 hover:text-gray-500">Natz</a>
+        Copyright By <a href="https://www.itesa.ac.id" class="hover:decoration-1 hover:text-gray-500">Itesa.ac.id</a>
         <span class="apcb"></span>
       </p>
     </div>

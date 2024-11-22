@@ -1,9 +1,0 @@
-[2024-11-20 03:33:12][ERROR] Error: Class "App\Controller\PDO" not found
-File: D:\xampp\htdocs\traceritesa\tracer\src\Controller\AnswerController.php
-Line: 181
-Trace:
-#0 D:\xampp\htdocs\traceritesa\tracer\src\Controller\AnswerController.php(85): App\Controller\AnswerController->getAnswerText('1', '1')
-#1 D:\xampp\htdocs\traceritesa\tracer\views\questions\quest.php(89): App\Controller\AnswerController->saveAnswer(Array)
-#2 D:\xampp\htdocs\traceritesa\tracer\src\Controller\QuestionController.php(72): require('D:\\xampp\\htdocs...')
-#3 D:\xampp\htdocs\traceritesa\tracer\index.php(73): App\Controller\QuestionController->show(Array)
-#4 {main}

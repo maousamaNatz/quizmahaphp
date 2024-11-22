@@ -81,6 +81,8 @@ class LogHelper {
      * Log untuk level ERROR
      */
     public static function error($message, array $context = []) {
+        $context['file'] = debug_backtrace()[0]['file'] ?? 'unknown';
+        $context['line'] = debug_backtrace()[0]['line'] ?? 'unknown';
         self::log($message, 'ERROR', $context);
     }
 
